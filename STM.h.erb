@@ -1,0 +1,46 @@
+<%
+states = system_ctrl_stm.states
+events = system_ctrl_stm.events
+module_name = system_ctrl_stm.module_name %>
+#include "<%= module_name %>_EventDef.h"
+
+// State definition
+enum <%= module_name %>_State { <%  
+states.each do |state| %>
+    ST_<%= state %>,<% 
+end %>
+};
+
+// Event definition
+enum <%= module_name %>_Event { <%  
+events.each do |event| %>
+    EV_<%= event.name %>,<% 
+end %>
+};
+
+<%
+states.each do |state| %>
+/* Event callback of <%= module_name %> Module,
+ * All state response for State :<%= state %> 
+ */<%    
+     events.each do |event|
+%>
+STM_Status <%= module_name %>_<%= state %>_<%= event.name %>(<%= module_name %>Event const & _msg);<%  
+    end %>
+<%
+end %>
+
+// State-Event Callback Matrix
+typedef STM_Status (FP_<%= module_name %>_ECB)(<%= module_name %>Event & _msg); 
+FP_SystemCtrl_ECB const SystemCtrl_state_ecb_map[][] = { <% 
+    states.each do |state| %>
+	{ <% 
+        events.each do |event| %>
+		<%= module_name %>_<%= state %>_<%= event.name %>, <% 
+        end %>
+	}, <%
+end
+%>
+}; 
+
+

@@ -1,0 +1,2 @@
+ruby .\GenrateStateMachine.rb
+pause

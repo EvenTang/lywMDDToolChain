@@ -1,0 +1,41 @@
+<%
+states = system_ctrl_stm.states
+events = system_ctrl_stm.events
+module_name = system_ctrl_stm.module_name
+
+@temp_index = 1
+
+def IncreasedIndex(new_idx = -1)
+    if new_idx == -1
+        @temp_index += 1
+    else 
+        @temp_index = new_idx
+    end
+    @temp_index - 1
+end
+
+def ResetIndex(new_idx)
+    @temp_index = new_idx
+end
+
+%>
+
+<%
+events.each do |event|
+    ResetIndex(1) %>
+message <%= event.name %> { <%
+    event.params.keys.each do |param_type|%>
+    optional !TYPE! <%=param_type%> = <%= IncreasedIndex() %>;
+} <%
+    end
+end %>
+
+message <%= module_name %>Messagge {
+    required int32 message_id = 1;
+    oneof msg_body { <%
+    ResetIndex(1)
+    events.each do |event| %>
+        <%= event.name %> msg_<%= event.name.underscore %> = <%= IncreasedIndex() %>; <%
+    end %> 
+    }
+}
