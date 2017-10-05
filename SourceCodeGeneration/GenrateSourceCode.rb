@@ -106,9 +106,12 @@ end
 system_ctrl_stm = @analyzer.state_machine
 
 erb_template_list = Dir["./*.erb"]
+#Special File
+erb_template_list.delete("./STMDesigner.html.erb")
+
 erb_template_list.each do | temp_file |
     if temp_file =~ /\.\/(.+)\.erb/
-        new_file_name = system_ctrl_stm.module_name.to_s + "_" + $1
+        new_file_name = "./GeneratedFile/" + system_ctrl_stm.module_name.to_s + "_" + $1
         f = File.new(new_file_name, "w") 
         puts "Generating #{new_file_name}"
         File.open(temp_file) { |fh| 

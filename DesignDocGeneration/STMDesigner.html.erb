@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+table {
+    font-family: Courier New, Verdana, "Microsoft YaHei", Arial;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+</style>
+</head>
+<body>
+
+    <table>
+             
+      <tr>
+        <th>S\E</th>
+        <%stm_generator.events.size.times do |i| %>
+          <th><%=stm_generator.events[i]%></th>
+        <%end%>
+      </tr>
+      <% stm_generator.states.size.times do |i| %>
+      <tr>
+        <td><%= stm_generator.states[i] %></td>
+        <% stm_generator.events.size.times do |j| %>
+          <th><% stm_generator.GetStatementsOfCell(i,j).each do |st| %><%= st %><br><%end%></th>
+        <%end%>
+      </tr>
+      <%end%>
+    </table>
+
+</body>
+</html>

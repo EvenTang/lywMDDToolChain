@@ -1,0 +1,2 @@
+ruby .\STMDocGenerator.rb
+pause

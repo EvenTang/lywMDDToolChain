@@ -1,0 +1,2 @@
+ruby .\GenrateSourceCode.rb
+pause
