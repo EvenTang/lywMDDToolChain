@@ -13,6 +13,7 @@ td, th {
     text-align: left;
     vertical-align:text-top;
     padding: 8px;
+    white-space: nowrap
 }
 
 </style>
@@ -23,15 +24,15 @@ td, th {
              
       <tr>
         <th>S\E</th>
-        <%stm_generator.events.size.times do |i| %>
-          <th><%=stm_generator.events[i]%></th>
+        <%stm_generator.events.each do |event| %>
+          <th><%=event%></th>
         <%end%>
       </tr>
-      <% stm_generator.states.size.times do |i| %>
+      <% stm_generator.states.each do |state| %>
       <tr>
-        <td><%= stm_generator.states[i] %></td>
-        <% stm_generator.events.size.times do |j| %>
-          <th><% stm_generator.GetStatementsOfCell(i,j).each do |st| %><%= st %><br><%end%></th>
+        <td><%= state %></td>
+        <% stm_generator.events.each do |event| %>
+          <th><% stm_generator.GetStatementsOfCell(state, event).each do |st| %><%= st %><br><%end%></th>
         <%end%>
       </tr>
       <%end%>

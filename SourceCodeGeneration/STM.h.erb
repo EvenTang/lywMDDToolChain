@@ -9,6 +9,7 @@ enum <%= module_name %>_State { <%
 states.each do |state| %>
     ST_<%= state %>,<% 
 end %>
+    ST_STATE_MAX
 };
 
 // Event definition
@@ -16,6 +17,7 @@ enum <%= module_name %>_Event { <%
 events.each do |event| %>
     EV_<%= event.name %>,<% 
 end %>
+    EV_EVENT_MAX
 };
 
 <%
@@ -25,7 +27,7 @@ states.each do |state| %>
  */<%    
      events.each do |event|
 %>
-STM_Status <%= module_name %>_<%= state %>_<%= event.name %>(<%= module_name %>Event const & _msg);<%  
+STM_Status <%= module_name %>_ECB_<%= state %>_<%= event.name %>(<%= module_name %>Event const & _msg);<%  
     end %>
 <%
 end %>
