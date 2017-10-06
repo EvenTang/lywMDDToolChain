@@ -189,9 +189,9 @@ erb_template_list.each do | temp_file |
         new_file_name = "./GeneratedFile/SystemCtrl_" + $1
         f = File.new(new_file_name, "w") 
         puts "Generating #{new_file_name}"
-        File.open(temp_file) { |fh| 
+        File.open(temp_file) do |fh| 
             erb_engine = ERB.new( fh.read ) 
             f.print erb_engine.result( binding )   
-        }
+        end
     end
 end
