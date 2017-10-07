@@ -1,17 +1,8 @@
 require 'set'
 require 'erb'
+require './lyw_rblib_extension'
 
 puts "Start Parsing!"
-
-class String
-    def underscore
-        self.gsub(/::/, '/').
-        gsub(/([A-Z]+)([A-Z][a-z])/,'\1_\2').
-        gsub(/([a-z\d])([A-Z])/,'\1_\2').
-        tr("-", "_").
-        downcase
-    end
-end
 
 def EnumrateAllFileInDir(file_ext, dir = ".")
     target_file_name_list = Dir[dir + "/*." + file_ext]
@@ -80,12 +71,9 @@ class SeqenceAnalzyer
                 new_event = @state_machine.events.find {|e| e.name == $1}
             end
             
-            puts $2
             left_str = $2
             while left_str =~ /((\w+)=([\w"]+)),?(.*)/
                 new_event.params[$2] = $3
-                puts $2
-                puts $3
                 left_str = $4
             end
             
@@ -95,7 +83,7 @@ end
 
 @analyzer = SeqenceAnalzyer.new(:SystemCtrl)
 
-EnumrateAllFileInDir("seq") do |fh|
+EnumrateAllFileInDir("seq", "./InputForSTMSourceGen") do |fh|
     fh.each_line do | line |
         @analyzer.GetAllStates(line)
         @analyzer.GetAllEvents(line)
@@ -105,12 +93,10 @@ end
 #=begin
 system_ctrl_stm = @analyzer.state_machine
 
-erb_template_list = Dir["./*.erb"]
-#Special File
-erb_template_list.delete("./STMDesigner.html.erb")
+erb_template_list = Dir["./InputForSTMSourceGen/*.erb"]
 
 erb_template_list.each do | temp_file |
-    if temp_file =~ /\.\/(.+)\.erb/
+    if temp_file =~ /\.\/InputForSTMSourceGen\/(.+)\.erb/
         new_file_name = "./GeneratedFile/" + system_ctrl_stm.module_name.to_s + "_" + $1
         f = File.new(new_file_name, "w") 
         puts "Generating #{new_file_name}"

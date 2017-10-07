@@ -1,0 +1,2 @@
+ruby .\GenrateSTMSource.rb
+pause

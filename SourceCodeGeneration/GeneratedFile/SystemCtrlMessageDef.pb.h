@@ -70,7 +70,9 @@ void InitDefaults();
 
 enum SetTemperatureResult_Result {
   SetTemperatureResult_Result_OK = 0,
-  SetTemperatureResult_Result_Failed = 1
+  SetTemperatureResult_Result_Failed = 1,
+  SetTemperatureResult_Result_SetTemperatureResult_Result_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  SetTemperatureResult_Result_SetTemperatureResult_Result_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool SetTemperatureResult_Result_IsValid(int value);
 const SetTemperatureResult_Result SetTemperatureResult_Result_Result_MIN = SetTemperatureResult_Result_OK;
@@ -89,7 +91,9 @@ inline bool SetTemperatureResult_Result_Parse(
 }
 enum ShowTemperatureResult_Result {
   ShowTemperatureResult_Result_OK = 0,
-  ShowTemperatureResult_Result_Failed = 1
+  ShowTemperatureResult_Result_Failed = 1,
+  ShowTemperatureResult_Result_ShowTemperatureResult_Result_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  ShowTemperatureResult_Result_ShowTemperatureResult_Result_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool ShowTemperatureResult_Result_IsValid(int value);
 const ShowTemperatureResult_Result ShowTemperatureResult_Result_Result_MIN = ShowTemperatureResult_Result_OK;
@@ -108,7 +112,9 @@ inline bool ShowTemperatureResult_Result_Parse(
 }
 enum PowerOffResult_Result {
   PowerOffResult_Result_OK = 0,
-  PowerOffResult_Result_Failed = 1
+  PowerOffResult_Result_Failed = 1,
+  PowerOffResult_Result_PowerOffResult_Result_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  PowerOffResult_Result_PowerOffResult_Result_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool PowerOffResult_Result_IsValid(int value);
 const PowerOffResult_Result PowerOffResult_Result_Result_MIN = PowerOffResult_Result_OK;
@@ -127,7 +133,9 @@ inline bool PowerOffResult_Result_Parse(
 }
 enum TurnOffDisplayResult_Result {
   TurnOffDisplayResult_Result_OK = 0,
-  TurnOffDisplayResult_Result_Failed = 1
+  TurnOffDisplayResult_Result_Failed = 1,
+  TurnOffDisplayResult_Result_TurnOffDisplayResult_Result_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  TurnOffDisplayResult_Result_TurnOffDisplayResult_Result_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool TurnOffDisplayResult_Result_IsValid(int value);
 const TurnOffDisplayResult_Result TurnOffDisplayResult_Result_Result_MIN = TurnOffDisplayResult_Result_OK;
@@ -146,7 +154,9 @@ inline bool TurnOffDisplayResult_Result_Parse(
 }
 enum PowerOnResult_Result {
   PowerOnResult_Result_OK = 0,
-  PowerOnResult_Result_Failed = 1
+  PowerOnResult_Result_Failed = 1,
+  PowerOnResult_Result_PowerOnResult_Result_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
+  PowerOnResult_Result_PowerOnResult_Result_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
 };
 bool PowerOnResult_Result_IsValid(int value);
 const PowerOnResult_Result PowerOnResult_Result_Result_MIN = PowerOnResult_Result_OK;
@@ -191,13 +201,6 @@ class SetTemperature : public ::google::protobuf::Message /* @@protoc_insertion_
     return *this;
   }
   #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
   static const ::google::protobuf::Descriptor* descriptor();
   static const SetTemperature& default_instance();
 
@@ -253,22 +256,25 @@ class SetTemperature : public ::google::protobuf::Message /* @@protoc_insertion_
 
   // accessors -------------------------------------------------------
 
-  // optional int32 new_temp = 1;
-  bool has_new_temp() const;
+  // int32 new_temp = 1;
   void clear_new_temp();
   static const int kNewTempFieldNumber = 1;
   ::google::protobuf::int32 new_temp() const;
   void set_new_temp(::google::protobuf::int32 value);
 
+  // int32 last_temp = 2;
+  void clear_last_temp();
+  static const int kLastTempFieldNumber = 2;
+  ::google::protobuf::int32 last_temp() const;
+  void set_last_temp(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:SetTemperature)
  private:
-  void set_has_new_temp();
-  void clear_has_new_temp();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable int _cached_size_;
   ::google::protobuf::int32 new_temp_;
+  ::google::protobuf::int32 last_temp_;
+  mutable int _cached_size_;
   friend struct protobuf_SystemCtrlMessageDef_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -299,13 +305,6 @@ class SetTemperatureResult : public ::google::protobuf::Message /* @@protoc_inse
     return *this;
   }
   #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
   static const ::google::protobuf::Descriptor* descriptor();
   static const SetTemperatureResult& default_instance();
 
@@ -387,8 +386,7 @@ class SetTemperatureResult : public ::google::protobuf::Message /* @@protoc_inse
 
   // accessors -------------------------------------------------------
 
-  // optional .SetTemperatureResult.Result result = 1;
-  bool has_result() const;
+  // .SetTemperatureResult.Result result = 1;
   void clear_result();
   static const int kResultFieldNumber = 1;
   ::SetTemperatureResult_Result result() const;
@@ -396,13 +394,10 @@ class SetTemperatureResult : public ::google::protobuf::Message /* @@protoc_inse
 
   // @@protoc_insertion_point(class_scope:SetTemperatureResult)
  private:
-  void set_has_result();
-  void clear_has_result();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable int _cached_size_;
   int result_;
+  mutable int _cached_size_;
   friend struct protobuf_SystemCtrlMessageDef_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -433,13 +428,6 @@ class ShowTemperatureResult : public ::google::protobuf::Message /* @@protoc_ins
     return *this;
   }
   #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
   static const ::google::protobuf::Descriptor* descriptor();
   static const ShowTemperatureResult& default_instance();
 
@@ -521,8 +509,7 @@ class ShowTemperatureResult : public ::google::protobuf::Message /* @@protoc_ins
 
   // accessors -------------------------------------------------------
 
-  // optional .ShowTemperatureResult.Result result = 1;
-  bool has_result() const;
+  // .ShowTemperatureResult.Result result = 1;
   void clear_result();
   static const int kResultFieldNumber = 1;
   ::ShowTemperatureResult_Result result() const;
@@ -530,13 +517,10 @@ class ShowTemperatureResult : public ::google::protobuf::Message /* @@protoc_ins
 
   // @@protoc_insertion_point(class_scope:ShowTemperatureResult)
  private:
-  void set_has_result();
-  void clear_has_result();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable int _cached_size_;
   int result_;
+  mutable int _cached_size_;
   friend struct protobuf_SystemCtrlMessageDef_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -567,13 +551,6 @@ class PowerOffResult : public ::google::protobuf::Message /* @@protoc_insertion_
     return *this;
   }
   #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
   static const ::google::protobuf::Descriptor* descriptor();
   static const PowerOffResult& default_instance();
 
@@ -655,8 +632,7 @@ class PowerOffResult : public ::google::protobuf::Message /* @@protoc_insertion_
 
   // accessors -------------------------------------------------------
 
-  // optional .PowerOffResult.Result result = 1;
-  bool has_result() const;
+  // .PowerOffResult.Result result = 1;
   void clear_result();
   static const int kResultFieldNumber = 1;
   ::PowerOffResult_Result result() const;
@@ -664,13 +640,10 @@ class PowerOffResult : public ::google::protobuf::Message /* @@protoc_insertion_
 
   // @@protoc_insertion_point(class_scope:PowerOffResult)
  private:
-  void set_has_result();
-  void clear_has_result();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable int _cached_size_;
   int result_;
+  mutable int _cached_size_;
   friend struct protobuf_SystemCtrlMessageDef_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -701,13 +674,6 @@ class TurnOffDisplayResult : public ::google::protobuf::Message /* @@protoc_inse
     return *this;
   }
   #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
   static const ::google::protobuf::Descriptor* descriptor();
   static const TurnOffDisplayResult& default_instance();
 
@@ -789,8 +755,7 @@ class TurnOffDisplayResult : public ::google::protobuf::Message /* @@protoc_inse
 
   // accessors -------------------------------------------------------
 
-  // optional .TurnOffDisplayResult.Result result = 1;
-  bool has_result() const;
+  // .TurnOffDisplayResult.Result result = 1;
   void clear_result();
   static const int kResultFieldNumber = 1;
   ::TurnOffDisplayResult_Result result() const;
@@ -798,13 +763,10 @@ class TurnOffDisplayResult : public ::google::protobuf::Message /* @@protoc_inse
 
   // @@protoc_insertion_point(class_scope:TurnOffDisplayResult)
  private:
-  void set_has_result();
-  void clear_has_result();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable int _cached_size_;
   int result_;
+  mutable int _cached_size_;
   friend struct protobuf_SystemCtrlMessageDef_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -835,13 +797,6 @@ class PowerOnResult : public ::google::protobuf::Message /* @@protoc_insertion_p
     return *this;
   }
   #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
   static const ::google::protobuf::Descriptor* descriptor();
   static const PowerOnResult& default_instance();
 
@@ -923,8 +878,7 @@ class PowerOnResult : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // accessors -------------------------------------------------------
 
-  // optional .PowerOnResult.Result result = 1;
-  bool has_result() const;
+  // .PowerOnResult.Result result = 1;
   void clear_result();
   static const int kResultFieldNumber = 1;
   ::PowerOnResult_Result result() const;
@@ -932,13 +886,10 @@ class PowerOnResult : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // @@protoc_insertion_point(class_scope:PowerOnResult)
  private:
-  void set_has_result();
-  void clear_has_result();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable int _cached_size_;
   int result_;
+  mutable int _cached_size_;
   friend struct protobuf_SystemCtrlMessageDef_2eproto::TableStruct;
 };
 // -------------------------------------------------------------------
@@ -969,13 +920,6 @@ class SystemCtrlMessagge : public ::google::protobuf::Message /* @@protoc_insert
     return *this;
   }
   #endif
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _internal_metadata_.unknown_fields();
-  }
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return _internal_metadata_.mutable_unknown_fields();
-  }
-
   static const ::google::protobuf::Descriptor* descriptor();
   static const SystemCtrlMessagge& default_instance();
 
@@ -1041,14 +985,13 @@ class SystemCtrlMessagge : public ::google::protobuf::Message /* @@protoc_insert
 
   // accessors -------------------------------------------------------
 
-  // required int32 message_id = 1;
-  bool has_message_id() const;
+  // int32 message_id = 1;
   void clear_message_id();
   static const int kMessageIdFieldNumber = 1;
   ::google::protobuf::int32 message_id() const;
   void set_message_id(::google::protobuf::int32 value);
 
-  // optional .SetTemperature msg_set_temperature = 2;
+  // .SetTemperature msg_set_temperature = 2;
   bool has_msg_set_temperature() const;
   void clear_msg_set_temperature();
   static const int kMsgSetTemperatureFieldNumber = 2;
@@ -1057,7 +1000,7 @@ class SystemCtrlMessagge : public ::google::protobuf::Message /* @@protoc_insert
   ::SetTemperature* release_msg_set_temperature();
   void set_allocated_msg_set_temperature(::SetTemperature* msg_set_temperature);
 
-  // optional .SetTemperatureResult msg_set_temperature_result = 3;
+  // .SetTemperatureResult msg_set_temperature_result = 3;
   bool has_msg_set_temperature_result() const;
   void clear_msg_set_temperature_result();
   static const int kMsgSetTemperatureResultFieldNumber = 3;
@@ -1066,7 +1009,7 @@ class SystemCtrlMessagge : public ::google::protobuf::Message /* @@protoc_insert
   ::SetTemperatureResult* release_msg_set_temperature_result();
   void set_allocated_msg_set_temperature_result(::SetTemperatureResult* msg_set_temperature_result);
 
-  // optional .ShowTemperatureResult msg_show_temperature_result = 4;
+  // .ShowTemperatureResult msg_show_temperature_result = 4;
   bool has_msg_show_temperature_result() const;
   void clear_msg_show_temperature_result();
   static const int kMsgShowTemperatureResultFieldNumber = 4;
@@ -1075,7 +1018,7 @@ class SystemCtrlMessagge : public ::google::protobuf::Message /* @@protoc_insert
   ::ShowTemperatureResult* release_msg_show_temperature_result();
   void set_allocated_msg_show_temperature_result(::ShowTemperatureResult* msg_show_temperature_result);
 
-  // optional .PowerOffResult msg_power_off_result = 5;
+  // .PowerOffResult msg_power_off_result = 5;
   bool has_msg_power_off_result() const;
   void clear_msg_power_off_result();
   static const int kMsgPowerOffResultFieldNumber = 5;
@@ -1084,7 +1027,7 @@ class SystemCtrlMessagge : public ::google::protobuf::Message /* @@protoc_insert
   ::PowerOffResult* release_msg_power_off_result();
   void set_allocated_msg_power_off_result(::PowerOffResult* msg_power_off_result);
 
-  // optional .TurnOffDisplayResult msg_turn_off_display_result = 6;
+  // .TurnOffDisplayResult msg_turn_off_display_result = 6;
   bool has_msg_turn_off_display_result() const;
   void clear_msg_turn_off_display_result();
   static const int kMsgTurnOffDisplayResultFieldNumber = 6;
@@ -1093,7 +1036,7 @@ class SystemCtrlMessagge : public ::google::protobuf::Message /* @@protoc_insert
   ::TurnOffDisplayResult* release_msg_turn_off_display_result();
   void set_allocated_msg_turn_off_display_result(::TurnOffDisplayResult* msg_turn_off_display_result);
 
-  // optional .PowerOnResult msg_power_on_result = 7;
+  // .PowerOnResult msg_power_on_result = 7;
   bool has_msg_power_on_result() const;
   void clear_msg_power_on_result();
   static const int kMsgPowerOnResultFieldNumber = 7;
@@ -1105,8 +1048,6 @@ class SystemCtrlMessagge : public ::google::protobuf::Message /* @@protoc_insert
   MsgBodyCase msg_body_case() const;
   // @@protoc_insertion_point(class_scope:SystemCtrlMessagge)
  private:
-  void set_has_message_id();
-  void clear_has_message_id();
   void set_has_msg_set_temperature();
   void set_has_msg_set_temperature_result();
   void set_has_msg_show_temperature_result();
@@ -1119,8 +1060,6 @@ class SystemCtrlMessagge : public ::google::protobuf::Message /* @@protoc_insert
   inline void clear_has_msg_body();
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::HasBits<1> _has_bits_;
-  mutable int _cached_size_;
   ::google::protobuf::int32 message_id_;
   union MsgBodyUnion {
     MsgBodyUnion() {}
@@ -1131,6 +1070,7 @@ class SystemCtrlMessagge : public ::google::protobuf::Message /* @@protoc_insert
     ::TurnOffDisplayResult* msg_turn_off_display_result_;
     ::PowerOnResult* msg_power_on_result_;
   } msg_body_;
+  mutable int _cached_size_;
   ::google::protobuf::uint32 _oneof_case_[1];
 
   friend struct protobuf_SystemCtrlMessageDef_2eproto::TableStruct;
@@ -1147,55 +1087,48 @@ class SystemCtrlMessagge : public ::google::protobuf::Message /* @@protoc_insert
 #endif  // __GNUC__
 // SetTemperature
 
-// optional int32 new_temp = 1;
-inline bool SetTemperature::has_new_temp() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void SetTemperature::set_has_new_temp() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void SetTemperature::clear_has_new_temp() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// int32 new_temp = 1;
 inline void SetTemperature::clear_new_temp() {
   new_temp_ = 0;
-  clear_has_new_temp();
 }
 inline ::google::protobuf::int32 SetTemperature::new_temp() const {
   // @@protoc_insertion_point(field_get:SetTemperature.new_temp)
   return new_temp_;
 }
 inline void SetTemperature::set_new_temp(::google::protobuf::int32 value) {
-  set_has_new_temp();
+  
   new_temp_ = value;
   // @@protoc_insertion_point(field_set:SetTemperature.new_temp)
+}
+
+// int32 last_temp = 2;
+inline void SetTemperature::clear_last_temp() {
+  last_temp_ = 0;
+}
+inline ::google::protobuf::int32 SetTemperature::last_temp() const {
+  // @@protoc_insertion_point(field_get:SetTemperature.last_temp)
+  return last_temp_;
+}
+inline void SetTemperature::set_last_temp(::google::protobuf::int32 value) {
+  
+  last_temp_ = value;
+  // @@protoc_insertion_point(field_set:SetTemperature.last_temp)
 }
 
 // -------------------------------------------------------------------
 
 // SetTemperatureResult
 
-// optional .SetTemperatureResult.Result result = 1;
-inline bool SetTemperatureResult::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void SetTemperatureResult::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void SetTemperatureResult::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// .SetTemperatureResult.Result result = 1;
 inline void SetTemperatureResult::clear_result() {
   result_ = 0;
-  clear_has_result();
 }
 inline ::SetTemperatureResult_Result SetTemperatureResult::result() const {
   // @@protoc_insertion_point(field_get:SetTemperatureResult.result)
   return static_cast< ::SetTemperatureResult_Result >(result_);
 }
 inline void SetTemperatureResult::set_result(::SetTemperatureResult_Result value) {
-  assert(::SetTemperatureResult_Result_IsValid(value));
-  set_has_result();
+  
   result_ = value;
   // @@protoc_insertion_point(field_set:SetTemperatureResult.result)
 }
@@ -1204,27 +1137,16 @@ inline void SetTemperatureResult::set_result(::SetTemperatureResult_Result value
 
 // ShowTemperatureResult
 
-// optional .ShowTemperatureResult.Result result = 1;
-inline bool ShowTemperatureResult::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void ShowTemperatureResult::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void ShowTemperatureResult::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// .ShowTemperatureResult.Result result = 1;
 inline void ShowTemperatureResult::clear_result() {
   result_ = 0;
-  clear_has_result();
 }
 inline ::ShowTemperatureResult_Result ShowTemperatureResult::result() const {
   // @@protoc_insertion_point(field_get:ShowTemperatureResult.result)
   return static_cast< ::ShowTemperatureResult_Result >(result_);
 }
 inline void ShowTemperatureResult::set_result(::ShowTemperatureResult_Result value) {
-  assert(::ShowTemperatureResult_Result_IsValid(value));
-  set_has_result();
+  
   result_ = value;
   // @@protoc_insertion_point(field_set:ShowTemperatureResult.result)
 }
@@ -1233,27 +1155,16 @@ inline void ShowTemperatureResult::set_result(::ShowTemperatureResult_Result val
 
 // PowerOffResult
 
-// optional .PowerOffResult.Result result = 1;
-inline bool PowerOffResult::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void PowerOffResult::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void PowerOffResult::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// .PowerOffResult.Result result = 1;
 inline void PowerOffResult::clear_result() {
   result_ = 0;
-  clear_has_result();
 }
 inline ::PowerOffResult_Result PowerOffResult::result() const {
   // @@protoc_insertion_point(field_get:PowerOffResult.result)
   return static_cast< ::PowerOffResult_Result >(result_);
 }
 inline void PowerOffResult::set_result(::PowerOffResult_Result value) {
-  assert(::PowerOffResult_Result_IsValid(value));
-  set_has_result();
+  
   result_ = value;
   // @@protoc_insertion_point(field_set:PowerOffResult.result)
 }
@@ -1262,27 +1173,16 @@ inline void PowerOffResult::set_result(::PowerOffResult_Result value) {
 
 // TurnOffDisplayResult
 
-// optional .TurnOffDisplayResult.Result result = 1;
-inline bool TurnOffDisplayResult::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void TurnOffDisplayResult::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void TurnOffDisplayResult::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// .TurnOffDisplayResult.Result result = 1;
 inline void TurnOffDisplayResult::clear_result() {
   result_ = 0;
-  clear_has_result();
 }
 inline ::TurnOffDisplayResult_Result TurnOffDisplayResult::result() const {
   // @@protoc_insertion_point(field_get:TurnOffDisplayResult.result)
   return static_cast< ::TurnOffDisplayResult_Result >(result_);
 }
 inline void TurnOffDisplayResult::set_result(::TurnOffDisplayResult_Result value) {
-  assert(::TurnOffDisplayResult_Result_IsValid(value));
-  set_has_result();
+  
   result_ = value;
   // @@protoc_insertion_point(field_set:TurnOffDisplayResult.result)
 }
@@ -1291,27 +1191,16 @@ inline void TurnOffDisplayResult::set_result(::TurnOffDisplayResult_Result value
 
 // PowerOnResult
 
-// optional .PowerOnResult.Result result = 1;
-inline bool PowerOnResult::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void PowerOnResult::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void PowerOnResult::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// .PowerOnResult.Result result = 1;
 inline void PowerOnResult::clear_result() {
   result_ = 0;
-  clear_has_result();
 }
 inline ::PowerOnResult_Result PowerOnResult::result() const {
   // @@protoc_insertion_point(field_get:PowerOnResult.result)
   return static_cast< ::PowerOnResult_Result >(result_);
 }
 inline void PowerOnResult::set_result(::PowerOnResult_Result value) {
-  assert(::PowerOnResult_Result_IsValid(value));
-  set_has_result();
+  
   result_ = value;
   // @@protoc_insertion_point(field_set:PowerOnResult.result)
 }
@@ -1320,31 +1209,21 @@ inline void PowerOnResult::set_result(::PowerOnResult_Result value) {
 
 // SystemCtrlMessagge
 
-// required int32 message_id = 1;
-inline bool SystemCtrlMessagge::has_message_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void SystemCtrlMessagge::set_has_message_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void SystemCtrlMessagge::clear_has_message_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// int32 message_id = 1;
 inline void SystemCtrlMessagge::clear_message_id() {
   message_id_ = 0;
-  clear_has_message_id();
 }
 inline ::google::protobuf::int32 SystemCtrlMessagge::message_id() const {
   // @@protoc_insertion_point(field_get:SystemCtrlMessagge.message_id)
   return message_id_;
 }
 inline void SystemCtrlMessagge::set_message_id(::google::protobuf::int32 value) {
-  set_has_message_id();
+  
   message_id_ = value;
   // @@protoc_insertion_point(field_set:SystemCtrlMessagge.message_id)
 }
 
-// optional .SetTemperature msg_set_temperature = 2;
+// .SetTemperature msg_set_temperature = 2;
 inline bool SystemCtrlMessagge::has_msg_set_temperature() const {
   return msg_body_case() == kMsgSetTemperature;
 }
@@ -1392,7 +1271,7 @@ inline void SystemCtrlMessagge::set_allocated_msg_set_temperature(::SetTemperatu
   // @@protoc_insertion_point(field_set_allocated:SystemCtrlMessagge.msg_set_temperature)
 }
 
-// optional .SetTemperatureResult msg_set_temperature_result = 3;
+// .SetTemperatureResult msg_set_temperature_result = 3;
 inline bool SystemCtrlMessagge::has_msg_set_temperature_result() const {
   return msg_body_case() == kMsgSetTemperatureResult;
 }
@@ -1440,7 +1319,7 @@ inline void SystemCtrlMessagge::set_allocated_msg_set_temperature_result(::SetTe
   // @@protoc_insertion_point(field_set_allocated:SystemCtrlMessagge.msg_set_temperature_result)
 }
 
-// optional .ShowTemperatureResult msg_show_temperature_result = 4;
+// .ShowTemperatureResult msg_show_temperature_result = 4;
 inline bool SystemCtrlMessagge::has_msg_show_temperature_result() const {
   return msg_body_case() == kMsgShowTemperatureResult;
 }
@@ -1488,7 +1367,7 @@ inline void SystemCtrlMessagge::set_allocated_msg_show_temperature_result(::Show
   // @@protoc_insertion_point(field_set_allocated:SystemCtrlMessagge.msg_show_temperature_result)
 }
 
-// optional .PowerOffResult msg_power_off_result = 5;
+// .PowerOffResult msg_power_off_result = 5;
 inline bool SystemCtrlMessagge::has_msg_power_off_result() const {
   return msg_body_case() == kMsgPowerOffResult;
 }
@@ -1536,7 +1415,7 @@ inline void SystemCtrlMessagge::set_allocated_msg_power_off_result(::PowerOffRes
   // @@protoc_insertion_point(field_set_allocated:SystemCtrlMessagge.msg_power_off_result)
 }
 
-// optional .TurnOffDisplayResult msg_turn_off_display_result = 6;
+// .TurnOffDisplayResult msg_turn_off_display_result = 6;
 inline bool SystemCtrlMessagge::has_msg_turn_off_display_result() const {
   return msg_body_case() == kMsgTurnOffDisplayResult;
 }
@@ -1584,7 +1463,7 @@ inline void SystemCtrlMessagge::set_allocated_msg_turn_off_display_result(::Turn
   // @@protoc_insertion_point(field_set_allocated:SystemCtrlMessagge.msg_turn_off_display_result)
 }
 
-// optional .PowerOnResult msg_power_on_result = 7;
+// .PowerOnResult msg_power_on_result = 7;
 inline bool SystemCtrlMessagge::has_msg_power_on_result() const {
   return msg_body_case() == kMsgPowerOnResult;
 }

@@ -1,18 +1,57 @@
 
+#include "SystemCtrlMessageDef.pb.h"
 
 
 
 
-void SendSetTemperatureMsgToSystemCtrl(new_temp _new_temp);
 
-void SendSetTemperatureResultMsgToSystemCtrl(result _result);
+/* @brief Send message SetTemperature to module : SystemCtrl
+ * 
+ * @param int32 new_temp : 
+ * @param int32 last_temp : 
+ *
+ * @return none
+ */
+void SystemCtrl_API_SendMsgSetTemperatureToSystemCtrl(int32 _new_temp, int32 _last_temp);
 
-void SendShowTemperatureResultMsgToSystemCtrl(result _result);
+/* @brief Send message SetTemperatureResult to module : SystemCtrl
+ * 
+ * @param Result result : 
+ *
+ * @return none
+ */
+void SystemCtrl_API_SendMsgSetTemperatureResultToSystemCtrl(Result _result);
 
-void SendPowerOffResultMsgToSystemCtrl(result _result);
+/* @brief Send message ShowTemperatureResult to module : SystemCtrl
+ * 
+ * @param Result result : 
+ *
+ * @return none
+ */
+void SystemCtrl_API_SendMsgShowTemperatureResultToSystemCtrl(Result _result);
 
-void SendTurnOffDisplayResultMsgToSystemCtrl(result _result);
+/* @brief Send message PowerOffResult to module : SystemCtrl
+ * 
+ * @param Result result : 
+ *
+ * @return none
+ */
+void SystemCtrl_API_SendMsgPowerOffResultToSystemCtrl(Result _result);
 
-void SendPowerOnResultMsgToSystemCtrl(result _result);
+/* @brief Send message TurnOffDisplayResult to module : SystemCtrl
+ * 
+ * @param Result result : 
+ *
+ * @return none
+ */
+void SystemCtrl_API_SendMsgTurnOffDisplayResultToSystemCtrl(Result _result);
+
+/* @brief Send message PowerOnResult to module : SystemCtrl
+ * 
+ * @param Result result : 
+ *
+ * @return none
+ */
+void SystemCtrl_API_SendMsgPowerOnResultToSystemCtrl(Result _result);
 
 

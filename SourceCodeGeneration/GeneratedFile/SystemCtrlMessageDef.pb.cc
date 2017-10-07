@@ -89,49 +89,44 @@ PROTOBUF_CONSTEXPR_VAR ::google::protobuf::internal::ParseTable const
 };
 
 const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SetTemperature, _has_bits_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SetTemperature, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SetTemperature, new_temp_),
-  0,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SetTemperatureResult, _has_bits_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SetTemperature, last_temp_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SetTemperatureResult, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SetTemperatureResult, result_),
-  0,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShowTemperatureResult, _has_bits_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShowTemperatureResult, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ShowTemperatureResult, result_),
-  0,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PowerOffResult, _has_bits_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PowerOffResult, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PowerOffResult, result_),
-  0,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TurnOffDisplayResult, _has_bits_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TurnOffDisplayResult, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TurnOffDisplayResult, result_),
-  0,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PowerOnResult, _has_bits_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PowerOnResult, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PowerOnResult, result_),
-  0,
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SystemCtrlMessagge, _has_bits_),
+  ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SystemCtrlMessagge, _internal_metadata_),
   ~0u,  // no _extensions_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SystemCtrlMessagge, _oneof_case_[0]),
@@ -144,22 +139,15 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_ATTRIBUTE_SECTION
   offsetof(SystemCtrlMessaggeDefaultTypeInternal, msg_turn_off_display_result_),
   offsetof(SystemCtrlMessaggeDefaultTypeInternal, msg_power_on_result_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SystemCtrlMessagge, msg_body_),
-  0,
-  ~0u,
-  ~0u,
-  ~0u,
-  ~0u,
-  ~0u,
-  ~0u,
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 6, sizeof(SetTemperature)},
-  { 7, 13, sizeof(SetTemperatureResult)},
-  { 14, 20, sizeof(ShowTemperatureResult)},
-  { 21, 27, sizeof(PowerOffResult)},
-  { 28, 34, sizeof(TurnOffDisplayResult)},
-  { 35, 41, sizeof(PowerOnResult)},
-  { 42, 55, sizeof(SystemCtrlMessagge)},
+  { 0, -1, sizeof(SetTemperature)},
+  { 7, -1, sizeof(SetTemperatureResult)},
+  { 13, -1, sizeof(ShowTemperatureResult)},
+  { 19, -1, sizeof(PowerOffResult)},
+  { 25, -1, sizeof(TurnOffDisplayResult)},
+  { 31, -1, sizeof(PowerOnResult)},
+  { 37, -1, sizeof(SystemCtrlMessagge)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -234,33 +222,33 @@ namespace {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\032SystemCtrlMessageDef.proto\"\"\n\016SetTempe"
-      "rature\022\020\n\010new_temp\030\001 \001(\005\"b\n\024SetTemperatu"
-      "reResult\022,\n\006result\030\001 \001(\0162\034.SetTemperatur"
-      "eResult.Result\"\034\n\006Result\022\006\n\002OK\020\000\022\n\n\006Fail"
-      "ed\020\001\"d\n\025ShowTemperatureResult\022-\n\006result\030"
-      "\001 \001(\0162\035.ShowTemperatureResult.Result\"\034\n\006"
-      "Result\022\006\n\002OK\020\000\022\n\n\006Failed\020\001\"V\n\016PowerOffRe"
-      "sult\022&\n\006result\030\001 \001(\0162\026.PowerOffResult.Re"
-      "sult\"\034\n\006Result\022\006\n\002OK\020\000\022\n\n\006Failed\020\001\"b\n\024Tu"
-      "rnOffDisplayResult\022,\n\006result\030\001 \001(\0162\034.Tur"
-      "nOffDisplayResult.Result\"\034\n\006Result\022\006\n\002OK"
-      "\020\000\022\n\n\006Failed\020\001\"T\n\rPowerOnResult\022%\n\006resul"
-      "t\030\001 \001(\0162\025.PowerOnResult.Result\"\034\n\006Result"
-      "\022\006\n\002OK\020\000\022\n\n\006Failed\020\001\"\376\002\n\022SystemCtrlMessa"
-      "gge\022\022\n\nmessage_id\030\001 \002(\005\022.\n\023msg_set_tempe"
-      "rature\030\002 \001(\0132\017.SetTemperatureH\000\022;\n\032msg_s"
-      "et_temperature_result\030\003 \001(\0132\025.SetTempera"
-      "tureResultH\000\022=\n\033msg_show_temperature_res"
-      "ult\030\004 \001(\0132\026.ShowTemperatureResultH\000\022/\n\024m"
-      "sg_power_off_result\030\005 \001(\0132\017.PowerOffResu"
-      "ltH\000\022<\n\033msg_turn_off_display_result\030\006 \001("
-      "\0132\025.TurnOffDisplayResultH\000\022-\n\023msg_power_"
-      "on_result\030\007 \001(\0132\016.PowerOnResultH\000B\n\n\010msg"
-      "_body"
+      "\n\032SystemCtrlMessageDef.proto\"5\n\016SetTempe"
+      "rature\022\020\n\010new_temp\030\001 \001(\005\022\021\n\tlast_temp\030\002 "
+      "\001(\005\"b\n\024SetTemperatureResult\022,\n\006result\030\001 "
+      "\001(\0162\034.SetTemperatureResult.Result\"\034\n\006Res"
+      "ult\022\006\n\002OK\020\000\022\n\n\006Failed\020\001\"d\n\025ShowTemperatu"
+      "reResult\022-\n\006result\030\001 \001(\0162\035.ShowTemperatu"
+      "reResult.Result\"\034\n\006Result\022\006\n\002OK\020\000\022\n\n\006Fai"
+      "led\020\001\"V\n\016PowerOffResult\022&\n\006result\030\001 \001(\0162"
+      "\026.PowerOffResult.Result\"\034\n\006Result\022\006\n\002OK\020"
+      "\000\022\n\n\006Failed\020\001\"b\n\024TurnOffDisplayResult\022,\n"
+      "\006result\030\001 \001(\0162\034.TurnOffDisplayResult.Res"
+      "ult\"\034\n\006Result\022\006\n\002OK\020\000\022\n\n\006Failed\020\001\"T\n\rPow"
+      "erOnResult\022%\n\006result\030\001 \001(\0162\025.PowerOnResu"
+      "lt.Result\"\034\n\006Result\022\006\n\002OK\020\000\022\n\n\006Failed\020\001\""
+      "\376\002\n\022SystemCtrlMessagge\022\022\n\nmessage_id\030\001 \001"
+      "(\005\022.\n\023msg_set_temperature\030\002 \001(\0132\017.SetTem"
+      "peratureH\000\022;\n\032msg_set_temperature_result"
+      "\030\003 \001(\0132\025.SetTemperatureResultH\000\022=\n\033msg_s"
+      "how_temperature_result\030\004 \001(\0132\026.ShowTempe"
+      "ratureResultH\000\022/\n\024msg_power_off_result\030\005"
+      " \001(\0132\017.PowerOffResultH\000\022<\n\033msg_turn_off_"
+      "display_result\030\006 \001(\0132\025.TurnOffDisplayRes"
+      "ultH\000\022-\n\023msg_power_on_result\030\007 \001(\0132\016.Pow"
+      "erOnResultH\000B\n\n\010msg_bodyb\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 925);
+      descriptor, 952);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "SystemCtrlMessageDef.proto", &protobuf_RegisterTypes);
 }
@@ -389,6 +377,7 @@ const int PowerOnResult::Result_ARRAYSIZE;
 
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int SetTemperature::kNewTempFieldNumber;
+const int SetTemperature::kLastTempFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 SetTemperature::SetTemperature()
@@ -402,16 +391,19 @@ SetTemperature::SetTemperature()
 SetTemperature::SetTemperature(const SetTemperature& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  new_temp_ = from.new_temp_;
+  ::memcpy(&new_temp_, &from.new_temp_,
+    static_cast<size_t>(reinterpret_cast<char*>(&last_temp_) -
+    reinterpret_cast<char*>(&new_temp_)) + sizeof(last_temp_));
   // @@protoc_insertion_point(copy_constructor:SetTemperature)
 }
 
 void SetTemperature::SharedCtor() {
+  ::memset(&new_temp_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&last_temp_) -
+      reinterpret_cast<char*>(&new_temp_)) + sizeof(last_temp_));
   _cached_size_ = 0;
-  new_temp_ = 0;
 }
 
 SetTemperature::~SetTemperature() {
@@ -451,8 +443,9 @@ void SetTemperature::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  new_temp_ = 0;
-  _has_bits_.Clear();
+  ::memset(&new_temp_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&last_temp_) -
+      reinterpret_cast<char*>(&new_temp_)) + sizeof(last_temp_));
   _internal_metadata_.Clear();
 }
 
@@ -466,14 +459,28 @@ bool SetTemperature::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional int32 new_temp = 1;
+      // int32 new_temp = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-          set_has_new_temp();
+
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &new_temp_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // int32 last_temp = 2;
+      case 2: {
+        if (static_cast< ::google::protobuf::uint8>(tag) ==
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &last_temp_)));
         } else {
           goto handle_unusual;
         }
@@ -506,15 +513,19 @@ void SetTemperature::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional int32 new_temp = 1;
-  if (cached_has_bits & 0x00000001u) {
+  // int32 new_temp = 1;
+  if (this->new_temp() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->new_temp(), output);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  // int32 last_temp = 2;
+  if (this->last_temp() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->last_temp(), output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
   // @@protoc_insertion_point(serialize_end:SetTemperature)
 }
@@ -526,15 +537,19 @@ void SetTemperature::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional int32 new_temp = 1;
-  if (cached_has_bits & 0x00000001u) {
+  // int32 new_temp = 1;
+  if (this->new_temp() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->new_temp(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  // int32 last_temp = 2;
+  if (this->last_temp() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->last_temp(), target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:SetTemperature)
   return target;
@@ -544,16 +559,23 @@ size_t SetTemperature::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SetTemperature)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // optional int32 new_temp = 1;
-  if (has_new_temp()) {
+  // int32 new_temp = 1;
+  if (this->new_temp() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->new_temp());
+  }
+
+  // int32 last_temp = 2;
+  if (this->last_temp() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->last_temp());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -585,8 +607,11 @@ void SetTemperature::MergeFrom(const SetTemperature& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_new_temp()) {
+  if (from.new_temp() != 0) {
     set_new_temp(from.new_temp());
+  }
+  if (from.last_temp() != 0) {
+    set_last_temp(from.last_temp());
   }
 }
 
@@ -615,7 +640,7 @@ void SetTemperature::Swap(SetTemperature* other) {
 void SetTemperature::InternalSwap(SetTemperature* other) {
   using std::swap;
   swap(new_temp_, other->new_temp_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
+  swap(last_temp_, other->last_temp_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -628,28 +653,32 @@ void SetTemperature::InternalSwap(SetTemperature* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // SetTemperature
 
-// optional int32 new_temp = 1;
-bool SetTemperature::has_new_temp() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void SetTemperature::set_has_new_temp() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void SetTemperature::clear_has_new_temp() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// int32 new_temp = 1;
 void SetTemperature::clear_new_temp() {
   new_temp_ = 0;
-  clear_has_new_temp();
 }
 ::google::protobuf::int32 SetTemperature::new_temp() const {
   // @@protoc_insertion_point(field_get:SetTemperature.new_temp)
   return new_temp_;
 }
 void SetTemperature::set_new_temp(::google::protobuf::int32 value) {
-  set_has_new_temp();
+  
   new_temp_ = value;
   // @@protoc_insertion_point(field_set:SetTemperature.new_temp)
+}
+
+// int32 last_temp = 2;
+void SetTemperature::clear_last_temp() {
+  last_temp_ = 0;
+}
+::google::protobuf::int32 SetTemperature::last_temp() const {
+  // @@protoc_insertion_point(field_get:SetTemperature.last_temp)
+  return last_temp_;
+}
+void SetTemperature::set_last_temp(::google::protobuf::int32 value) {
+  
+  last_temp_ = value;
+  // @@protoc_insertion_point(field_set:SetTemperature.last_temp)
 }
 
 #endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -671,7 +700,6 @@ SetTemperatureResult::SetTemperatureResult()
 SetTemperatureResult::SetTemperatureResult(const SetTemperatureResult& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   result_ = from.result_;
@@ -679,8 +707,8 @@ SetTemperatureResult::SetTemperatureResult(const SetTemperatureResult& from)
 }
 
 void SetTemperatureResult::SharedCtor() {
-  _cached_size_ = 0;
   result_ = 0;
+  _cached_size_ = 0;
 }
 
 SetTemperatureResult::~SetTemperatureResult() {
@@ -721,7 +749,6 @@ void SetTemperatureResult::Clear() {
   (void) cached_has_bits;
 
   result_ = 0;
-  _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
@@ -735,7 +762,7 @@ bool SetTemperatureResult::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .SetTemperatureResult.Result result = 1;
+      // .SetTemperatureResult.Result result = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
@@ -743,12 +770,7 @@ bool SetTemperatureResult::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::SetTemperatureResult_Result_IsValid(value)) {
-            set_result(static_cast< ::SetTemperatureResult_Result >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(
-                1, static_cast< ::google::protobuf::uint64>(value));
-          }
+          set_result(static_cast< ::SetTemperatureResult_Result >(value));
         } else {
           goto handle_unusual;
         }
@@ -781,16 +803,15 @@ void SetTemperatureResult::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional .SetTemperatureResult.Result result = 1;
-  if (cached_has_bits & 0x00000001u) {
+  // .SetTemperatureResult.Result result = 1;
+  if (this->result() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->result(), output);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
   // @@protoc_insertion_point(serialize_end:SetTemperatureResult)
 }
@@ -802,16 +823,15 @@ void SetTemperatureResult::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional .SetTemperatureResult.Result result = 1;
-  if (cached_has_bits & 0x00000001u) {
+  // .SetTemperatureResult.Result result = 1;
+  if (this->result() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->result(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:SetTemperatureResult)
   return target;
@@ -821,13 +841,13 @@ size_t SetTemperatureResult::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SetTemperatureResult)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // optional .SetTemperatureResult.Result result = 1;
-  if (has_result()) {
+  // .SetTemperatureResult.Result result = 1;
+  if (this->result() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->result());
   }
@@ -861,7 +881,7 @@ void SetTemperatureResult::MergeFrom(const SetTemperatureResult& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_result()) {
+  if (from.result() != 0) {
     set_result(from.result());
   }
 }
@@ -891,7 +911,6 @@ void SetTemperatureResult::Swap(SetTemperatureResult* other) {
 void SetTemperatureResult::InternalSwap(SetTemperatureResult* other) {
   using std::swap;
   swap(result_, other->result_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -904,27 +923,16 @@ void SetTemperatureResult::InternalSwap(SetTemperatureResult* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // SetTemperatureResult
 
-// optional .SetTemperatureResult.Result result = 1;
-bool SetTemperatureResult::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void SetTemperatureResult::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void SetTemperatureResult::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// .SetTemperatureResult.Result result = 1;
 void SetTemperatureResult::clear_result() {
   result_ = 0;
-  clear_has_result();
 }
 ::SetTemperatureResult_Result SetTemperatureResult::result() const {
   // @@protoc_insertion_point(field_get:SetTemperatureResult.result)
   return static_cast< ::SetTemperatureResult_Result >(result_);
 }
 void SetTemperatureResult::set_result(::SetTemperatureResult_Result value) {
-  assert(::SetTemperatureResult_Result_IsValid(value));
-  set_has_result();
+  
   result_ = value;
   // @@protoc_insertion_point(field_set:SetTemperatureResult.result)
 }
@@ -948,7 +956,6 @@ ShowTemperatureResult::ShowTemperatureResult()
 ShowTemperatureResult::ShowTemperatureResult(const ShowTemperatureResult& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   result_ = from.result_;
@@ -956,8 +963,8 @@ ShowTemperatureResult::ShowTemperatureResult(const ShowTemperatureResult& from)
 }
 
 void ShowTemperatureResult::SharedCtor() {
-  _cached_size_ = 0;
   result_ = 0;
+  _cached_size_ = 0;
 }
 
 ShowTemperatureResult::~ShowTemperatureResult() {
@@ -998,7 +1005,6 @@ void ShowTemperatureResult::Clear() {
   (void) cached_has_bits;
 
   result_ = 0;
-  _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
@@ -1012,7 +1018,7 @@ bool ShowTemperatureResult::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .ShowTemperatureResult.Result result = 1;
+      // .ShowTemperatureResult.Result result = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
@@ -1020,12 +1026,7 @@ bool ShowTemperatureResult::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::ShowTemperatureResult_Result_IsValid(value)) {
-            set_result(static_cast< ::ShowTemperatureResult_Result >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(
-                1, static_cast< ::google::protobuf::uint64>(value));
-          }
+          set_result(static_cast< ::ShowTemperatureResult_Result >(value));
         } else {
           goto handle_unusual;
         }
@@ -1058,16 +1059,15 @@ void ShowTemperatureResult::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional .ShowTemperatureResult.Result result = 1;
-  if (cached_has_bits & 0x00000001u) {
+  // .ShowTemperatureResult.Result result = 1;
+  if (this->result() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->result(), output);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
   // @@protoc_insertion_point(serialize_end:ShowTemperatureResult)
 }
@@ -1079,16 +1079,15 @@ void ShowTemperatureResult::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional .ShowTemperatureResult.Result result = 1;
-  if (cached_has_bits & 0x00000001u) {
+  // .ShowTemperatureResult.Result result = 1;
+  if (this->result() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->result(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:ShowTemperatureResult)
   return target;
@@ -1098,13 +1097,13 @@ size_t ShowTemperatureResult::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:ShowTemperatureResult)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // optional .ShowTemperatureResult.Result result = 1;
-  if (has_result()) {
+  // .ShowTemperatureResult.Result result = 1;
+  if (this->result() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->result());
   }
@@ -1138,7 +1137,7 @@ void ShowTemperatureResult::MergeFrom(const ShowTemperatureResult& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_result()) {
+  if (from.result() != 0) {
     set_result(from.result());
   }
 }
@@ -1168,7 +1167,6 @@ void ShowTemperatureResult::Swap(ShowTemperatureResult* other) {
 void ShowTemperatureResult::InternalSwap(ShowTemperatureResult* other) {
   using std::swap;
   swap(result_, other->result_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -1181,27 +1179,16 @@ void ShowTemperatureResult::InternalSwap(ShowTemperatureResult* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // ShowTemperatureResult
 
-// optional .ShowTemperatureResult.Result result = 1;
-bool ShowTemperatureResult::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void ShowTemperatureResult::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void ShowTemperatureResult::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// .ShowTemperatureResult.Result result = 1;
 void ShowTemperatureResult::clear_result() {
   result_ = 0;
-  clear_has_result();
 }
 ::ShowTemperatureResult_Result ShowTemperatureResult::result() const {
   // @@protoc_insertion_point(field_get:ShowTemperatureResult.result)
   return static_cast< ::ShowTemperatureResult_Result >(result_);
 }
 void ShowTemperatureResult::set_result(::ShowTemperatureResult_Result value) {
-  assert(::ShowTemperatureResult_Result_IsValid(value));
-  set_has_result();
+  
   result_ = value;
   // @@protoc_insertion_point(field_set:ShowTemperatureResult.result)
 }
@@ -1225,7 +1212,6 @@ PowerOffResult::PowerOffResult()
 PowerOffResult::PowerOffResult(const PowerOffResult& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   result_ = from.result_;
@@ -1233,8 +1219,8 @@ PowerOffResult::PowerOffResult(const PowerOffResult& from)
 }
 
 void PowerOffResult::SharedCtor() {
-  _cached_size_ = 0;
   result_ = 0;
+  _cached_size_ = 0;
 }
 
 PowerOffResult::~PowerOffResult() {
@@ -1275,7 +1261,6 @@ void PowerOffResult::Clear() {
   (void) cached_has_bits;
 
   result_ = 0;
-  _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
@@ -1289,7 +1274,7 @@ bool PowerOffResult::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .PowerOffResult.Result result = 1;
+      // .PowerOffResult.Result result = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
@@ -1297,12 +1282,7 @@ bool PowerOffResult::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::PowerOffResult_Result_IsValid(value)) {
-            set_result(static_cast< ::PowerOffResult_Result >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(
-                1, static_cast< ::google::protobuf::uint64>(value));
-          }
+          set_result(static_cast< ::PowerOffResult_Result >(value));
         } else {
           goto handle_unusual;
         }
@@ -1335,16 +1315,15 @@ void PowerOffResult::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional .PowerOffResult.Result result = 1;
-  if (cached_has_bits & 0x00000001u) {
+  // .PowerOffResult.Result result = 1;
+  if (this->result() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->result(), output);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
   // @@protoc_insertion_point(serialize_end:PowerOffResult)
 }
@@ -1356,16 +1335,15 @@ void PowerOffResult::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional .PowerOffResult.Result result = 1;
-  if (cached_has_bits & 0x00000001u) {
+  // .PowerOffResult.Result result = 1;
+  if (this->result() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->result(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:PowerOffResult)
   return target;
@@ -1375,13 +1353,13 @@ size_t PowerOffResult::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:PowerOffResult)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // optional .PowerOffResult.Result result = 1;
-  if (has_result()) {
+  // .PowerOffResult.Result result = 1;
+  if (this->result() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->result());
   }
@@ -1415,7 +1393,7 @@ void PowerOffResult::MergeFrom(const PowerOffResult& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_result()) {
+  if (from.result() != 0) {
     set_result(from.result());
   }
 }
@@ -1445,7 +1423,6 @@ void PowerOffResult::Swap(PowerOffResult* other) {
 void PowerOffResult::InternalSwap(PowerOffResult* other) {
   using std::swap;
   swap(result_, other->result_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -1458,27 +1435,16 @@ void PowerOffResult::InternalSwap(PowerOffResult* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // PowerOffResult
 
-// optional .PowerOffResult.Result result = 1;
-bool PowerOffResult::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void PowerOffResult::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void PowerOffResult::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// .PowerOffResult.Result result = 1;
 void PowerOffResult::clear_result() {
   result_ = 0;
-  clear_has_result();
 }
 ::PowerOffResult_Result PowerOffResult::result() const {
   // @@protoc_insertion_point(field_get:PowerOffResult.result)
   return static_cast< ::PowerOffResult_Result >(result_);
 }
 void PowerOffResult::set_result(::PowerOffResult_Result value) {
-  assert(::PowerOffResult_Result_IsValid(value));
-  set_has_result();
+  
   result_ = value;
   // @@protoc_insertion_point(field_set:PowerOffResult.result)
 }
@@ -1502,7 +1468,6 @@ TurnOffDisplayResult::TurnOffDisplayResult()
 TurnOffDisplayResult::TurnOffDisplayResult(const TurnOffDisplayResult& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   result_ = from.result_;
@@ -1510,8 +1475,8 @@ TurnOffDisplayResult::TurnOffDisplayResult(const TurnOffDisplayResult& from)
 }
 
 void TurnOffDisplayResult::SharedCtor() {
-  _cached_size_ = 0;
   result_ = 0;
+  _cached_size_ = 0;
 }
 
 TurnOffDisplayResult::~TurnOffDisplayResult() {
@@ -1552,7 +1517,6 @@ void TurnOffDisplayResult::Clear() {
   (void) cached_has_bits;
 
   result_ = 0;
-  _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
@@ -1566,7 +1530,7 @@ bool TurnOffDisplayResult::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .TurnOffDisplayResult.Result result = 1;
+      // .TurnOffDisplayResult.Result result = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
@@ -1574,12 +1538,7 @@ bool TurnOffDisplayResult::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::TurnOffDisplayResult_Result_IsValid(value)) {
-            set_result(static_cast< ::TurnOffDisplayResult_Result >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(
-                1, static_cast< ::google::protobuf::uint64>(value));
-          }
+          set_result(static_cast< ::TurnOffDisplayResult_Result >(value));
         } else {
           goto handle_unusual;
         }
@@ -1612,16 +1571,15 @@ void TurnOffDisplayResult::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional .TurnOffDisplayResult.Result result = 1;
-  if (cached_has_bits & 0x00000001u) {
+  // .TurnOffDisplayResult.Result result = 1;
+  if (this->result() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->result(), output);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
   // @@protoc_insertion_point(serialize_end:TurnOffDisplayResult)
 }
@@ -1633,16 +1591,15 @@ void TurnOffDisplayResult::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional .TurnOffDisplayResult.Result result = 1;
-  if (cached_has_bits & 0x00000001u) {
+  // .TurnOffDisplayResult.Result result = 1;
+  if (this->result() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->result(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:TurnOffDisplayResult)
   return target;
@@ -1652,13 +1609,13 @@ size_t TurnOffDisplayResult::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:TurnOffDisplayResult)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // optional .TurnOffDisplayResult.Result result = 1;
-  if (has_result()) {
+  // .TurnOffDisplayResult.Result result = 1;
+  if (this->result() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->result());
   }
@@ -1692,7 +1649,7 @@ void TurnOffDisplayResult::MergeFrom(const TurnOffDisplayResult& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_result()) {
+  if (from.result() != 0) {
     set_result(from.result());
   }
 }
@@ -1722,7 +1679,6 @@ void TurnOffDisplayResult::Swap(TurnOffDisplayResult* other) {
 void TurnOffDisplayResult::InternalSwap(TurnOffDisplayResult* other) {
   using std::swap;
   swap(result_, other->result_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -1735,27 +1691,16 @@ void TurnOffDisplayResult::InternalSwap(TurnOffDisplayResult* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // TurnOffDisplayResult
 
-// optional .TurnOffDisplayResult.Result result = 1;
-bool TurnOffDisplayResult::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void TurnOffDisplayResult::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void TurnOffDisplayResult::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// .TurnOffDisplayResult.Result result = 1;
 void TurnOffDisplayResult::clear_result() {
   result_ = 0;
-  clear_has_result();
 }
 ::TurnOffDisplayResult_Result TurnOffDisplayResult::result() const {
   // @@protoc_insertion_point(field_get:TurnOffDisplayResult.result)
   return static_cast< ::TurnOffDisplayResult_Result >(result_);
 }
 void TurnOffDisplayResult::set_result(::TurnOffDisplayResult_Result value) {
-  assert(::TurnOffDisplayResult_Result_IsValid(value));
-  set_has_result();
+  
   result_ = value;
   // @@protoc_insertion_point(field_set:TurnOffDisplayResult.result)
 }
@@ -1779,7 +1724,6 @@ PowerOnResult::PowerOnResult()
 PowerOnResult::PowerOnResult(const PowerOnResult& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   result_ = from.result_;
@@ -1787,8 +1731,8 @@ PowerOnResult::PowerOnResult(const PowerOnResult& from)
 }
 
 void PowerOnResult::SharedCtor() {
-  _cached_size_ = 0;
   result_ = 0;
+  _cached_size_ = 0;
 }
 
 PowerOnResult::~PowerOnResult() {
@@ -1829,7 +1773,6 @@ void PowerOnResult::Clear() {
   (void) cached_has_bits;
 
   result_ = 0;
-  _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
@@ -1843,7 +1786,7 @@ bool PowerOnResult::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .PowerOnResult.Result result = 1;
+      // .PowerOnResult.Result result = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
@@ -1851,12 +1794,7 @@ bool PowerOnResult::MergePartialFromCodedStream(
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
                  input, &value)));
-          if (::PowerOnResult_Result_IsValid(value)) {
-            set_result(static_cast< ::PowerOnResult_Result >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(
-                1, static_cast< ::google::protobuf::uint64>(value));
-          }
+          set_result(static_cast< ::PowerOnResult_Result >(value));
         } else {
           goto handle_unusual;
         }
@@ -1889,16 +1827,15 @@ void PowerOnResult::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional .PowerOnResult.Result result = 1;
-  if (cached_has_bits & 0x00000001u) {
+  // .PowerOnResult.Result result = 1;
+  if (this->result() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteEnum(
       1, this->result(), output);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
   // @@protoc_insertion_point(serialize_end:PowerOnResult)
 }
@@ -1910,16 +1847,15 @@ void PowerOnResult::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // optional .PowerOnResult.Result result = 1;
-  if (cached_has_bits & 0x00000001u) {
+  // .PowerOnResult.Result result = 1;
+  if (this->result() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
       1, this->result(), target);
   }
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:PowerOnResult)
   return target;
@@ -1929,13 +1865,13 @@ size_t PowerOnResult::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:PowerOnResult)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // optional .PowerOnResult.Result result = 1;
-  if (has_result()) {
+  // .PowerOnResult.Result result = 1;
+  if (this->result() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::EnumSize(this->result());
   }
@@ -1969,7 +1905,7 @@ void PowerOnResult::MergeFrom(const PowerOnResult& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_result()) {
+  if (from.result() != 0) {
     set_result(from.result());
   }
 }
@@ -1999,7 +1935,6 @@ void PowerOnResult::Swap(PowerOnResult* other) {
 void PowerOnResult::InternalSwap(PowerOnResult* other) {
   using std::swap;
   swap(result_, other->result_);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -2012,27 +1947,16 @@ void PowerOnResult::InternalSwap(PowerOnResult* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // PowerOnResult
 
-// optional .PowerOnResult.Result result = 1;
-bool PowerOnResult::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void PowerOnResult::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void PowerOnResult::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// .PowerOnResult.Result result = 1;
 void PowerOnResult::clear_result() {
   result_ = 0;
-  clear_has_result();
 }
 ::PowerOnResult_Result PowerOnResult::result() const {
   // @@protoc_insertion_point(field_get:PowerOnResult.result)
   return static_cast< ::PowerOnResult_Result >(result_);
 }
 void PowerOnResult::set_result(::PowerOnResult_Result value) {
-  assert(::PowerOnResult_Result_IsValid(value));
-  set_has_result();
+  
   result_ = value;
   // @@protoc_insertion_point(field_set:PowerOnResult.result)
 }
@@ -2062,7 +1986,6 @@ SystemCtrlMessagge::SystemCtrlMessagge()
 SystemCtrlMessagge::SystemCtrlMessagge(const SystemCtrlMessagge& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      _has_bits_(from._has_bits_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   message_id_ = from.message_id_;
@@ -2100,9 +2023,9 @@ SystemCtrlMessagge::SystemCtrlMessagge(const SystemCtrlMessagge& from)
 }
 
 void SystemCtrlMessagge::SharedCtor() {
-  _cached_size_ = 0;
   message_id_ = 0;
   clear_has_msg_body();
+  _cached_size_ = 0;
 }
 
 SystemCtrlMessagge::~SystemCtrlMessagge() {
@@ -2182,7 +2105,6 @@ void SystemCtrlMessagge::Clear() {
 
   message_id_ = 0;
   clear_msg_body();
-  _has_bits_.Clear();
   _internal_metadata_.Clear();
 }
 
@@ -2196,11 +2118,11 @@ bool SystemCtrlMessagge::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 message_id = 1;
+      // int32 message_id = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-          set_has_message_id();
+
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &message_id_)));
@@ -2210,7 +2132,7 @@ bool SystemCtrlMessagge::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .SetTemperature msg_set_temperature = 2;
+      // .SetTemperature msg_set_temperature = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
@@ -2222,7 +2144,7 @@ bool SystemCtrlMessagge::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .SetTemperatureResult msg_set_temperature_result = 3;
+      // .SetTemperatureResult msg_set_temperature_result = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(26u /* 26 & 0xFF */)) {
@@ -2234,7 +2156,7 @@ bool SystemCtrlMessagge::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .ShowTemperatureResult msg_show_temperature_result = 4;
+      // .ShowTemperatureResult msg_show_temperature_result = 4;
       case 4: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(34u /* 34 & 0xFF */)) {
@@ -2246,7 +2168,7 @@ bool SystemCtrlMessagge::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .PowerOffResult msg_power_off_result = 5;
+      // .PowerOffResult msg_power_off_result = 5;
       case 5: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(42u /* 42 & 0xFF */)) {
@@ -2258,7 +2180,7 @@ bool SystemCtrlMessagge::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .TurnOffDisplayResult msg_turn_off_display_result = 6;
+      // .TurnOffDisplayResult msg_turn_off_display_result = 6;
       case 6: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(50u /* 50 & 0xFF */)) {
@@ -2270,7 +2192,7 @@ bool SystemCtrlMessagge::MergePartialFromCodedStream(
         break;
       }
 
-      // optional .PowerOnResult msg_power_on_result = 7;
+      // .PowerOnResult msg_power_on_result = 7;
       case 7: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(58u /* 58 & 0xFF */)) {
@@ -2308,42 +2230,50 @@ void SystemCtrlMessagge::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // required int32 message_id = 1;
-  if (cached_has_bits & 0x00000001u) {
+  // int32 message_id = 1;
+  if (this->message_id() != 0) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->message_id(), output);
   }
 
-  switch (msg_body_case()) {
-    case kMsgSetTemperature:
-      ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-        2, *msg_body_.msg_set_temperature_, output);
-      break;
-    case kMsgSetTemperatureResult:
-      ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-        3, *msg_body_.msg_set_temperature_result_, output);
-      break;
-    case kMsgShowTemperatureResult:
-      ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-        4, *msg_body_.msg_show_temperature_result_, output);
-      break;
-    case kMsgPowerOffResult:
-      ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-        5, *msg_body_.msg_power_off_result_, output);
-      break;
-    case kMsgTurnOffDisplayResult:
-      ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-        6, *msg_body_.msg_turn_off_display_result_, output);
-      break;
-    case kMsgPowerOnResult:
-      ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-        7, *msg_body_.msg_power_on_result_, output);
-      break;
-    default: ;
+  // .SetTemperature msg_set_temperature = 2;
+  if (has_msg_set_temperature()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, *msg_body_.msg_set_temperature_, output);
   }
-  if (_internal_metadata_.have_unknown_fields()) {
+
+  // .SetTemperatureResult msg_set_temperature_result = 3;
+  if (has_msg_set_temperature_result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, *msg_body_.msg_set_temperature_result_, output);
+  }
+
+  // .ShowTemperatureResult msg_show_temperature_result = 4;
+  if (has_msg_show_temperature_result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, *msg_body_.msg_show_temperature_result_, output);
+  }
+
+  // .PowerOffResult msg_power_off_result = 5;
+  if (has_msg_power_off_result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, *msg_body_.msg_power_off_result_, output);
+  }
+
+  // .TurnOffDisplayResult msg_turn_off_display_result = 6;
+  if (has_msg_turn_off_display_result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, *msg_body_.msg_turn_off_display_result_, output);
+  }
+
+  // .PowerOnResult msg_power_on_result = 7;
+  if (has_msg_power_on_result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      7, *msg_body_.msg_power_on_result_, output);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        _internal_metadata_.unknown_fields(), output);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), output);
   }
   // @@protoc_insertion_point(serialize_end:SystemCtrlMessagge)
 }
@@ -2355,48 +2285,56 @@ void SystemCtrlMessagge::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  cached_has_bits = _has_bits_[0];
-  // required int32 message_id = 1;
-  if (cached_has_bits & 0x00000001u) {
+  // int32 message_id = 1;
+  if (this->message_id() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->message_id(), target);
   }
 
-  switch (msg_body_case()) {
-    case kMsgSetTemperature:
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessageNoVirtualToArray(
-          2, *msg_body_.msg_set_temperature_, deterministic, target);
-      break;
-    case kMsgSetTemperatureResult:
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessageNoVirtualToArray(
-          3, *msg_body_.msg_set_temperature_result_, deterministic, target);
-      break;
-    case kMsgShowTemperatureResult:
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessageNoVirtualToArray(
-          4, *msg_body_.msg_show_temperature_result_, deterministic, target);
-      break;
-    case kMsgPowerOffResult:
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessageNoVirtualToArray(
-          5, *msg_body_.msg_power_off_result_, deterministic, target);
-      break;
-    case kMsgTurnOffDisplayResult:
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessageNoVirtualToArray(
-          6, *msg_body_.msg_turn_off_display_result_, deterministic, target);
-      break;
-    case kMsgPowerOnResult:
-      target = ::google::protobuf::internal::WireFormatLite::
-        InternalWriteMessageNoVirtualToArray(
-          7, *msg_body_.msg_power_on_result_, deterministic, target);
-      break;
-    default: ;
+  // .SetTemperature msg_set_temperature = 2;
+  if (has_msg_set_temperature()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        2, *msg_body_.msg_set_temperature_, deterministic, target);
   }
-  if (_internal_metadata_.have_unknown_fields()) {
+
+  // .SetTemperatureResult msg_set_temperature_result = 3;
+  if (has_msg_set_temperature_result()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        3, *msg_body_.msg_set_temperature_result_, deterministic, target);
+  }
+
+  // .ShowTemperatureResult msg_show_temperature_result = 4;
+  if (has_msg_show_temperature_result()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        4, *msg_body_.msg_show_temperature_result_, deterministic, target);
+  }
+
+  // .PowerOffResult msg_power_off_result = 5;
+  if (has_msg_power_off_result()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        5, *msg_body_.msg_power_off_result_, deterministic, target);
+  }
+
+  // .TurnOffDisplayResult msg_turn_off_display_result = 6;
+  if (has_msg_turn_off_display_result()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        6, *msg_body_.msg_turn_off_display_result_, deterministic, target);
+  }
+
+  // .PowerOnResult msg_power_on_result = 7;
+  if (has_msg_power_on_result()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        7, *msg_body_.msg_power_on_result_, deterministic, target);
+  }
+
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        _internal_metadata_.unknown_fields(), target);
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()), target);
   }
   // @@protoc_insertion_point(serialize_to_array_end:SystemCtrlMessagge)
   return target;
@@ -2406,54 +2344,55 @@ size_t SystemCtrlMessagge::ByteSizeLong() const {
 // @@protoc_insertion_point(message_byte_size_start:SystemCtrlMessagge)
   size_t total_size = 0;
 
-  if (_internal_metadata_.have_unknown_fields()) {
+  if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        _internal_metadata_.unknown_fields());
+        (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // required int32 message_id = 1;
-  if (has_message_id()) {
+  // int32 message_id = 1;
+  if (this->message_id() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
         this->message_id());
   }
+
   switch (msg_body_case()) {
-    // optional .SetTemperature msg_set_temperature = 2;
+    // .SetTemperature msg_set_temperature = 2;
     case kMsgSetTemperature: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *msg_body_.msg_set_temperature_);
       break;
     }
-    // optional .SetTemperatureResult msg_set_temperature_result = 3;
+    // .SetTemperatureResult msg_set_temperature_result = 3;
     case kMsgSetTemperatureResult: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *msg_body_.msg_set_temperature_result_);
       break;
     }
-    // optional .ShowTemperatureResult msg_show_temperature_result = 4;
+    // .ShowTemperatureResult msg_show_temperature_result = 4;
     case kMsgShowTemperatureResult: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *msg_body_.msg_show_temperature_result_);
       break;
     }
-    // optional .PowerOffResult msg_power_off_result = 5;
+    // .PowerOffResult msg_power_off_result = 5;
     case kMsgPowerOffResult: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *msg_body_.msg_power_off_result_);
       break;
     }
-    // optional .TurnOffDisplayResult msg_turn_off_display_result = 6;
+    // .TurnOffDisplayResult msg_turn_off_display_result = 6;
     case kMsgTurnOffDisplayResult: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           *msg_body_.msg_turn_off_display_result_);
       break;
     }
-    // optional .PowerOnResult msg_power_on_result = 7;
+    // .PowerOnResult msg_power_on_result = 7;
     case kMsgPowerOnResult: {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -2493,7 +2432,7 @@ void SystemCtrlMessagge::MergeFrom(const SystemCtrlMessagge& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.has_message_id()) {
+  if (from.message_id() != 0) {
     set_message_id(from.message_id());
   }
   switch (from.msg_body_case()) {
@@ -2542,7 +2481,6 @@ void SystemCtrlMessagge::CopyFrom(const SystemCtrlMessagge& from) {
 }
 
 bool SystemCtrlMessagge::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
   return true;
 }
 
@@ -2555,7 +2493,6 @@ void SystemCtrlMessagge::InternalSwap(SystemCtrlMessagge* other) {
   swap(message_id_, other->message_id_);
   swap(msg_body_, other->msg_body_);
   swap(_oneof_case_[0], other->_oneof_case_[0]);
-  swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }
@@ -2568,31 +2505,21 @@ void SystemCtrlMessagge::InternalSwap(SystemCtrlMessagge* other) {
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
 // SystemCtrlMessagge
 
-// required int32 message_id = 1;
-bool SystemCtrlMessagge::has_message_id() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-void SystemCtrlMessagge::set_has_message_id() {
-  _has_bits_[0] |= 0x00000001u;
-}
-void SystemCtrlMessagge::clear_has_message_id() {
-  _has_bits_[0] &= ~0x00000001u;
-}
+// int32 message_id = 1;
 void SystemCtrlMessagge::clear_message_id() {
   message_id_ = 0;
-  clear_has_message_id();
 }
 ::google::protobuf::int32 SystemCtrlMessagge::message_id() const {
   // @@protoc_insertion_point(field_get:SystemCtrlMessagge.message_id)
   return message_id_;
 }
 void SystemCtrlMessagge::set_message_id(::google::protobuf::int32 value) {
-  set_has_message_id();
+  
   message_id_ = value;
   // @@protoc_insertion_point(field_set:SystemCtrlMessagge.message_id)
 }
 
-// optional .SetTemperature msg_set_temperature = 2;
+// .SetTemperature msg_set_temperature = 2;
 bool SystemCtrlMessagge::has_msg_set_temperature() const {
   return msg_body_case() == kMsgSetTemperature;
 }
@@ -2640,7 +2567,7 @@ void SystemCtrlMessagge::set_allocated_msg_set_temperature(::SetTemperature* msg
   // @@protoc_insertion_point(field_set_allocated:SystemCtrlMessagge.msg_set_temperature)
 }
 
-// optional .SetTemperatureResult msg_set_temperature_result = 3;
+// .SetTemperatureResult msg_set_temperature_result = 3;
 bool SystemCtrlMessagge::has_msg_set_temperature_result() const {
   return msg_body_case() == kMsgSetTemperatureResult;
 }
@@ -2688,7 +2615,7 @@ void SystemCtrlMessagge::set_allocated_msg_set_temperature_result(::SetTemperatu
   // @@protoc_insertion_point(field_set_allocated:SystemCtrlMessagge.msg_set_temperature_result)
 }
 
-// optional .ShowTemperatureResult msg_show_temperature_result = 4;
+// .ShowTemperatureResult msg_show_temperature_result = 4;
 bool SystemCtrlMessagge::has_msg_show_temperature_result() const {
   return msg_body_case() == kMsgShowTemperatureResult;
 }
@@ -2736,7 +2663,7 @@ void SystemCtrlMessagge::set_allocated_msg_show_temperature_result(::ShowTempera
   // @@protoc_insertion_point(field_set_allocated:SystemCtrlMessagge.msg_show_temperature_result)
 }
 
-// optional .PowerOffResult msg_power_off_result = 5;
+// .PowerOffResult msg_power_off_result = 5;
 bool SystemCtrlMessagge::has_msg_power_off_result() const {
   return msg_body_case() == kMsgPowerOffResult;
 }
@@ -2784,7 +2711,7 @@ void SystemCtrlMessagge::set_allocated_msg_power_off_result(::PowerOffResult* ms
   // @@protoc_insertion_point(field_set_allocated:SystemCtrlMessagge.msg_power_off_result)
 }
 
-// optional .TurnOffDisplayResult msg_turn_off_display_result = 6;
+// .TurnOffDisplayResult msg_turn_off_display_result = 6;
 bool SystemCtrlMessagge::has_msg_turn_off_display_result() const {
   return msg_body_case() == kMsgTurnOffDisplayResult;
 }
@@ -2832,7 +2759,7 @@ void SystemCtrlMessagge::set_allocated_msg_turn_off_display_result(::TurnOffDisp
   // @@protoc_insertion_point(field_set_allocated:SystemCtrlMessagge.msg_turn_off_display_result)
 }
 
-// optional .PowerOnResult msg_power_on_result = 7;
+// .PowerOnResult msg_power_on_result = 7;
 bool SystemCtrlMessagge::has_msg_power_on_result() const {
   return msg_body_case() == kMsgPowerOnResult;
 }

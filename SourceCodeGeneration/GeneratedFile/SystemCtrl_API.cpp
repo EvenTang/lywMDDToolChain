@@ -1,48 +1,90 @@
-
 #include "SystemCtrl_API.h"
 
 
 
 
-/* @brief Send SetTemperature message to SystemCtrl
- *
+/* @brief Send message SetTemperature to module : SystemCtrl
  */
-void SendSetTemperatureMsgToSystemCtrl(new_temp _new_temp) {
+void SystemCtrl_API_SendMsgSetTemperatureToSystemCtrl(int32 _new_temp, int32 _last_temp) {
+    SystemCtrlMessagge system_ctrl_msg;
+    SetTemperature msg_set_temperature;
+    
+    msg_set_temperature.set_new_temp(_new_temp);
+    msg_set_temperature.set_last_temp(_last_temp);
+	
+    system_ctrl_msg.set_set_temperature(msg_set_temperature);
+
+    OSM_SendMsg(SystemCtrl, system_ctrl_msg);
 
 }
 
-/* @brief Send SetTemperatureResult message to SystemCtrl
- *
+/* @brief Send message SetTemperatureResult to module : SystemCtrl
  */
-void SendSetTemperatureResultMsgToSystemCtrl(result _result) {
+void SystemCtrl_API_SendMsgSetTemperatureResultToSystemCtrl(Result _result) {
+    SystemCtrlMessagge system_ctrl_msg;
+    SetTemperatureResult msg_set_temperature_result;
+    
+    msg_set_temperature_result.set_result(_result);
+	
+    system_ctrl_msg.set_set_temperature_result(msg_set_temperature_result);
+
+    OSM_SendMsg(SystemCtrl, system_ctrl_msg);
 
 }
 
-/* @brief Send ShowTemperatureResult message to SystemCtrl
- *
+/* @brief Send message ShowTemperatureResult to module : SystemCtrl
  */
-void SendShowTemperatureResultMsgToSystemCtrl(result _result) {
+void SystemCtrl_API_SendMsgShowTemperatureResultToSystemCtrl(Result _result) {
+    SystemCtrlMessagge system_ctrl_msg;
+    ShowTemperatureResult msg_show_temperature_result;
+    
+    msg_show_temperature_result.set_result(_result);
+	
+    system_ctrl_msg.set_show_temperature_result(msg_show_temperature_result);
+
+    OSM_SendMsg(SystemCtrl, system_ctrl_msg);
 
 }
 
-/* @brief Send PowerOffResult message to SystemCtrl
- *
+/* @brief Send message PowerOffResult to module : SystemCtrl
  */
-void SendPowerOffResultMsgToSystemCtrl(result _result) {
+void SystemCtrl_API_SendMsgPowerOffResultToSystemCtrl(Result _result) {
+    SystemCtrlMessagge system_ctrl_msg;
+    PowerOffResult msg_power_off_result;
+    
+    msg_power_off_result.set_result(_result);
+	
+    system_ctrl_msg.set_power_off_result(msg_power_off_result);
+
+    OSM_SendMsg(SystemCtrl, system_ctrl_msg);
 
 }
 
-/* @brief Send TurnOffDisplayResult message to SystemCtrl
- *
+/* @brief Send message TurnOffDisplayResult to module : SystemCtrl
  */
-void SendTurnOffDisplayResultMsgToSystemCtrl(result _result) {
+void SystemCtrl_API_SendMsgTurnOffDisplayResultToSystemCtrl(Result _result) {
+    SystemCtrlMessagge system_ctrl_msg;
+    TurnOffDisplayResult msg_turn_off_display_result;
+    
+    msg_turn_off_display_result.set_result(_result);
+	
+    system_ctrl_msg.set_turn_off_display_result(msg_turn_off_display_result);
+
+    OSM_SendMsg(SystemCtrl, system_ctrl_msg);
 
 }
 
-/* @brief Send PowerOnResult message to SystemCtrl
- *
+/* @brief Send message PowerOnResult to module : SystemCtrl
  */
-void SendPowerOnResultMsgToSystemCtrl(result _result) {
+void SystemCtrl_API_SendMsgPowerOnResultToSystemCtrl(Result _result) {
+    SystemCtrlMessagge system_ctrl_msg;
+    PowerOnResult msg_power_on_result;
+    
+    msg_power_on_result.set_result(_result);
+	
+    system_ctrl_msg.set_power_on_result(msg_power_on_result);
+
+    OSM_SendMsg(SystemCtrl, system_ctrl_msg);
 
 }
 

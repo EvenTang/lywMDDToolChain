@@ -1,8 +1,9 @@
-syntax = "proto2";
+syntax = "proto3";
 
 
 message SetTemperature { 
-    optional int32 new_temp = 1;
+    int32 new_temp = 1;
+	int32 last_temp = 2;
 }
 
 message SetTemperatureResult { 
@@ -10,7 +11,7 @@ message SetTemperatureResult {
         OK = 0;
         Failed = 1;
     }
-    optional Result result = 1;
+    Result result = 1;
 } 
 
 message ShowTemperatureResult { 
@@ -18,7 +19,7 @@ message ShowTemperatureResult {
         OK = 0;
         Failed = 1;
     }
-    optional Result result = 1;
+    Result result = 1;
 } 
 
 message PowerOffResult { 
@@ -26,7 +27,7 @@ message PowerOffResult {
         OK = 0;
         Failed = 1;
     }
-    optional Result result = 1;
+    Result result = 1;
 } 
 
 message TurnOffDisplayResult { 
@@ -34,7 +35,7 @@ message TurnOffDisplayResult {
         OK = 0;
         Failed = 1;
     }
-    optional Result result = 1;
+    Result result = 1;
 } 
 
 message PowerOnResult { 
@@ -42,11 +43,11 @@ message PowerOnResult {
         OK = 0;
         Failed = 1;
     }
-    optional Result result = 1;
+    Result result = 1;
 } 
 
 message SystemCtrlMessagge {
-    required int32 message_id = 1;
+    int32 message_id = 1;
     oneof msg_body { 
         SetTemperature msg_set_temperature = 2; 
         SetTemperatureResult msg_set_temperature_result = 3; 
