@@ -64,7 +64,7 @@ class SeqenceAnalzyer
     def GetAllEvents(seq_file_line)
         # RFComm->>+SystemCtrl:Set temprature (fieldName=value, fiedlName=value)
         module_name = @state_machine.module_name.to_s
-        if seq_file_line =~ /.+->>.*#{module_name}:\s*(\w+)\((.*)\)$/ then
+        if seq_file_line =~ /.+->>\s*#{module_name}:\s*(\w+)(\(.*\))?$/ then
             new_event = @state_machine.events.find {|e| e.name == $1}
             if new_event == nil
                 @state_machine.events << Event.new($1)
@@ -96,7 +96,7 @@ system_ctrl_stm = @analyzer.state_machine
 erb_template_list = Dir["./InputForSTMSourceGen/*.erb"]
 
 erb_template_list.each do | temp_file |
-    if temp_file =~ /\.\/InputForSTMSourceGen\/(.+)\.erb/
+    if temp_file =~ /\.\/InputForSTMSourceGen\/SourceGen_(.+)\.erb/
         new_file_name = "./GeneratedFile/" + system_ctrl_stm.module_name.to_s + "_" + $1
         f = File.new(new_file_name, "w") 
         puts "Generating #{new_file_name}"
