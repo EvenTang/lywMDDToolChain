@@ -56,7 +56,7 @@ class SeqenceAnalzyer
 
     def GetAllStates(seq_file_line)
         module_name = @state_machine.module_name.to_s
-        if seq_file_line =~ /state over #{module_name}:\s*(\w+)\s*/ then
+        if seq_file_line =~ /hnote over #{module_name}\s*:\s*(\w+)\s*/ then
             @state_machine.states.add($1)
         end
     end
@@ -83,7 +83,7 @@ end
 
 @analyzer = SeqenceAnalzyer.new(:SystemCtrl)
 
-EnumrateAllFileInDir("seq", "./InputForSTMSourceGen") do |fh|
+EnumrateAllFileInDir("wsd", "./InputForSTMSourceGen") do |fh|
     fh.each_line do | line |
         @analyzer.GetAllStates(line)
         @analyzer.GetAllEvents(line)

@@ -1,0 +1,47 @@
+@startuml change_temparature
+
+title Change temprature
+
+participant RemoteCtrl
+participant RFComm
+participant SystemCtrl
+participant Motor
+participant ShareOBJ
+participant Display
+
+RemoteCtrl->>RFComm:SetTemperature(new_temp=param)
+activate RFComm
+hnote over SystemCtrl: Idle 
+
+RFComm->>SystemCtrl:SetTemperature(new_temp=param)
+deactivate RFComm
+activate SystemCtrl
+SystemCtrl->>Motor:SetTemperature(new_temp=param)
+deactivate SystemCtrl
+activate Motor
+
+hnote over SystemCtrl: Working
+Motor->>SystemCtrl:SetTemperatureResult(result=OK)
+deactivate Motor
+activate SystemCtrl
+SystemCtrl->>Display:ShowTemperature(new_temp=param)
+deactivate SystemCtrl
+activate Display
+
+Display->>SystemCtrl:ShowTemperatureResult(result=OK)
+deactivate Display
+activate SystemCtrl
+SystemCtrl->ShareOBJ:SetTemperature(new_temp=param)
+activate ShareOBJ
+ShareOBJ-->SystemCtrl:OK
+deactivate ShareOBJ
+
+SystemCtrl->>RFComm:SetTemperatureResult(result=OK)
+deactivate SystemCtrl
+hnote over SystemCtrl: Idle 
+activate RFComm
+RFComm->>RemoteCtrl : SetTemperatureResult(OK)
+deactivate RFComm
+
+@enduml
+
