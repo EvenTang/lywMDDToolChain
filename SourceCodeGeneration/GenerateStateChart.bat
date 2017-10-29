@@ -1,0 +1,2 @@
+ruby .\GenrateStateChart.rb
+pause
