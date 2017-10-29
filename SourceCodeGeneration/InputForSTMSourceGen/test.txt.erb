@@ -1,0 +1,14 @@
+laksjdfkasdjf;akds
+akdsdsfadsf
+
+<% states = ["S1", "S2"]
+   events = ["E1","E2"]
+%>
+
+<% states.each do |state|
+       events.each do |event| %> 
+void SystemCtrl_<%=state%>_<%=event%>(SystemCtrlMsg * _msg);
+ 
+<%     end 
+   end %>
+
