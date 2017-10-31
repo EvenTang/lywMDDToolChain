@@ -17,5 +17,7 @@ Release plan for future ( I don't know when )
 
 - [ ] Change all parsers to context-free grammars parser (Low priority) 
 - [ ] Create Python (or something else that is easy to be used as a simulation tool) simulation model
+- [ ] Modify components name as parameter to erb file (High priority)
+- [ ] Ctreat component diagram scirpt, add ruby file to check sequence diagram scirpt with compont diagram scirpt 
 
 
