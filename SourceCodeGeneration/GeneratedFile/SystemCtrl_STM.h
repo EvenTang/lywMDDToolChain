@@ -4,6 +4,7 @@
 // State definition
 enum SystemCtrl_State { 
     ST_Idle,
+    ST_New,
     ST_Working,
     ST_Unitialized,
     ST_STATE_MAX
@@ -34,6 +35,18 @@ STM_Status SystemCtrl_ECB_Idle_PowerOffResult(SystemCtrlEvent const & _msg);
 STM_Status SystemCtrl_ECB_Idle_TurnOffDisplayResult(SystemCtrlEvent const & _msg);
 STM_Status SystemCtrl_ECB_Idle_PowerOn(SystemCtrlEvent const & _msg);
 STM_Status SystemCtrl_ECB_Idle_PowerOnResult(SystemCtrlEvent const & _msg);
+
+/* Event callback of SystemCtrl Module,
+ * All state response for State :New 
+ */
+STM_Status SystemCtrl_ECB_New_SetTemperature(SystemCtrlEvent const & _msg);
+STM_Status SystemCtrl_ECB_New_SetTemperatureResult(SystemCtrlEvent const & _msg);
+STM_Status SystemCtrl_ECB_New_ShowTemperatureResult(SystemCtrlEvent const & _msg);
+STM_Status SystemCtrl_ECB_New_PowerOff(SystemCtrlEvent const & _msg);
+STM_Status SystemCtrl_ECB_New_PowerOffResult(SystemCtrlEvent const & _msg);
+STM_Status SystemCtrl_ECB_New_TurnOffDisplayResult(SystemCtrlEvent const & _msg);
+STM_Status SystemCtrl_ECB_New_PowerOn(SystemCtrlEvent const & _msg);
+STM_Status SystemCtrl_ECB_New_PowerOnResult(SystemCtrlEvent const & _msg);
 
 /* Event callback of SystemCtrl Module,
  * All state response for State :Working 
@@ -72,6 +85,16 @@ FP_SystemCtrl_ECB const SystemCtrl_state_ecb_map[][] = {
 		SystemCtrl_Idle_TurnOffDisplayResult, 
 		SystemCtrl_Idle_PowerOn, 
 		SystemCtrl_Idle_PowerOnResult, 
+	}, 
+	{ 
+		SystemCtrl_New_SetTemperature, 
+		SystemCtrl_New_SetTemperatureResult, 
+		SystemCtrl_New_ShowTemperatureResult, 
+		SystemCtrl_New_PowerOff, 
+		SystemCtrl_New_PowerOffResult, 
+		SystemCtrl_New_TurnOffDisplayResult, 
+		SystemCtrl_New_PowerOn, 
+		SystemCtrl_New_PowerOnResult, 
 	}, 
 	{ 
 		SystemCtrl_Working_SetTemperature, 

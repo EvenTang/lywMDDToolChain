@@ -154,6 +154,158 @@ STM_Status SystemCtrl_ECB_Idle_PowerOnResult(SystemCtrlEvent const & _msg) {
 }
 
 /* @brief Event callback of SystemCtrl Module
+ *        status : New
+ *        event  : SetTemperature
+ *        reference sequence id list:
+ *               xxxx
+ *               yyyy
+ * 
+ * @param _msg : SystemCtrlEvent
+ * @return STM_Status
+ */
+STM_Status SystemCtrl_ECB_New_SetTemperature(SystemCtrlEvent const & _msg) {
+    assert(_msg.has_msg_set_temperature());
+    SetTemperature * p_msg_body = _msg.get_msg_set_temperature();
+    assert(p_msg_body != nullptr);
+    //> implementation of New SetTemperature
+
+    return STM_STATS_OK;
+}
+
+/* @brief Event callback of SystemCtrl Module
+ *        status : New
+ *        event  : SetTemperatureResult
+ *        reference sequence id list:
+ *               xxxx
+ *               yyyy
+ * 
+ * @param _msg : SystemCtrlEvent
+ * @return STM_Status
+ */
+STM_Status SystemCtrl_ECB_New_SetTemperatureResult(SystemCtrlEvent const & _msg) {
+    assert(_msg.has_msg_set_temperature_result());
+    SetTemperatureResult * p_msg_body = _msg.get_msg_set_temperature_result();
+    assert(p_msg_body != nullptr);
+    //> implementation of New SetTemperatureResult
+
+    return STM_STATS_OK;
+}
+
+/* @brief Event callback of SystemCtrl Module
+ *        status : New
+ *        event  : ShowTemperatureResult
+ *        reference sequence id list:
+ *               xxxx
+ *               yyyy
+ * 
+ * @param _msg : SystemCtrlEvent
+ * @return STM_Status
+ */
+STM_Status SystemCtrl_ECB_New_ShowTemperatureResult(SystemCtrlEvent const & _msg) {
+    assert(_msg.has_msg_show_temperature_result());
+    ShowTemperatureResult * p_msg_body = _msg.get_msg_show_temperature_result();
+    assert(p_msg_body != nullptr);
+    //> implementation of New ShowTemperatureResult
+
+    return STM_STATS_OK;
+}
+
+/* @brief Event callback of SystemCtrl Module
+ *        status : New
+ *        event  : PowerOff
+ *        reference sequence id list:
+ *               xxxx
+ *               yyyy
+ * 
+ * @param _msg : SystemCtrlEvent
+ * @return STM_Status
+ */
+STM_Status SystemCtrl_ECB_New_PowerOff(SystemCtrlEvent const & _msg) {
+    assert(_msg.has_msg_power_off());
+    PowerOff * p_msg_body = _msg.get_msg_power_off();
+    assert(p_msg_body != nullptr);
+    //> implementation of New PowerOff
+
+    return STM_STATS_OK;
+}
+
+/* @brief Event callback of SystemCtrl Module
+ *        status : New
+ *        event  : PowerOffResult
+ *        reference sequence id list:
+ *               xxxx
+ *               yyyy
+ * 
+ * @param _msg : SystemCtrlEvent
+ * @return STM_Status
+ */
+STM_Status SystemCtrl_ECB_New_PowerOffResult(SystemCtrlEvent const & _msg) {
+    assert(_msg.has_msg_power_off_result());
+    PowerOffResult * p_msg_body = _msg.get_msg_power_off_result();
+    assert(p_msg_body != nullptr);
+    //> implementation of New PowerOffResult
+
+    return STM_STATS_OK;
+}
+
+/* @brief Event callback of SystemCtrl Module
+ *        status : New
+ *        event  : TurnOffDisplayResult
+ *        reference sequence id list:
+ *               xxxx
+ *               yyyy
+ * 
+ * @param _msg : SystemCtrlEvent
+ * @return STM_Status
+ */
+STM_Status SystemCtrl_ECB_New_TurnOffDisplayResult(SystemCtrlEvent const & _msg) {
+    assert(_msg.has_msg_turn_off_display_result());
+    TurnOffDisplayResult * p_msg_body = _msg.get_msg_turn_off_display_result();
+    assert(p_msg_body != nullptr);
+    //> implementation of New TurnOffDisplayResult
+
+    return STM_STATS_OK;
+}
+
+/* @brief Event callback of SystemCtrl Module
+ *        status : New
+ *        event  : PowerOn
+ *        reference sequence id list:
+ *               xxxx
+ *               yyyy
+ * 
+ * @param _msg : SystemCtrlEvent
+ * @return STM_Status
+ */
+STM_Status SystemCtrl_ECB_New_PowerOn(SystemCtrlEvent const & _msg) {
+    assert(_msg.has_msg_power_on());
+    PowerOn * p_msg_body = _msg.get_msg_power_on();
+    assert(p_msg_body != nullptr);
+    //> implementation of New PowerOn
+
+    return STM_STATS_OK;
+}
+
+/* @brief Event callback of SystemCtrl Module
+ *        status : New
+ *        event  : PowerOnResult
+ *        reference sequence id list:
+ *               xxxx
+ *               yyyy
+ * 
+ * @param _msg : SystemCtrlEvent
+ * @return STM_Status
+ */
+STM_Status SystemCtrl_ECB_New_PowerOnResult(SystemCtrlEvent const & _msg) {
+    assert(_msg.has_msg_power_on_result());
+    PowerOnResult * p_msg_body = _msg.get_msg_power_on_result();
+    assert(p_msg_body != nullptr);
+    //> implementation of New PowerOnResult
+
+    return STM_STATS_OK;
+}
+
+/* @brief Event callback of SystemCtrl Module
  *        status : Working
  *        event  : SetTemperature
  *        reference sequence id list:

@@ -93,7 +93,7 @@ class SequenceParser
   # @return array of state strings
   def find_states_for_component(line, component_name)
     if line =~ /hnote\s*over\s*#{component_name}\s*:\s*(.*)\s*/
-      return $1.strip.split(/, */)
+      return $1.strip.split(/\| */)
     end
     nil
   end
@@ -110,13 +110,13 @@ class SequenceParser
 
 end
 
-
+=begin 
 seq_parser = SequenceParser.new("D:\\05 MyProject\\lywMDDToolChain\\SourceCodeGeneration\\InputForSTMSourceGen\\ChangeTemprature.wsd")
-#seq_parser.components.each {|item| puts item }
-#puts seq_parser.components.size
+seq_parser.components.each {|item| puts item }
+puts seq_parser.components.size
 seq_parser.focus_on_component("SystemCtrl")
-#seq_parser.get_all_states.each {|item| puts item }
-#seq_parser.get_all_events.each {|item| puts item }
+seq_parser.get_all_states.each {|item| puts item }
+seq_parser.get_all_events.each {|item| puts item }
 puts seq_parser.get_event_on("Idle")
 puts seq_parser.get_event_on("Working")
-
+=end

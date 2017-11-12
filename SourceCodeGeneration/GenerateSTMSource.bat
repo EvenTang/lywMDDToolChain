@@ -1,2 +1,2 @@
-ruby .\GenrateSTMSource.rb
+ruby .\generate_stm_source.rb
 pause
