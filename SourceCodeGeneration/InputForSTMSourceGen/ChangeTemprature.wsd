@@ -11,7 +11,7 @@ participant Display
 
 RemoteCtrl->>RFComm:SetTemperature(new_temp=param)
 activate RFComm
-hnote over SystemCtrl: Idle 
+hnote over SystemCtrl: Idle, New 
 
 RFComm->>SystemCtrl:SetTemperature(new_temp=param)
 deactivate RFComm
