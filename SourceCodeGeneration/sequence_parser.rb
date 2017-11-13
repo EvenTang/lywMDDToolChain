@@ -100,7 +100,7 @@ class SequenceParser
     @seq_file_name
   end
 
-  def get_behavior_of(component, state, event)
+  def all_behavior_of(component, state, event)
     idx = 0
     loop do
       behavior, idx = @seq_file_content.select_between(
