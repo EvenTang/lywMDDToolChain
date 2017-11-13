@@ -1,5 +1,59 @@
 require 'set'
 
+
+class String
+
+  # @brief Given a line and component name, match states in the line match plantUML syntax
+  # @return array of state strings
+  def state_def_of_component?(component_name)
+    if self =~ /hnote\s*over\s*#{component_name}\s*:\s*(.*)\s*/
+      return $1.strip.split(/\| */)
+    end
+    nil
+  end
+
+  # @brief Given a line and component name, match event in the line match plantUML syntax
+  # @return string of event
+  def event_def_of_component?(component_name)
+    if self =~ /.*(->>|-->>)\s*#{component_name}\s*:\s*(.*)\s*/
+      return $2
+    end
+    nil
+  end
+
+  def event_def_of?(component_name, event_name)
+    if self =~ /.*(->>|-->>)\s*#{component_name}\s*:.*#{event_name}.*/
+      return $2
+    end
+    nil  
+  end
+
+  def state_def_of?(component_name, state_name)
+    if self =~ /hnote\s*over\s*#{component_name}\s*:.*#{state_name}.*/
+      return true
+    end
+    false
+  end
+
+end
+
+class Array
+
+  def select_between(satisfy_all, end_cond, start_from_index=0)
+    satisfy_all.push ->(item) { true }
+    last_index = start_from_index
+    target = self[start_from_index...self.size].select do |item|
+      satisfy_all.shift if !satisfy_all.empty? && satisfy_all.first.call(item)
+      end_cond.shift if satisfy_all.empty? && !end_cond.empty? && end_cond.first.call(item)
+      last_index += 1 if !end_cond.empty?
+      satisfy_all.empty? && !end_cond.empty?
+    end
+    return target, last_index
+  end
+  
+end
+
+
 class SequenceParser
 
   attr_accessor :seq_file_name, :seq_file_content
@@ -46,6 +100,20 @@ class SequenceParser
     @seq_file_name
   end
 
+  def get_behavior_of(component, state, event)
+    idx = 0
+    loop do
+      behavior, idx = @seq_file_content.select_between(
+        [->(str) {str.state_def_of?(component, state)},
+         ->(str) {str.event_def_of?(component, event)},
+         ->(str) {str =~ /activate\s+#{component}/}],
+        [->(str) {str =~ /deactivate\s+#{component}/}], idx)
+      break if behavior.empty?
+      yield select_actions_for(behavior, component) if block_given?
+    end
+  end
+
+  
   # @ get event on specified state
   #
   # Specific state could appears several times on one sequence
@@ -107,6 +175,13 @@ class SequenceParser
     nil
   end
 
+  def select_actions_for(behavior, component)
+    behavior.select do |action| 
+      if action =~ /(\w*)\s*(-->|->|->>|-->>).+:/
+        $1 != component
+      end    
+    end
+  end
 
 end
 
@@ -120,3 +195,4 @@ seq_parser.get_all_events.each {|item| puts item }
 puts seq_parser.get_event_on("Idle")
 puts seq_parser.get_event_on("Working")
 =end
+
