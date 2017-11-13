@@ -26,8 +26,11 @@ end
 @software_model = SoftwareModel.new(:SystemCtrl)
 
 enumrate_all_file_names_by("wsd", "./InputForSTMSourceGen") do |file_name|
-    @software_model.get_information_from_sequence SequenceParser.new(file_name)
+    @software_model.add_sequence_paser SequenceParser.new(file_name)
 end
+
+@software_model.generate_stm_frame
+
 
 #=begin
 system_ctrl_stm = @software_model.state_machine
