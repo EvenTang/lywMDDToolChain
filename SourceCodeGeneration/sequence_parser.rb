@@ -23,9 +23,9 @@ class String
 
   def event_def_of?(component_name, event_name)
     if self =~ /.*(->>|-->>)\s*#{component_name}\s*:.*#{event_name}.*/
-      return $2
+      return true
     end
-    nil  
+    false  
   end
 
   def state_def_of?(component_name, state_name)
@@ -109,7 +109,7 @@ class SequenceParser
          ->(str) {str =~ /activate\s+#{component}/}],
         [->(str) {str =~ /deactivate\s+#{component}/}], idx)
       break if behavior.empty?
-      yield select_actions_for(behavior, component) if block_given?
+      yield select_actions_for(behavior, component)
     end
   end
 
@@ -178,8 +178,9 @@ class SequenceParser
   def select_actions_for(behavior, component)
     behavior.select do |action| 
       if action =~ /(\w*)\s*(-->|->|->>|-->>).+:/
-        $1 != component
+        next false if $1 != component
       end    
+      true
     end
   end
 
@@ -194,5 +195,18 @@ seq_parser.get_all_states.each {|item| puts item }
 seq_parser.get_all_events.each {|item| puts item }
 puts seq_parser.get_event_on("Idle")
 puts seq_parser.get_event_on("Working")
+=end
+
+=begin 
+seq_parser = SequenceParser.new("D:\\00 work\\A-IVI\\PlantUML_Test\\project\\lywMDDToolChain-feature-GenerateECBCode\\SourceCodeGeneration\\InputForSTMSourceGen\\ChangeTemprature_test.wsd")
+seq_parser.components.each {|item| puts item }
+puts seq_parser.components.size
+seq_parser.focus_on_component("SystemCtrl")
+seq_parser.get_all_states.each {|item| puts item }
+seq_parser.get_all_events.each {|item| puts item }
+puts seq_parser.get_event_on("Idle")
+puts seq_parser.get_event_on("Working")
+puts "============="
+puts seq_parser.all_behavior_of("SystemCtrl","Working","SetTemperatureResult") {|action| puts action }
 =end
 
