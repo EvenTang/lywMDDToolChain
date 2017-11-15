@@ -25,9 +25,9 @@ events.each do |event|
     ResetIndex(1) %>
 message <%= event.name %> { <%
     event.params.keys.each do |param_type|%>
-    optional !TYPE! <%=param_type%> = <%= IncreasedIndex() %>;
+    optional !TYPE! <%=param_type%> = <%= IncreasedIndex() %>;<%
+    end %>
 } <%
-    end
 end %>
 
 message <%= module_name %>Messagge {
