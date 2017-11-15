@@ -1,2 +1,2 @@
-ruby .\GenrateSTMSource.rb
+ruby .\GenrateSTMSource.rb SystemCtrl
 pause

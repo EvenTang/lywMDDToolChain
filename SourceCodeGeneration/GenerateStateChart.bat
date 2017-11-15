@@ -1,2 +1,2 @@
-ruby .\GenrateStateChart.rb
+ruby .\GenrateStateChart.rb SystemCtrl
 pause

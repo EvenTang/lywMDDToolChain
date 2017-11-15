@@ -11,6 +11,7 @@ message ShowTemperatureResult {
     optional !TYPE! result = 1;
 } 
 message PowerOff { 
+} 
 message PowerOffResult { 
     optional !TYPE! result = 1;
 } 
@@ -18,6 +19,7 @@ message TurnOffDisplayResult {
     optional !TYPE! result = 1;
 } 
 message PowerOn { 
+} 
 message PowerOnResult { 
     optional !TYPE! result = 1;
 } 
