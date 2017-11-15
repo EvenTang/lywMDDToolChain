@@ -1,7 +1,7 @@
 require 'set'
 
 
-class String
+class ScriptStatement < String
 
   # @brief Given a line and component name, match states in the line match plantUML syntax
   # @return array of state strings
@@ -62,7 +62,7 @@ class SequenceParser
 
   def initialize(file_name)
     @seq_file_name = file_name
-    @seq_file_content = File.new(@seq_file_name).readlines
+    @seq_file_content = File.new(@seq_file_name).readlines.map {|str| ScriptStatement.new(str) }
     @components = get_all_components
     @focused_component = ""
   end
