@@ -1,2 +1,2 @@
-ruby .\GenrateStateChart.rb SystemCtrl
+ruby .\GenrateStateChart.rb -Input ./InputForSTMSourceGen/ArchDesign,./InputForSTMSourceGen/DetailDesign -Output ./GeneratedFile -Module SystemCtrl
 pause

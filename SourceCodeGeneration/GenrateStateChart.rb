@@ -16,18 +16,43 @@ def EnumrateAllFileInDir(file_ext, dir = ".")
     end
 end
 
+input_dir = []
+SequenceAnaylzer_ary = []
+cur_content = 0
+output_dir = ""
+
 if ARGV.size > 0
-   puts ARGV.size
-   puts "#{ARGV}"
-   SequenceAnaylzer_ary = ARGV.map { | item | SeqenceAnalzyer.new(item)}
+    puts "#{ARGV}"
+    ARGV.each do |str|
+        case str
+        when "-Input"
+            cur_content = 1
+        when "-Output"
+            cur_content = 2
+        when "-Module"
+            cur_content = 3
+        else
+            if cur_content == 1 then
+                input_dir = str.split(",")
+            elsif cur_content == 2 then
+                output_dir = str
+            elsif cur_content == 3 then
+                SequenceAnaylzer_ary.push(SeqenceAnalzyer.new(str))
+            else
+            end
+        end
+    end
 end
 
 SequenceAnaylzer_ary.each do |analyzer|
     puts "current module name : " + analyzer.state_machine.module_name
-    EnumrateAllFileInDir("wsd", "./InputForSTMSourceGen") do |fh|
-        fh.each_line do | line |
-            analyzer.GetAllStates(line)
-            analyzer.GetAllEvents(line)
+    input_dir.each do |cur_dir|
+        puts "current dir :" + cur_dir
+        EnumrateAllFileInDir("wsd", cur_dir) do |fh|
+            fh.each_line do | line |
+                analyzer.GetAllStates(line)
+                analyzer.GetAllEvents(line)
+            end
         end
     end
 
@@ -35,7 +60,7 @@ SequenceAnaylzer_ary.each do |analyzer|
     module_stm.PostProcess
     erb_template_list = Dir["./InputForSTMSourceGen/StateChart.wsd.erb"]
     
-    module_dir = "./GeneratedFile/"+module_stm.module_name.to_s
+    module_dir = output_dir + "/" + module_stm.module_name.to_s
     FileUtils.mkdir(module_dir) unless File.exists?(module_dir)
     
     erb_template_list.each do | temp_file |
