@@ -1,47 +1,13 @@
 require 'set'
+require '.\sequence_script_statement'
 
-
-class ScriptStatement < String
-
-  # @brief Given a line and component name, match states in the line match plantUML syntax
-  # @return array of state strings
-  def state_def_of_component?(component_name)
-    if self =~ /hnote\s*over\s*#{component_name}\s*:\s*(.*)\s*/
-      return $1.strip.split(/\| */)
-    end
-    nil
-  end
-
-  # @brief Given a line and component name, match event in the line match plantUML syntax
-  # @return string of event
-  def event_def_of_component?(component_name)
-    if self =~ /.*(->>|-->>)\s*#{component_name}\s*:\s*(.*)\s*/
-      return $2
-    end
-    nil
-  end
-
-  def event_def_of?(component_name, event_name)
-    if self =~ /.*(->>|-->>)\s*#{component_name}\s*:.*#{event_name}.*/
-      return true
-    end
-    false  
-  end
-
-  def state_def_of?(component_name, state_name)
-    if self =~ /hnote\s*over\s*#{component_name}\s*:.*#{state_name}.*/
-      return true
-    end
-    false
-  end
-
-end
 
 class Array
 
   def select_between(satisfy_all, end_cond, start_from_index=0)
     satisfy_all.push ->(item) { true }
     last_index = start_from_index
+    
     target = self[start_from_index...self.size].select do |item|
       satisfy_all.shift if !satisfy_all.empty? && satisfy_all.first.call(item)
       end_cond.shift if satisfy_all.empty? && !end_cond.empty? && end_cond.first.call(item)
@@ -70,9 +36,9 @@ class SequenceParser
   def get_all_states
     states = Set.new
     if @focused_component != ""
-      @seq_file_content.each do |line|
-        if new_states = find_states_for_component(line, @focused_component)
-          states.merge new_states
+      all_state_defs = @seq_file_content.each do |statement|
+        if statement.type == ScriptStatement::TYPE_STATE_DEF && @focused_component == statement.contents[:component_name]
+          states.merge statement.contents[:states] 
         end
       end
     end
@@ -82,9 +48,9 @@ class SequenceParser
   def get_all_events
     events = Set.new
     if @focused_component != ""
-      @seq_file_content.each do |line|
-        if new_event = find_event_for_component(line, @focused_component)
-          events << new_event
+      all_send_message_defs = @seq_file_content.each do |statement|
+        if statement.type == ScriptStatement::TYPE_SEND_MESSAGE && @focused_component == statement.contents[:destination_component_name]
+          events << statement.contents[:message]
         end
       end
     end
@@ -94,7 +60,6 @@ class SequenceParser
   def focus_on_component(component_name)
     @focused_component = component_name # todo: check the component_name is valid one
   end
-
   
   def get_sequent_file_name()
     @seq_file_name
@@ -106,8 +71,8 @@ class SequenceParser
       behavior, idx = @seq_file_content.select_between(
         [->(str) {str.state_def_of?(component, state)},
          ->(str) {str.event_def_of?(component, event)},
-         ->(str) {str =~ /activate\s+#{component}/}],
-        [->(str) {str =~ /deactivate\s+#{component}/}], idx)
+         ->(str) {str.activate_def_of?(component)}],
+        [->(str) {str.deactivate_def_of?(component)}], idx)
       break if behavior.empty?
       yield select_actions_for(behavior, component)
     end
@@ -120,6 +85,7 @@ class SequenceParser
   # order is used to specify witch
   # 
   def get_event_on(state, order = 1)
+=begin
     events = []    
     if @focused_component == "" || order < 1
       events
@@ -140,6 +106,7 @@ class SequenceParser
       end
     end
     events
+=end
   end
   
   def cancel_focusing_on_component()
@@ -157,30 +124,19 @@ class SequenceParser
     @components
   end
 
-  # @brief Given a line and component name, match states in the line match plantUML syntax
-  # @return array of state strings
-  def find_states_for_component(line, component_name)
-    if line =~ /hnote\s*over\s*#{component_name}\s*:\s*(.*)\s*/
-      return $1.strip.split(/\| */)
-    end
-    nil
-  end
-
-  # @brief Given a line and component name, match event in the line match plantUML syntax
-  # @return string of event
-  def find_event_for_component(line, component_name)
-    if line =~ /.*(->>|-->>)\s*#{component_name}\s*:\s*(.*)\s*/
-      return $2
-    end
-    nil
-  end
-
   def select_actions_for(behavior, component)
-    behavior.select do |action| 
-      if action =~ /(\w*)\s*(-->|->|->>|-->>).+:/
-        next false if $1 != component
+    puts behavior
+    behavior.select do |st| 
+      case st.type
+      when ScriptStatement::TYPE_STATE_DEF, ScriptStatement::TYPE_STRUCTURE_DEF 
+        true
+      when ScriptStatement::TYPE_SEND_MESSAGE, ScriptStatement::TYPE_CALL_API 
+        if st.contents[:source_component_name] == component
+          true
+        end
+      else 
+        false
       end    
-      true
     end
   end
 
@@ -197,8 +153,8 @@ puts seq_parser.get_event_on("Idle")
 puts seq_parser.get_event_on("Working")
 =end
 
-=begin 
-seq_parser = SequenceParser.new("D:\\00 work\\A-IVI\\PlantUML_Test\\project\\lywMDDToolChain-feature-GenerateECBCode\\SourceCodeGeneration\\InputForSTMSourceGen\\ChangeTemprature_test.wsd")
+begin 
+seq_parser = SequenceParser.new("D:\\05 MyProject\\lywMDDToolChain\\SourceCodeGeneration\\InputForSTMSourceGen\\ChangeTemprature_test.wsd")
 seq_parser.components.each {|item| puts item }
 puts seq_parser.components.size
 seq_parser.focus_on_component("SystemCtrl")
@@ -208,5 +164,6 @@ puts seq_parser.get_event_on("Idle")
 puts seq_parser.get_event_on("Working")
 puts "============="
 puts seq_parser.all_behavior_of("SystemCtrl","Working","SetTemperatureResult") {|action| puts action }
-=end
+puts "============="
+end
 
