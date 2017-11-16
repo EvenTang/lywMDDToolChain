@@ -1,7 +1,7 @@
 <%
-states = system_ctrl_stm.states
-events = system_ctrl_stm.events
-module_name = system_ctrl_stm.module_name 
+states = module_stm.states
+events = module_stm.events
+module_name = module_stm.module_name 
 %>#include "<%= module_name %>_STM.h"
 
 <%
@@ -17,7 +17,7 @@ states.each do |state|
  * @param _msg : <%= module_name %>Event
  * @return STM_Status
  */
-STM_Status SystemCtrl_ECB_<%= state %>_<%= event.name %>(<%= module_name %>Event const & _msg) {
+STM_Status <%= module_name %>_ECB_<%= state %>_<%= event.name %>(<%= module_name %>Event const & _msg) {
     assert(_msg.has_msg_<%= event.name.underscore %>());
     <%= event.name %> * p_msg_body = _msg.get_msg_<%= event.name.underscore %>();
     assert(p_msg_body != nullptr);

@@ -1,13 +1,13 @@
 <%
-states = system_ctrl_stm.states
-events = system_ctrl_stm.events
-module_name = system_ctrl_stm.module_name %>
+states = module_stm.states
+events = module_stm.events
+module_name = module_stm.module_name %>
 
 @startuml <%= module_name %>'s state chart
 
 [*] --> Unitialized
 <% 
-system_ctrl_stm.transitions.each do |tran| %>
+module_stm.transitions.each do |tran| %>
 <%= tran.s_state %> --> <%= tran.e_state %> : <%= tran.event %><%
 end %>
 
