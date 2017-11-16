@@ -1,7 +1,7 @@
 <%
-states = system_ctrl_stm.states
-events = system_ctrl_stm.events
-module_name = system_ctrl_stm.module_name %>
+states = module_stm.states
+events = module_stm.events
+module_name = module_stm.module_name %>
 #include "<%= module_name %>_EventDef.h"
 
 // State definition
@@ -34,7 +34,7 @@ end %>
 
 // State-Event Callback Matrix
 typedef STM_Status (FP_<%= module_name %>_ECB)(<%= module_name %>Event & _msg); 
-FP_SystemCtrl_ECB const SystemCtrl_state_ecb_map[][] = { <% 
+FP_<%= module_name %>_ECB const <%= module_name %>_state_ecb_map[][] = { <% 
     states.each do |state| %>
 	{ <% 
         events.each do |event| %>
