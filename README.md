@@ -20,6 +20,7 @@ Release plan for V2.0
       -Output dir                                     output file directory
       -Module comp1,comp2...             component need to be analyzed
 - [ ] Modify STM generator to generate 100% STM code
+- [ ] Add exception handling code into task main file
 
 Release plan for future ( I don't know when )
 
