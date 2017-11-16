@@ -163,7 +163,7 @@ class SequenceParser
         false
       end    
     end
-    #puts temp
+    # puts temp
     temp
   end
 

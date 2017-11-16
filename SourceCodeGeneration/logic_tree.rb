@@ -34,7 +34,9 @@ class LogicTree
     when /else/i
       @current_strut.update_structure(key_word, condition)
     when /end/i
+      last_struct = @current_strut
       @current_strut = @current_strut.parent
+      @current_strut.pop_operation if last_struct.empty?
     end
   end
 
@@ -60,11 +62,14 @@ end
 class SequenceOperation
   def initialize
     @operations = []
-    @current_op_seq = @operations
   end
 
   def add_operation(operation)
-    @current_op_seq << operation
+    @operations << operation
+  end
+
+  def pop_operation
+    @operations.pop
   end
 
   def generate_code()
@@ -74,6 +79,11 @@ class SequenceOperation
     end
     code
   end
+
+  def empty?
+    @operations.empty?
+  end
+
 end
 
 class StructBase
@@ -81,6 +91,10 @@ class StructBase
   attr_accessor :parent
 
   def initialize()
+  end
+
+  def pop_operation
+    @current_op_seq.pop_operation
   end
 
   def add_operation(operation)
@@ -112,8 +126,15 @@ class AltStructure < StructBase
       code << "}"
     end
     code
+  end 
+  
+  def empty?
+    @branches.each do |condition, op_seq|
+      return false unless op_seq.empty?
+    end
+    true
   end
-
+  
 end
 
 class LoopStructure < StructBase
@@ -132,7 +153,10 @@ class LoopStructure < StructBase
     code << "}"
     code
   end
-
+  
+  def empty?
+    @operation_seq.empty?
+  end
 
 end
 
@@ -151,6 +175,10 @@ class BreakStructure < StructBase
     code << "}"
     code
   end
+
+  def empty?
+    @operation_seq.empty?
+  end
   
 end
 
@@ -167,6 +195,10 @@ class OptStructure < StructBase
     code.push @operation_seq.generate_code.flatten.add_indent!
     code << "}"
     code
+  end
+
+  def empty?
+    @operation_seq.empty?
   end
 
 end
