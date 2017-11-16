@@ -150,21 +150,16 @@ class SequenceParser
   end
   
   def select_hehavior_for(behavior, component)
-    # puts behavior
-    temp = behavior.select do |st| 
+    behavior.select do |st| 
       case st.type
       when ScriptStatement::TYPE_STATE_DEF, ScriptStatement::TYPE_STRUCTURE_DEF 
         true
       when ScriptStatement::TYPE_SEND_MESSAGE, ScriptStatement::TYPE_CALL_API 
-        if st.contents[:source_component_name] == component
-          true
-        end
+        st.contents[:source_component_name] == component
       else 
         false
       end    
     end
-    # puts temp
-    temp
   end
 
 end

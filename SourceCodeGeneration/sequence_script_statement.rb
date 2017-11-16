@@ -24,7 +24,7 @@ class ScriptStatement
 
   def definition_of_send_message?()
     #puts @statement_str
-    # todo: B-->> will result in "B-" by the following regex.
+    # FIXME: B-->> will result in "B-" by the following regex.
     if @statement_str =~ /(.*)(->>|-->>)(.*):(.*)/
       #puts "!!!!!!matched"
       @type = TYPE_SEND_MESSAGE
