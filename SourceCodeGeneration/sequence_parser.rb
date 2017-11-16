@@ -28,7 +28,12 @@ class SequenceParser
 
   def initialize(file_name)
     @seq_file_name = file_name
-    @seq_file_content = File.new(@seq_file_name).readlines.map {|str| ScriptStatement.new(str) }
+    @seq_file_content = 
+      if File.exist?(@seq_file_name)
+        File.new(@seq_file_name).readlines.map {|str| ScriptStatement.new(str) }
+      else
+        []
+      end
     @components = get_all_components
     @focused_component = ""
   end
@@ -154,7 +159,7 @@ puts seq_parser.get_event_on("Working")
 =end
 
 begin 
-seq_parser = SequenceParser.new("D:\\05 MyProject\\lywMDDToolChain\\SourceCodeGeneration\\InputForSTMSourceGen\\ChangeTemprature_test.wsd")
+seq_parser = SequenceParser.new(".\\InputForSTMSourceGen\\ChangeTemprature_test.wsd")
 seq_parser.components.each {|item| puts item }
 puts seq_parser.components.size
 seq_parser.focus_on_component("SystemCtrl")
