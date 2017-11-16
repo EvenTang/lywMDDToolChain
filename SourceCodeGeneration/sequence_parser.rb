@@ -1,5 +1,6 @@
 require 'set'
 require '.\sequence_script_statement'
+require '.\logic_tree'
 
 
 class Array
@@ -70,20 +71,13 @@ class SequenceParser
     @seq_file_name
   end
 
-  def all_behavior_of(component, state, event)
-    idx = 0
-    loop do
-      behavior, idx = @seq_file_content.select_between(
-        [->(str) {str.state_def_of?(component, state)},
-         ->(str) {str.event_def_of?(component, event)},
-         ->(str) {str.activate_def_of?(component)}],
-        [->(str) {str.deactivate_def_of?(component)}], idx)
-      break if behavior.empty?
-      yield select_actions_for(behavior, component)
+  def get_logic_tree_of(component, state, event)
+    all_behavior_of(component, state, event) do |behavior|
+      logic_tree = generate_logic_tree_from behavior
+      yield logic_tree
     end
   end
 
-  
   # @ get event on specified state
   #
   # Specific state could appears several times on one sequence
@@ -129,9 +123,35 @@ class SequenceParser
     @components
   end
 
-  def select_actions_for(behavior, component)
-    puts behavior
-    behavior.select do |st| 
+  def all_behavior_of(component, state, event)
+    idx = 0
+    loop do
+      behavior, idx = @seq_file_content.select_between(
+        [->(str) {str.state_def_of?(component, state)},
+         ->(str) {str.event_def_of?(component, event)},
+         ->(str) {str.activate_def_of?(component)}],
+        [->(str) {str.deactivate_def_of?(component)}], idx)
+      break if behavior.empty?
+      yield select_hehavior_for(behavior, component)
+    end
+  end
+
+  def generate_logic_tree_from(behavior)
+    logic_tree = LogicTree.new
+    behavior.each do |action|
+      case action.type
+      when ScriptStatement::TYPE_CALL_API, ScriptStatement::TYPE_SEND_MESSAGE
+        logic_tree.add_operation Operation.new(action.contents[:message])
+      when ScriptStatement::TYPE_STRUCTURE_DEF
+        logic_tree.update_structure action.contents[:key_word], action.contents[:condition]
+      end
+    end
+    logic_tree
+  end
+  
+  def select_hehavior_for(behavior, component)
+    # puts behavior
+    temp = behavior.select do |st| 
       case st.type
       when ScriptStatement::TYPE_STATE_DEF, ScriptStatement::TYPE_STRUCTURE_DEF 
         true
@@ -143,6 +163,8 @@ class SequenceParser
         false
       end    
     end
+    #puts temp
+    temp
   end
 
 end
@@ -159,16 +181,20 @@ puts seq_parser.get_event_on("Working")
 =end
 
 begin 
-seq_parser = SequenceParser.new(".\\InputForSTMSourceGen\\ChangeTemprature_test.wsd")
-seq_parser.components.each {|item| puts item }
-puts seq_parser.components.size
+seq_parser = SequenceParser.new("D:\\05 MyProject\\lywMDDToolChain\\SourceCodeGeneration\\InputForSTMSourceGen\\ChangeTemprature_test.wsd")
 seq_parser.focus_on_component("SystemCtrl")
-seq_parser.get_all_states.each {|item| puts item }
-seq_parser.get_all_events.each {|item| puts item }
-puts seq_parser.get_event_on("Idle")
-puts seq_parser.get_event_on("Working")
+# seq_parser.components.each {|item| puts item }
+# puts seq_parser.components.size
+# seq_parser.get_all_states.each {|item| puts item }
+# seq_parser.get_all_events.each {|item| puts item }
+# puts seq_parser.get_event_on("Idle")
+# puts seq_parser.get_event_on("Working")
 puts "============="
-puts seq_parser.all_behavior_of("SystemCtrl","Working","SetTemperatureResult") {|action| puts action }
+#puts seq_parser.all_behavior_of("SystemCtrl","Working","SetTemperatureResult") {|action| puts action }
+puts seq_parser.get_logic_tree_of("SystemCtrl","Working","SetTemperatureResult") {|logic_tree| 
+  logic_tree.generate_code.each {|st| puts st }
+}
+
 puts "============="
 end
 

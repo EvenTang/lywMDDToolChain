@@ -4,7 +4,6 @@ class ScriptStatement
   attr_reader :type
   attr_reader :contents      # hash table that store elements of the script statement
 
-
   TYPE_SEND_MESSAGE     = 1
   TYPE_CALL_API         = 2
   TYPE_STRUCTURE_DEF    = 3
@@ -25,6 +24,7 @@ class ScriptStatement
 
   def definition_of_send_message?()
     #puts @statement_str
+    # todo: B-->> will result in "B-" by the following regex.
     if @statement_str =~ /(.*)(->>|-->>)(.*):(.*)/
       #puts "!!!!!!matched"
       @type = TYPE_SEND_MESSAGE
@@ -73,7 +73,7 @@ class ScriptStatement
     if @statement_str =~ /\s*(alt|loop|break|opt|else|end)\s+(.*)/
       @type = TYPE_STRUCTURE_DEF
       @contents[:key_word]    = $1
-      @contents[:description] = $2
+      @contents[:condition] = $2
       true
     else
       false
