@@ -148,6 +148,7 @@ class SequenceParser
       end
     end
     logic_tree
+    
   end
   
   def select_hehavior_for(behavior, component)
@@ -177,7 +178,7 @@ puts seq_parser.get_event_on("Working")
 =end
 
 begin 
-seq_parser = SequenceParser.new("D:\\05 MyProject\\lywMDDToolChain\\SourceCodeGeneration\\InputForSTMSourceGen\\ChangeTemprature_test.wsd")
+seq_parser = SequenceParser.new("D:\\05 MyProject\\lywMDDToolChain\\SourceCodeGeneration\\InputForSTMSourceGen\\03ChangeTemprature_test.wsd")
 seq_parser.focus_on_component("SystemCtrl")
 # seq_parser.components.each {|item| puts item }
 # puts seq_parser.components.size
@@ -188,6 +189,7 @@ seq_parser.focus_on_component("SystemCtrl")
 puts "============="
 #puts seq_parser.all_behavior_of("SystemCtrl","Working","SetTemperatureResult") {|action| puts action }
 puts seq_parser.get_logic_tree_of("SystemCtrl","Working","SetTemperatureResult") {|logic_tree| 
+  puts "---------------------------"
   logic_tree.generate_code.each {|st| puts st }
 }
 

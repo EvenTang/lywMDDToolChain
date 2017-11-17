@@ -44,6 +44,7 @@ class LogicTree
     code = @top_level_operations.generate_code
     code
   end
+
 end
 
 class Operation
@@ -73,11 +74,7 @@ class SequenceOperation
   end
 
   def generate_code()
-    code = []
-    @operations.each do |op|
-      code.push op.generate_code
-    end
-    code
+    @operations.inject([]) {|code, op| code << op.generate_code}
   end
 
   def empty?
@@ -119,20 +116,16 @@ class AltStructure < StructBase
   end
   
   def generate_code
-    code = []
-    @branches.each do |condition, op_seq|
+    @branches.inject([]) do |code, branch|
+      condition, op_seq = branch
       code << (condition == "else" ? "else {" : "if (%s) {" % condition)
       code.push op_seq.generate_code.flatten.add_indent!
       code << "}"
     end
-    code
   end 
   
   def empty?
-    @branches.each do |condition, op_seq|
-      return false unless op_seq.empty?
-    end
-    true
+    @branches.all? {|condition, op_seq| op_seq.empty? }
   end
   
 end
@@ -148,7 +141,6 @@ class LoopStructure < StructBase
   def generate_code
     code = []
     code << "while (%s) {" % @condition
-    puts @operation_seq.generate_code
     code.push @operation_seq.generate_code.flatten.add_indent!
     code << "}"
     code
