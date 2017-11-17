@@ -5,6 +5,7 @@ require '.\logic_tree'
 
 class Array
 
+  # FIXME: Nested activate/deactivate should be parsed correctly
   def select_between(satisfy_all, end_cond, start_from_index=0)
     satisfy_all.push ->(item) { true }
     last_index = start_from_index

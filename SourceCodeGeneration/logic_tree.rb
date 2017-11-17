@@ -169,6 +169,7 @@ class BreakStructure < StructBase
 
   def generate_code
     code = []
+    # TODO: considering to use ERB here. (inline way?), same in ohter generate_code method
     code << "if (%s) {" % @condition
     code << "    break"
     code.push @operation_seq.generate_code.flatten.add_indent!
