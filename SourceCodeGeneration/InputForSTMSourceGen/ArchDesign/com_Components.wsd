@@ -1,0 +1,14 @@
+
+@startuml  compontent
+
+/' UserReq_Id: xxx1;xxx2
+   Arch_Id: xxx1
+'/
+component RemoteCtrl    /' STM '/
+component RFComm        /' SERVICE '/
+component SystemCtrl    /' STM '/
+component ShareOBJ      /' LIB '/
+component Motor         /' STM '/
+component Display       /' SERVICE '/
+
+@enduml
