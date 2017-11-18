@@ -2,7 +2,7 @@ require './statement_ast'
 require './cpp_code_generator'
 
 # Logic Tree is more likely a AST for method
-#     It relies on Code generator to tranlate into realy language like C/C++/Python/...
+#     It relies on Code generator to tranlate into realy language like C/C++/Python/PlanUML/lywSTM...
 #
 class LogicTree
 
