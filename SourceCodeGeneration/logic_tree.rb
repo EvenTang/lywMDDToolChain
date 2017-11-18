@@ -12,7 +12,9 @@ class Array
 end
 
 
-
+# Logic Tree is more likely a AST for method
+#     It relies on Code generator to tranlate into realy language like C/C++/Python/...
+#
 class LogicTree
 
   def initialize
