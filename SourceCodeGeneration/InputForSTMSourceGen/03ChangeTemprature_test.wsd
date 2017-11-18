@@ -41,7 +41,7 @@ alt OK
 SystemCtrl->>Motor:Test3
 activate Motor
 deactivate Motor
-else NG
+else
 SystemCtrl->>Motor:Test4
 activate Motor
 deactivate Motor

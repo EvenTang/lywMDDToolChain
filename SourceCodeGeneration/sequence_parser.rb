@@ -125,6 +125,7 @@ class SequenceParser
   end
 
   def all_behavior_of(component, state, event)
+    # FIXME: remove comments in script
     idx = 0
     loop do
       behavior, idx = @seq_file_content.select_between(

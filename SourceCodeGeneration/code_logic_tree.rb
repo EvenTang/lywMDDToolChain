@@ -18,7 +18,7 @@ class LogicTree
   def update_structure(key_word, condition)
     case key_word
     when /alt/i, /loop/i, /break/i, /opt/i
-      new_struct = Object.const_get(key_word.capitalize + "Structure").new(condition)
+      new_struct = creat_cpp_structure_node(key_word, condition)
       new_struct.parent = @current_strut
       @current_strut.add_operation new_struct
       @current_strut = new_struct

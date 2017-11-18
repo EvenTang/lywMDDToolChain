@@ -41,6 +41,8 @@ class OperationSequence < StructBase
 end
 
 class SingleConditionStruction < OperationSequence
+  attr_reader :condition
+
   def initialize(condition)
     super()
     @condition = condition
