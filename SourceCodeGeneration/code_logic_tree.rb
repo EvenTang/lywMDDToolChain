@@ -1,0 +1,39 @@
+require './statement_ast'
+require './cpp_code_generator'
+
+# Logic Tree is more likely a AST for method
+#     It relies on Code generator to tranlate into realy language like C/C++/Python/...
+#
+class LogicTree
+
+  def initialize
+    @top_level_operations = OperationSequence.new
+    @current_strut = @top_level_operations
+  end
+
+  def add_operation(operation)
+    @current_strut.add_operation operation
+  end
+
+  def update_structure(key_word, condition)
+    case key_word
+    when /alt/i, /loop/i, /break/i, /opt/i
+      new_struct = Object.const_get(key_word.capitalize + "Structure").new(condition)
+      new_struct.parent = @current_strut
+      @current_strut.add_operation new_struct
+      @current_strut = new_struct
+    when /else/i
+      @current_strut.update_structure(key_word, condition)
+    when /end/i
+      last_struct = @current_strut
+      @current_strut = @current_strut.parent
+      @current_strut.pop_operation if last_struct.empty?
+    end
+  end
+
+  def generate_code
+    code = @top_level_operations.generate_code
+    code
+  end
+
+end

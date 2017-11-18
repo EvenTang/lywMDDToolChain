@@ -1,6 +1,6 @@
 require 'set'
 require '.\sequence_script_statement'
-require '.\logic_tree'
+require '.\code_logic_tree'
 
 
 class Array
