@@ -23,6 +23,9 @@ STM_Status <%= module_name %>_ECB_<%= state %>_<%= event.name %>(<%= module_name
     assert(p_msg_body != nullptr);
     //> implementation of <%= state %> <%= event.name %>
 
+    <% module_stm.get_ecb_logic_code(state, event.name)&.flatten&.each do |st| %>
+    <%= st %><%
+    end %>
     return STM_STATS_OK;
 }
 <%  

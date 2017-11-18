@@ -31,14 +31,44 @@ class Event
 
 end
 
+class STM_ECB
+  attr_reader :state_name, :event_name, :logic_tree
+
+  def initialize(state_name, event_name)
+    @state_name, @event_name = state_name, event_name
+  end
+
+  def update_logic_tree(logic_tree)
+    @logic_tree ||= logic_tree
+  end
+
+  def generate_code
+    @logic_tree&.generate_code
+  end
+
+end
+
 class StateMachine
 
-  attr_accessor :module_name, :states, :events
+  attr_accessor :module_name, :states, :events, :ecbs
 
   def initialize(module_name)
     @module_name = module_name
     @states = Set.new 
     @events = Set.new
+    @ecbs = []
+  end
+
+  def update_ecbs
+    @states.each do |s|
+      @events.each do |e|
+        @ecbs << STM_ECB.new(s, e.name)
+      end
+    end
+  end
+
+  def get_ecb_logic_code(state_name, event_name)
+    @ecbs.find {|ecb| ((ecb.state_name == state_name) && (ecb.event_name == event_name))}&.generate_code
   end
 
 end
@@ -68,19 +98,18 @@ class SoftwareModel
       end
       @state_machine.states.merge seq_parser.get_all_states
     end
+    @state_machine.update_ecbs
   end
 
-=begin
-  def generate_ecb_from_sequence()
-    @state_machine.each_ecb do |ecb|
+  def update_ecb_logic_tree_from_sequence()
+    @state_machine.ecbs.each do |ecb|
       sequence_parsers.each do |seq_parser|
-        seq_parser.get_behavior_of(@module_name, ecb.state, ecb.event) do |behavior|
-          ecb.update_logic(LogicTree(behaviors))
+        seq_parser.get_logic_tree_of(@module_name, ecb.state_name, ecb.event_name) do |logic_tree|
+          ecb.update_logic_tree(logic_tree)
         end
       end
     end
   end
-=end
 
 end
 

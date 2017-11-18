@@ -67,6 +67,7 @@ component_array.each do |component|
     end  
     
     component.generate_stm_frame
+    component.update_ecb_logic_tree_from_sequence
 
     #=begin
     module_stm = component.state_machine

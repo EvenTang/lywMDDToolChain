@@ -178,22 +178,22 @@ puts seq_parser.get_event_on("Idle")
 puts seq_parser.get_event_on("Working")
 =end
 
-begin 
-seq_parser = SequenceParser.new("D:\\05 MyProject\\lywMDDToolChain\\SourceCodeGeneration\\InputForSTMSourceGen\\03ChangeTemprature_test.wsd")
-seq_parser.focus_on_component("SystemCtrl")
+# begin 
+# seq_parser = SequenceParser.new("D:\\05 MyProject\\lywMDDToolChain\\SourceCodeGeneration\\InputForSTMSourceGen\\03ChangeTemprature_test.wsd")
+# seq_parser.focus_on_component("SystemCtrl")
 # seq_parser.components.each {|item| puts item }
 # puts seq_parser.components.size
 # seq_parser.get_all_states.each {|item| puts item }
 # seq_parser.get_all_events.each {|item| puts item }
 # puts seq_parser.get_event_on("Idle")
 # puts seq_parser.get_event_on("Working")
-puts "============="
+# puts "============="
 #puts seq_parser.all_behavior_of("SystemCtrl","Working","SetTemperatureResult") {|action| puts action }
-puts seq_parser.get_logic_tree_of("SystemCtrl","Working","SetTemperatureResult") {|logic_tree| 
-  puts "---------------------------"
-  logic_tree.generate_code.each {|st| puts st }
-}
+# puts seq_parser.get_logic_tree_of("SystemCtrl","Working","SetTemperatureResult") {|logic_tree| 
+#   puts "---------------------------"
+#   logic_tree.generate_code.each {|st| puts st }
+# }
 
-puts "============="
-end
+# puts "============="
+# end
 
