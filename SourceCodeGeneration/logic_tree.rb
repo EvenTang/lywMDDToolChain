@@ -1,11 +1,11 @@
 
 class Array
 
-  def add_indent(indent = " "*4)
+  def add_indent(indent = " " * 4)
     self.map {|item| indent + item }
   end
 
-  def add_indent!(indent = " "*4)
+  def add_indent!(indent = " " * 4)
     self.map! {|item| indent + item }
   end
 
