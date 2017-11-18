@@ -3,7 +3,8 @@ require './cpp_code_generator'
 
 # Logic Tree is more likely a AST for method
 #     It relies on Code generator to tranlate into realy language like C/C++/Python/PlanUML/lywSTM...
-#
+#   TODO: creat_cpp_structure_node/CppOperation will be replaced by some other method
+#         for a generic Lauguage generation.
 class LogicTree
 
   def initialize
@@ -12,7 +13,7 @@ class LogicTree
   end
 
   def add_operation(operation)
-    @current_strut.add_operation operation
+    @current_strut.add_operation CppOperation.new(operation)
   end
 
   def update_structure(key_word, condition)

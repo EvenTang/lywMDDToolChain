@@ -1,18 +1,5 @@
 
 
-class Operation
-  attr_reader :statement
-  def initialize(statement)
-    @statement = statement
-  end
-
-  def generate_code()
-    @statement
-  end
-
-end
-
-
 class StructBase
   attr_accessor :parent
 end

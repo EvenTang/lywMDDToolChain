@@ -1,6 +1,5 @@
 require './statement_ast'
 
-
 class Array
 
   def add_indent(indent = " " * 4)
@@ -9,6 +8,19 @@ class Array
 
   def add_indent!(indent = " " * 4)
     self.map! {|item| indent + item }
+  end
+
+end
+
+class CppOperation
+  attr_reader :statement
+
+  def initialize(statement)
+    @statement = statement.contents[:message]
+  end
+
+  def generate_code()
+    @statement
   end
 
 end

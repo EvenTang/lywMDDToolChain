@@ -143,7 +143,7 @@ class SequenceParser
     behavior.each do |action|
       case action.type
       when ScriptStatement::TYPE_CALL_API, ScriptStatement::TYPE_SEND_MESSAGE
-        logic_tree.add_operation Operation.new(action.contents[:message])
+        logic_tree.add_operation action
       when ScriptStatement::TYPE_STRUCTURE_DEF
         logic_tree.update_structure action.contents[:key_word], action.contents[:condition]
       end
