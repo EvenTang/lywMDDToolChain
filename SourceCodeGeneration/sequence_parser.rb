@@ -188,10 +188,10 @@ seq_parser.focus_on_component("SystemCtrl")
 # puts seq_parser.get_event_on("Idle")
 # puts seq_parser.get_event_on("Working")
 # puts "============="
-puts seq_parser.get_logic_tree_of("SystemCtrl","Working","SetTemperatureResult") {|logic_tree| 
-  puts "---------------------------"
-  logic_tree.generate_code.each {|st| puts st }
-}
-puts "============="
+# puts seq_parser.get_logic_tree_of("SystemCtrl","Working","SetTemperatureResult") {|logic_tree| 
+#   puts "---------------------------"
+#   logic_tree.generate_code.each {|st| puts st }
+# }
+# puts "============="
 # end
 

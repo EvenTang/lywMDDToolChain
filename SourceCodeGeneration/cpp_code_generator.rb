@@ -32,7 +32,7 @@ class CppOperation
     param_list = event.params.values.join(", ")
     type_symbol = case @statement.type
                   when ScriptStatement::TYPE_CALL_API
-                    @statement.contents[:source_component_name] == target_module ? "API" : "api"
+                    @statement.contents[:source_component_name] != target_module ? "API" : "api"
                   when ScriptStatement::TYPE_SEND_MESSAGE
                     "API_SendMessage"
                   else
