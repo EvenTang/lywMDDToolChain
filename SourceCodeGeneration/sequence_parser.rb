@@ -79,36 +79,6 @@ class SequenceParser
     end
   end
 
-  # @ get event on specified state
-  #
-  # Specific state could appears several times on one sequence
-  # order is used to specify witch
-  # 
-  def get_event_on(state, order = 1)
-=begin
-    events = []    
-    if @focused_component == "" || order < 1
-      events
-    end
-
-    is_matched = false
-    @seq_file_content.each do |line|
-      if found_states = find_states_for_component(line, @focused_component)
-        return events if is_matched
-        if found_states.include? state
-          order -= 1
-          is_matched = true if order == 0
-        end
-      end
-    
-      if is_matched && found_event = find_event_for_component(line, @focused_component)
-        events << found_event
-      end
-    end
-    events
-=end
-  end
-  
   def cancel_focusing_on_component()
     @focused_component = ""
   end
