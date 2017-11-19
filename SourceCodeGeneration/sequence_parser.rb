@@ -136,6 +136,7 @@ class ECBDetecting
     @component, @state, @event = *param
     @yes_i_found = false
     @status = LOCATING_STATE
+    @activate_count = 0
   end
 
   def in_ecb?(script_statement)
@@ -154,17 +155,22 @@ class ECBDetecting
     when LOCATING_ACTIVATE
       if script_statement.activate_def_of? @component
         @status = LOCATING_DEACTIVATE
-        @yes_i_found = true
+        @activate_count += 1
       end
     when LOCATING_DEACTIVATE
+      if script_statement.activate_def_of? @component
+        @activate_count += 1
+      end
       if script_statement.deactivate_def_of? @component
-        @status = LOCATING_END
-        @yes_i_found = false
+        @activate_count -= 1
+        if @activate_count == 0
+          @status = LOCATING_END
+        end
       end
     else
       @yes_i_found = false      
     end
-    @yes_i_found
+    @activate_count == 1
   end
 
 end

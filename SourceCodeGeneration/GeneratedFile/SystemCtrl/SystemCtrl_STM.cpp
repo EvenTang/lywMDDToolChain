@@ -486,6 +486,9 @@ STM_Status SystemCtrl_ECB_Unitialized_PowerOn(SystemCtrlEvent const & _msg) {
 
     //> implementation of Unitialized PowerOn
     SystemCtrl_api_Initilize()
+    ShareOBJ_API_ReadLastTemeprature()
+    ShareOBJ_API_ReadLastMode()
+    Motor_API_SendMessage_PowerOn(lv_last_temprature, lv_last_mode)
 
     return STM_STATS_OK;
 }
