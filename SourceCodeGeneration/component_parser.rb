@@ -47,12 +47,12 @@ class ComponentParser
   end
 end
 
-begin 
-  com_parser = ComponentParser.new(".\\InputForSTMSourceGen\\ArchDesign\\com_Components.wsd")
-  puts "============="
-  com_parser.get_all_components_info
-  com_parser.components.each do |statement|
-    puts statement.component_name + ":" + statement.component_type.to_s
-  end
-  puts "============="
-end
+# begin 
+#   com_parser = ComponentParser.new(".\\InputForSTMSourceGen\\ArchDesign\\com_Components.wsd")
+#   puts "============="
+#   com_parser.get_all_components_info
+#   com_parser.components.each do |statement|
+#     puts statement.component_name + ":" + statement.component_type.to_s
+#   end
+#   puts "============="
+# end

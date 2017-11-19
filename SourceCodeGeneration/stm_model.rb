@@ -5,7 +5,7 @@ class Event
   def initialize(seq_file_line)
     @params = Hash.new # Hash as : field_name => field_value
 
-    if seq_file_line =~ /^(\w+)(\(.*\))?$/ then
+    if seq_file_line =~ /(\w+)(\(.*\))?/ then
       @name = $1
       left_str = $2
       while left_str =~ /((\w+)=([\w"]+)),?(.*)/
@@ -70,4 +70,3 @@ class StateMachine
   end
 
 end
-

@@ -40,32 +40,32 @@ end
 
 class MultiConditionOperations < StructBase
   
-    def initialize(condition)
-      @branches = [SingleConditionStruction.new(condition)]
-      @current_op_seq = @branches.last 
-    end
-  
-    def pop_operation
-      @current_op_seq.pop_operation
-    end
-  
-    def add_operation(operation)
-      @current_op_seq.add_operation operation
-    end
-  
-    def update_structure(key_word, condition)
-      @branches << SingleConditionStruction.new(condition)
-      @current_op_seq = @branches.last 
-    end
-    
-    def generate_code
-    end 
-    
-    def empty?
-      @branches.all? &:empty?
-    end
-    
+  def initialize(condition)
+    @branches = [SingleConditionStruction.new(condition)]
+    @current_op_seq = @branches.last 
   end
+
+  def pop_operation
+    @current_op_seq.pop_operation
+  end
+
+  def add_operation(operation)
+    @current_op_seq.add_operation operation
+  end
+
+  def update_structure(key_word, condition)
+    @branches << SingleConditionStruction.new(condition)
+    @current_op_seq = @branches.last 
+  end
+  
+  def generate_code
+  end 
+  
+  def empty?
+    @branches.all? &:empty?
+  end
+  
+end
 
 class LoopStructure < SingleConditionStruction
 end

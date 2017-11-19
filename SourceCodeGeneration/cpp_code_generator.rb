@@ -53,7 +53,7 @@ end
 def convert_condition_sentence_to_api(condition)
   return "" if condition == ""
   # TODO: "SystemCtrl" as a module name should be configurable
-  "SystemCtrl_" + condition.split.map(&:capitalize).join + "()" 
+  "SystemCtrl_api" + condition.split.map(&:capitalize).join + "()" 
 end
 
 class CppAltStructure < MultiConditionOperations

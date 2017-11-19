@@ -25,15 +25,15 @@ class ScriptStatement
   def definition_of_send_message?()
     #puts @statement_str
     # FIXME: B-->> will result in "B-" by the following regex.
-    if @statement_str =~ /(.*)(->>|-->>)(.*):(.*)/
+    if @statement_str =~ /(\w+)\s*(->>|-->>)\s*(\w+)\s*:(.*)/
       #puts "!!!!!!matched"
       @type = TYPE_SEND_MESSAGE
       @contents[:source_component_name] = $1.strip
       @contents[:line_type] = $2.strip
       @contents[:destination_component_name] = $3.strip
       @contents[:message] = $4.strip
-      #puts @type
-      #puts @contents.to_s
+      # puts @type
+      # puts @contents.to_s
       true
     else
       false
@@ -41,12 +41,12 @@ class ScriptStatement
   end
 
   def definition_of_call_api?()
-    if @statement_str =~ /(.*)(->|-->)(.*):(.*)/
+    if @statement_str =~ /(\w+)\s*(->|-->)\s*(\w+)\s*:(.*)/
       @type = TYPE_CALL_API
       @contents[:source_component_name] = $1.strip
       @contents[:line_type] = $2.strip
       @contents[:destination_component_name] = $3.strip
-      @contents[:api_call] = $4.strip
+      @contents[:message] = $4.strip
       true
     else
       false
@@ -102,7 +102,7 @@ class ScriptStatement
   end
 
   def event_def_of?(component_name, event_name)
-    if (@type == TYPE_SEND_MESSAGE) && (@contents[:destination_component_name] == component_name) && (@contents[:message].include? event_name)
+    if (@type == TYPE_SEND_MESSAGE) && (@contents[:destination_component_name] == component_name) && (@contents[:message] =~ /#{event_name}\s*\(/)
       true
     else
       false
@@ -118,8 +118,16 @@ class ScriptStatement
     end
   end
 
-  def activate_def_of?(component_name)
-    if (@type == TYPE_ACTIVATE_DEF) && (@contents[:component_name] == component_name)
+  def state_def_but_not?(component_name, state_name)
+    if (@type == TYPE_STATE_DEF) && (@contents[:component_name] == component_name) && (! @contents[:states].include? state_name)
+      true
+    else
+      false
+    end
+  end
+
+  def activate_def_of?(component_name = nil)
+    if @type == TYPE_ACTIVATE_DEF && @contents[:component_name] == component_name
       true
     else
       false
@@ -127,7 +135,7 @@ class ScriptStatement
   end
 
   def deactivate_def_of?(component_name)
-    if (@type == TYPE_DEACTIVATE_DEF) && (@contents[:component_name] == component_name)
+    if @type == TYPE_DEACTIVATE_DEF && @contents[:component_name] == component_name
       true
     else
       false
@@ -139,3 +147,4 @@ class ScriptStatement
   end
 
 end
+
