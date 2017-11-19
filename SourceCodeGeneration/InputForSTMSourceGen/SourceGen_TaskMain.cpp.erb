@@ -1,7 +1,7 @@
 <%
-states = system_ctrl_stm.states
-events = system_ctrl_stm.events
-module_name = system_ctrl_stm.module_name %>
+states = module_stm.states
+events = module_stm.events
+module_name = module_stm.module_name %>
 #include "<%= module_name %>_STM.h"
 
 uint32_t <%= module_name %>_Task_Main(void * params) {

@@ -1,7 +1,7 @@
 <%
-states = system_ctrl_stm.states
-events = system_ctrl_stm.events
-module_name = system_ctrl_stm.module_name
+states = module_stm.states
+events = module_stm.events
+module_name = module_stm.module_name
 
 @temp_index = 1
 
@@ -25,9 +25,9 @@ events.each do |event|
     ResetIndex(1) %>
 message <%= event.name %> { <%
     event.params.keys.each do |param_type|%>
-    optional !TYPE! <%=param_type%> = <%= IncreasedIndex() %>;
+    optional !TYPE! <%=param_type%> = <%= IncreasedIndex() %>;<%
+    end %>
 } <%
-    end
 end %>
 
 message <%= module_name %>Messagge {
