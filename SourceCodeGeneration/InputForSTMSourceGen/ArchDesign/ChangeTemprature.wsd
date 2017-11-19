@@ -29,7 +29,7 @@ SystemCtrl->>A:Test1
 activate A
 
 alt OK
-loop 100times  /'add by shiweiz begin'/
+loop 100times
 SystemCtrl->>Motor:Test2
 activate Motor
 deactivate Motor

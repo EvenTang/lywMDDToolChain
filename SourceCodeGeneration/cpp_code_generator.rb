@@ -1,4 +1,5 @@
 require './statement_ast'
+require './sequence_script_statement'
 require './stm_model'
 
 class Array
@@ -32,7 +33,7 @@ class CppOperation
     param_list = event.params.values.join(", ")
     type_symbol = case @statement.type
                   when ScriptStatement::TYPE_CALL_API
-                    @statement.contents[:source_component_name] != target_module ? "API" : "api"
+                    inner_api_call? ? "api" : "API"
                   when ScriptStatement::TYPE_SEND_MESSAGE
                     "API_SendMessage"
                   else
@@ -41,6 +42,26 @@ class CppOperation
     "#{target_module}_#{type_symbol}_#{message_name}(#{param_list})"
   end
 
+  def inner_api_call?
+    if @statement.type == ScriptStatement::TYPE_CALL_API
+      @statement.contents[:source_component_name] == @statement.contents[:destination_component_name]
+    else
+      false
+    end
+  end
+
+  def all_internal_call_operations
+    inner_api_call? ? self : nil
+  end
+
+  def generate_prototype
+    module_name = @statement.contents[:source_component_name]
+    event = Event.new(statement.contents[:message])
+    message_name = event.name
+    param_list = event.params.keys.join(", ")
+    # FIXME: return value
+    "BOOL #{module_name}_api_#{message_name}(#{param_list})"
+  end
 end
 
 def creat_cpp_structure_node(structure_key_word, condition)
@@ -67,6 +88,12 @@ class CppAltStructure < MultiConditionOperations
     end
   end
 
+  def all_internal_call_operations
+    @branches.inject [] do |inner_calls, branch|
+      inner_calls << branch.all_internal_call_operations
+    end
+  end
+
   private
   def generate_judgement(condition, branch_cout)
     if condition != ""
@@ -83,6 +110,14 @@ class CppLoopStructure < SingleConditionStruction
       super.flatten.add_indent!,
      "}"]
   end
+
+  def all_internal_call_operations
+    inner_apis = super
+    # FIXME: systemctrl->systemctrl
+    temp_statement = ScriptStatement.new("SystemCtrl->SystemCtrl:"+convert_condition_sentence_to_api(@condition))
+    inner_apis << CppOperation.new(temp_statement)
+  end
+
 end
 
 class BreakLoopStructure < SingleConditionStruction
@@ -91,6 +126,13 @@ class BreakLoopStructure < SingleConditionStruction
       super.push("break;").flatten.add_indent!,
      "}"]
   end
+
+  def all_internal_call_operations
+    inner_apis = super
+    temp_statement = ScriptStatement.new("SystemCtrl->SystemCtrl:"+convert_condition_sentence_to_api(@condition))
+    inner_apis << CppOperation.new(temp_statement)
+  end
+
 end
 
 class OptLoopStructure < SingleConditionStruction
@@ -99,4 +141,11 @@ class OptLoopStructure < SingleConditionStruction
       super.flatten.add_indent!,
      "}"]
   end
+
+  def all_internal_call_operations
+    inner_apis = super
+    temp_statement = ScriptStatement.new("SystemCtrl->SystemCtrl:"+convert_condition_sentence_to_api(@condition))
+    inner_apis << CppOperation.new(temp_statement)
+  end
+  
 end

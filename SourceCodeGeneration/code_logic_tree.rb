@@ -37,4 +37,8 @@ class LogicTree
     code
   end
 
+  def all_internal_call_operations
+    @top_level_operations.all_internal_call_operations.flatten.compact
+  end
+
 end
