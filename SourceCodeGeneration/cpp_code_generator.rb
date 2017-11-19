@@ -1,4 +1,5 @@
 require './statement_ast'
+require './stm_model'
 
 class Array
 
@@ -12,22 +13,35 @@ class Array
 
 end
 
+
+# TODO: collect all internal apis to generate "stm_internal_calls.h/stm_internal_calls.cpp"
+# TODO: generate code that considering the vairable used in call chains.
+# TODO: generate comments
+
 class CppOperation
   attr_reader :statement
 
   def initialize(statement)
-    @statement = statement.contents[:message]
+    @statement = statement
   end
 
   def generate_code()
-    @statement
+    target_module = @statement.contents[:destination_component_name]
+    event = Event.new(statement.contents[:message])
+    message_name = event.name
+    param_list = event.params.values.join(", ")
+    type_symbol = case @statement.type
+                  when ScriptStatement::TYPE_CALL_API
+                    @statement.contents[:source_component_name] == target_module ? "API" : "api"
+                  when ScriptStatement::TYPE_SEND_MESSAGE
+                    "API_SendMessage"
+                  else
+                    ""
+                  end
+    "#{target_module}_#{type_symbol}_#{message_name}(#{param_list})"
   end
 
 end
-
-
-# TODO: Operation should have a CppNodeVerion, so that all action cound be Cpp function call.
-# TODO: collect all internal apis to generate "stm_internal_calls.h/stm_internal_calls.cpp"
 
 def creat_cpp_structure_node(structure_key_word, condition)
   case structure_key_word
@@ -38,7 +52,8 @@ end
 
 def convert_condition_sentence_to_api(condition)
   return "" if condition == ""
-  condition.split.map(&:capitalize).join + "()" 
+  # TODO: "SystemCtrl" as a module name should be configurable
+  "SystemCtrl_" + condition.split.map(&:capitalize).join + "()" 
 end
 
 class CppAltStructure < MultiConditionOperations

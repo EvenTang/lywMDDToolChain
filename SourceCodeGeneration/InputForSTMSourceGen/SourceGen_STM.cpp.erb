@@ -21,11 +21,12 @@ STM_Status <%= module_name %>_ECB_<%= state %>_<%= event.name %>(<%= module_name
     assert(_msg.has_msg_<%= event.name.underscore %>());
     <%= event.name %> * p_msg_body = _msg.get_msg_<%= event.name.underscore %>();
     assert(p_msg_body != nullptr);
-    //> implementation of <%= state %> <%= event.name %>
 
+    //> implementation of <%= state %> <%= event.name %>
     <% module_stm.get_ecb_logic_code(state, event.name)&.flatten&.each do |st| %>
     <%= st %><%
     end %>
+
     return STM_STATS_OK;
 }
 <%  
