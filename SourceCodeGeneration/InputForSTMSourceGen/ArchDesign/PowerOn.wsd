@@ -10,6 +10,9 @@ hnote over SystemCtrl: Unitialized
 RFComm->>SystemCtrl:PowerOn()
 deactivate RFComm
 activate SystemCtrl
+SystemCtrl->SystemCtrl:Initilize
+activate SystemCtrl
+deactivate SystemCtrl
 SystemCtrl->ShareOBJ:ReadLastTemeprature
 activate ShareOBJ
 ShareOBJ-->SystemCtrl:lv_last_temprature:int32

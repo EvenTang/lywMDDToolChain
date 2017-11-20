@@ -200,16 +200,16 @@ STM_Status SystemCtrl_ECB_Working_SetTemperatureResult(SystemCtrlEvent const & _
     assert(p_msg_body != nullptr);
 
     //> implementation of Working SetTemperatureResult
-    if (SystemCtrl_Succeed()) {
+    if (SystemCtrl_apiSucceed()) {
         A_API_SendMessage_Test1()
-        if (SystemCtrl_Ok()) {
-            while (SystemCtrl_100times/'addByShiweizBegin'/()) {
+        if (SystemCtrl_apiOk()) {
+            while (SystemCtrl_api100times()) {
                 Motor_API_SendMessage_Test2()
             }
         }
-        else if (SystemCtrl_Ng()) {
-            while (SystemCtrl_100times()) {
-                if (SystemCtrl_Ok()) {
+        else if (SystemCtrl_apiNg()) {
+            while (SystemCtrl_api100times()) {
+                if (SystemCtrl_apiOk()) {
                     Motor_API_SendMessage_Test3()
                 }
                 else {
@@ -218,7 +218,7 @@ STM_Status SystemCtrl_ECB_Working_SetTemperatureResult(SystemCtrlEvent const & _
             }
         }
     }
-    else if (SystemCtrl_Failed()) {
+    else if (SystemCtrl_apiFailed()) {
         A_API_SendMessage_Test11()
     }
     Display_API_SendMessage_ShowTemperature(param)
@@ -485,6 +485,7 @@ STM_Status SystemCtrl_ECB_Unitialized_PowerOn(SystemCtrlEvent const & _msg) {
     assert(p_msg_body != nullptr);
 
     //> implementation of Unitialized PowerOn
+    SystemCtrl_api_Initilize()
     ShareOBJ_API_ReadLastTemeprature()
     ShareOBJ_API_ReadLastMode()
     Motor_API_SendMessage_PowerOn(lv_last_temprature, lv_last_mode)

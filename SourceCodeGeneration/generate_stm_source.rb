@@ -68,9 +68,11 @@ component_array.each do |component|
     
     component.generate_stm_frame
     component.update_ecb_logic_tree_from_sequence
+    component.update_all_stm_apis
 
     #=begin
     module_stm = component.state_machine
+    stm_apis   = component.stm_apis
     
     erb_template_list = Dir["./InputForSTMSourceGen/*.erb"]
 

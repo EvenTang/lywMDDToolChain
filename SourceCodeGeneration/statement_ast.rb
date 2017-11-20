@@ -21,6 +21,10 @@ class OperationSequence < StructBase
     @operations.inject([]) {|code, op| code << op.generate_code}
   end
 
+  def all_internal_call_operations
+    @operations.inject([]) {|code, op| code << op.all_internal_call_operations }
+  end
+
   def empty?
     @operations.empty?
   end
