@@ -21,6 +21,7 @@ end
 
 class CppOperation
   attr_reader :statement
+  attr_reader :comment
 
   def initialize(statement)
     @statement = statement
@@ -39,7 +40,8 @@ class CppOperation
                   else
                     ""
                   end
-    "#{target_module}_#{type_symbol}_#{message_name}(#{param_list})"
+    ["//> #{target_module}_#{type_symbol}_#{message_name}(#{param_list})",
+     "#{target_module}_#{type_symbol}_#{message_name}(#{param_list})"]
   end
 
   def inner_api_call?
@@ -80,12 +82,15 @@ end
 class CppAltStructure < MultiConditionOperations
   def generate_code
     count = 0
-    @branches.inject [] do |code, branch|
+    code = ["//> alt: ?????"]
+    code = @branches.inject code do |code, branch|
       count += 1
-      code  << ["#{generate_judgement(branch.condition, count)} {", 
+      code  << ["//> opt: #{convert_condition_sentence_to_api(branch.condition)}",
+                "#{generate_judgement(branch.condition, count)} {", 
                 branch.generate_code.flatten.add_indent!,
                 "}"]
     end
+    code << "//> :end"
   end
 
   def all_internal_call_operations
@@ -106,9 +111,11 @@ end
 
 class CppLoopStructure < SingleConditionStruction
   def generate_code
-    ["while (#{convert_condition_sentence_to_api(@condition)}) {", 
+    ["//> loop: #{convert_condition_sentence_to_api(@condition)}", 
+     "while (#{convert_condition_sentence_to_api(@condition)}) {", 
       super.flatten.add_indent!,
-     "}"]
+     "}",
+     "//> :end"]
   end
 
   def all_internal_call_operations
@@ -122,9 +129,11 @@ end
 
 class BreakLoopStructure < SingleConditionStruction
   def generate_code
-    ["if (#{convert_condition_sentence_to_api(@condition)}) {", 
+    ["//> alt: #{convert_condition_sentence_to_api(@condition)}", 
+     "if (#{convert_condition_sentence_to_api(@condition)}) {", 
       super.push("break;").flatten.add_indent!,
-     "}"]
+     "}",
+     "//> :end"]
   end
 
   def all_internal_call_operations
