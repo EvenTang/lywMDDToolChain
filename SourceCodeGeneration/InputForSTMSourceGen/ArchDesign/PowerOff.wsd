@@ -11,22 +11,24 @@ deactivate RFComm
 activate SystemCtrl
 
 SystemCtrl->>Motor: PowerOff
+deactivate SystemCtrl
 activate Motor
 
 Motor->>SystemCtrl:PowerOffResult(result=OK)
 deactivate Motor
 
-
+activate SystemCtrl
 SystemCtrl->>Display:TurnOffDisplay
+deactivate SystemCtrl
+
 activate Display
 Display->>SystemCtrl:TurnOffDisplayResult(result=OK)
 deactivate Display
+activate SystemCtrl
 SystemCtrl->>RFComm:PowerOffResult(result=OK)
 deactivate SystemCtrl
 activate RFComm
 RFComm->>RemoteCtrl:PowerOffResult(result=OK)
 deactivate RFComm
-
-RFComm->>ModuleA : NewMeesage
 
 @enduml
