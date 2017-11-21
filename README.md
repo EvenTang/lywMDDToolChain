@@ -11,7 +11,7 @@ Release plan for V1.3
 
 Release plan for V2.0
 
-- [ ] Create component diagram and classify components (STM、SERVICE、LIB、OTHER …… ), run different ruby file base on this classification.
+- [ ] Create component diagram and classify components (STM¡¢SERVICE¡¢LIB¡¢OTHER ¡­¡­ ), run different ruby file base on this classification.
 - [ ] Add the function to check consistency between component diagram and sequence diagrams
 - [ ] Read uninitialized state from component diagram
 - [ ] Add the function to analysis start state which includes multi states, like as "state1|state2"
@@ -20,6 +20,7 @@ Release plan for V2.0
       -Output dir                                     output file directory
       -Module comp1,comp2...             component need to be analyzed
 - [ ] Modify STM generator to generate 100% STM code
+- [ ] Add exception handling code into task main file
 
 Release plan for future ( I don't know when )
 

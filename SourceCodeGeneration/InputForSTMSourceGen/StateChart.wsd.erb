@@ -7,11 +7,8 @@ module_name = module_stm.module_name %>
 
 [*] --> Unitialized
 <% 
-module_stm.transitions.each do |tran| 
-    if tran.s_state != tran.e_state
-%>
-<%= tran.s_state %> --> <%= tran.e_state %> : <%= tran.event %><%  
-    end
+module_stm.transitions.each do |tran| %>
+<%= tran.s_state %> --> <%= tran.e_state %> : <%= tran.event %><%
 end %>
 
 @enduml
