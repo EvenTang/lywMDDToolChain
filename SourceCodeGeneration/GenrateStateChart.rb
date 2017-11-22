@@ -176,7 +176,6 @@ component_array.each do |analyzer|
   erb_template_list = Dir["./InputForSTMSourceGen/StateChart.wsd.erb"]
 
   com_parser = ComponentParser.new(".\\InputForSTMSourceGen\\ArchDesign\\com_Components.wsd")
-  com_parser.get_all_components_info
   init_state = com_parser.get_init_state(module_stm.module_name)
   puts "init_state : " + init_state
 

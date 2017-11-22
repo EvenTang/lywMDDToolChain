@@ -1,2 +1,2 @@
-ruby .\generate_stm_source.rb -Input ./InputForSTMSourceGen/ArchDesign,./InputForSTMSourceGen/DetailDesign -Output ./GeneratedFile -Module SystemCtrl,Motor
+ruby .\generate_code.rb -Input ./InputForSTMSourceGen/ArchDesign,./InputForSTMSourceGen/DetailDesign -Output ./GeneratedFile -Module SystemCtrl,Motor,RFComm
 pause

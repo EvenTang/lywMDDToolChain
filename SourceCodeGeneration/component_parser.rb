@@ -42,12 +42,7 @@ class ComponentParser
         File.new(@component_file_name).readlines.map {|str| ComponentAnalyzer.new(str)}
       end
     @components = []
-  end
-
-  def get_all_components_info()
-    @components = @component_line_content.select do |statement|
-      !statement.component_name.empty?
-    end
+    get_all_components_info
   end
 
   def get_init_state(component_name)
@@ -56,6 +51,28 @@ class ComponentParser
     end
     ""
   end
+
+  def get_component_type(component_name)
+    components.each do |compo|
+      return compo.component_type if compo.component_name == component_name
+    end
+    COM_TYPE_UNKNOWN
+  end
+
+  def component_def_of?(component_name)
+    @components.each do |compo|
+      return true if compo.component_name == component_name
+    end
+    false
+  end
+  
+private
+  def get_all_components_info()
+    @components = @component_line_content.select do |statement|
+      !statement.component_name.empty?
+    end
+  end
+
 end
 
 # begin 
