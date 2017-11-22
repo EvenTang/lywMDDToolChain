@@ -19,8 +19,163 @@ td, th {
 </style>
 </head>
 <body>
+	<script src="jquery-3.2.1.js"></script>
+	<script>
+		function AddState()
+		{
+			var rowNumber = prompt("请输入新状态的行号", 1);
+			var rowName = prompt("请输入新状态的名称", "Idle");
+			var columnSize = 0;
+			$("#table1 tr:gt(0):eq(0) td").each(function () {columnSize++;});
+			
+			var newRow = "<tr><td>" + rowName + "</td>";
+			for(var i = 0; i < columnSize-1; i++)
+			{
+				newRow = newRow + "<td>DoNoting</td>";
+			}
+			newRow = newRow + "</tr>";
+			
+			var nRowNumber = parseInt(rowNumber, 10);
+			if(nRowNumber < 0)
+			{
+				$("#table1 tr:gt(0):eq(-1)").after(newRow);
+			}
+			else if(0 == nRowNumber)
+			{
+				$("#table1 tr:gt(0):eq(0)").before(newRow);
+			}
+			else
+			{
+				nRowNumber = nRowNumber - 1;
+				var myString = "#table1 tr:gt(0):eq(" + nRowNumber + ")";
+				$(myString).after(newRow);
+			}
+			
+			$("#table1 td").bind("dblclick",function()
+			{
+				var oldVal = $(this).text();
+				
+                var input = "<textarea rows='4' cols='50'>" +oldVal+ "</textarea>";
+                $(this).text('');
+                $(this).append(input);
+                $('#tmpId').focus();
+                $('#tmpId').blur(function()
+				{
+                    if($(this).val() != '')
+					{
+                       oldVal = $(this).val();
+                    }
+                   $(this).closest('td').text(oldVal);
+                });
+			});
+		}
+		
+		function DeleteState()
+		{
+			var rowNumber = prompt("请输入待删除状态的行号", 1);
+			var nRowNumber = parseInt(rowNumber, 10);
+			if(nRowNumber < 0)
+			{
+				$("#table1 tr:gt(0):eq(-1)").remove();
+			}
+			else if(0 == nRowNumber)
+			{
+			}
+			else
+			{
+				nRowNumber = nRowNumber - 1;
+				var myString = "#table1 tr:gt(0):eq(" + nRowNumber + ")";
+				$(myString).remove();
+			}
+		}
+		
+		function AddEvent()
+		{
+			var columnNumber = prompt("请输入新事件的列号", 1);
+			var nColumnNumber = parseInt(columnNumber, 10) + 1;
+			if(nColumnNumber < 1)
+			{
+				return;
+			}
+			
+			var columnName = prompt("请输入新事件的名称", "Timeout");
+			
+			var newColumn = "<th>" + columnName + "</th>";
+			var myString = "#table1 tr th:eq(" + columnNumber + ")";
+			$(myString).after(newColumn);
+			
+			myString = "#table1 tr td:nth-child(" + nColumnNumber + ")";
+			$(myString).after("<td>DoNothing</td>");
+			
+			$("#table1 td").bind("dblclick",function()
+			{
+				var oldVal = $(this).text();
+                var input = "<input type='text' id='tmpId' value='" + oldVal + "' >";
+                $(this).text('');
+                $(this).append(input);
+                $('#tmpId').focus();
+                $('#tmpId').blur(function()
+				{
+                    if($(this).val() != '')
+					{
+                       oldVal = $(this).val();
+                    }
+                   $(this).closest('td').text(oldVal);
+                });
+			});
+		}
+		
+		function DeteteEvent()
+		{
+			var columnNumber = prompt("请输入待删除事件的列号", 1);
+			var nColumnNumber = parseInt(columnNumber, 10) + 1;
+			if(nColumnNumber < 2)
+			{
+				return;
+			}
 
-    <table>
+			var myString = "#table1 tr th:eq(" + columnNumber + ")";
+			$(myString).remove();
+			myString = "#table1 tr td:nth-child(" + nColumnNumber + ")";
+			$(myString).remove();
+		}
+		
+		$(document).ready(function () 
+		{
+			$("#table1 td").dblclick(function () 
+			{
+				var tdSeq = $(this).parent().find("td").index($(this));
+				if(tdSeq < 1)
+				{
+					return;
+				}
+				
+				var oldVal = $(this).text();
+                var input = "<textarea id='tmpId' rows='4' cols='50'>" +oldVal+ "</textarea>";
+                // $(this).text('');
+                $(this).append(input);
+                $('#tmpId').focus();
+                $('#tmpId').on('blur', function(e)
+				{
+				    //alert( "Handler for .blur() called." );
+                    if($(this).val() != '')
+					{
+                       oldVal = $(this).val();
+                    }
+                   $(this).closest('td').text(oldVal);
+                });
+			})
+		});
+	</script>
+	
+	<input type="button" value="新增状态" onclick="AddState()" id="btn_add_state">
+	<input type="button" value="删除状态" onclick="DeleteState()" id="btn_add_event">
+	<input type="button" value="新增事件" onclick="AddEvent()" id="btn_delete_state">
+	<input type="button" value="删除事件" onclick="DeteteEvent()" id="btn_delete_event">
+	
+	<br>
+	
+    <table id="table1">
              
       <tr>
         <th>S\E</th>
