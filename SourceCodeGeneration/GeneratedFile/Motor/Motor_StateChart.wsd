@@ -2,7 +2,7 @@
 
 @startuml Motor's state chart
 
-[*] --> Unitialized
+[*] --> M_uninitialized
 
 
 @enduml

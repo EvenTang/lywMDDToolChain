@@ -376,7 +376,7 @@ STM_Status SystemCtrl_ECB_Working_PowerOnResult(SystemCtrlEvent const & _msg) {
 }
 
 /* @brief Event callback of SystemCtrl Module
- *        status : Unitialized
+ *        status : SC_uninitialized
  *        event  : SetTemperature
  *        reference sequence id list:
  *               xxxx
@@ -385,18 +385,18 @@ STM_Status SystemCtrl_ECB_Working_PowerOnResult(SystemCtrlEvent const & _msg) {
  * @param _msg : SystemCtrlEvent
  * @return STM_Status
  */
-STM_Status SystemCtrl_ECB_Unitialized_SetTemperature(SystemCtrlEvent const & _msg) {
+STM_Status SystemCtrl_ECB_SC_uninitialized_SetTemperature(SystemCtrlEvent const & _msg) {
     assert(_msg.has_msg_set_temperature());
     SetTemperature * p_msg_body = _msg.get_msg_set_temperature();
     assert(p_msg_body != nullptr);
 
-    //> implementation of Unitialized SetTemperature
+    //> implementation of SC_uninitialized SetTemperature
 
     return STM_STATS_OK;
 }
 
 /* @brief Event callback of SystemCtrl Module
- *        status : Unitialized
+ *        status : SC_uninitialized
  *        event  : SetTemperatureResult
  *        reference sequence id list:
  *               xxxx
@@ -405,18 +405,18 @@ STM_Status SystemCtrl_ECB_Unitialized_SetTemperature(SystemCtrlEvent const & _ms
  * @param _msg : SystemCtrlEvent
  * @return STM_Status
  */
-STM_Status SystemCtrl_ECB_Unitialized_SetTemperatureResult(SystemCtrlEvent const & _msg) {
+STM_Status SystemCtrl_ECB_SC_uninitialized_SetTemperatureResult(SystemCtrlEvent const & _msg) {
     assert(_msg.has_msg_set_temperature_result());
     SetTemperatureResult * p_msg_body = _msg.get_msg_set_temperature_result();
     assert(p_msg_body != nullptr);
 
-    //> implementation of Unitialized SetTemperatureResult
+    //> implementation of SC_uninitialized SetTemperatureResult
 
     return STM_STATS_OK;
 }
 
 /* @brief Event callback of SystemCtrl Module
- *        status : Unitialized
+ *        status : SC_uninitialized
  *        event  : ShowTemperatureResult
  *        reference sequence id list:
  *               xxxx
@@ -425,12 +425,12 @@ STM_Status SystemCtrl_ECB_Unitialized_SetTemperatureResult(SystemCtrlEvent const
  * @param _msg : SystemCtrlEvent
  * @return STM_Status
  */
-STM_Status SystemCtrl_ECB_Unitialized_ShowTemperatureResult(SystemCtrlEvent const & _msg) {
+STM_Status SystemCtrl_ECB_SC_uninitialized_ShowTemperatureResult(SystemCtrlEvent const & _msg) {
     assert(_msg.has_msg_show_temperature_result());
     ShowTemperatureResult * p_msg_body = _msg.get_msg_show_temperature_result();
     assert(p_msg_body != nullptr);
 
-    //> implementation of Unitialized ShowTemperatureResult
+    //> implementation of SC_uninitialized ShowTemperatureResult
     //> RFComm_API_SendMessage_PowerOn(OK)
     RFComm_API_SendMessage_PowerOn(OK)
 
@@ -438,7 +438,7 @@ STM_Status SystemCtrl_ECB_Unitialized_ShowTemperatureResult(SystemCtrlEvent cons
 }
 
 /* @brief Event callback of SystemCtrl Module
- *        status : Unitialized
+ *        status : SC_uninitialized
  *        event  : PowerOff
  *        reference sequence id list:
  *               xxxx
@@ -447,18 +447,18 @@ STM_Status SystemCtrl_ECB_Unitialized_ShowTemperatureResult(SystemCtrlEvent cons
  * @param _msg : SystemCtrlEvent
  * @return STM_Status
  */
-STM_Status SystemCtrl_ECB_Unitialized_PowerOff(SystemCtrlEvent const & _msg) {
+STM_Status SystemCtrl_ECB_SC_uninitialized_PowerOff(SystemCtrlEvent const & _msg) {
     assert(_msg.has_msg_power_off());
     PowerOff * p_msg_body = _msg.get_msg_power_off();
     assert(p_msg_body != nullptr);
 
-    //> implementation of Unitialized PowerOff
+    //> implementation of SC_uninitialized PowerOff
 
     return STM_STATS_OK;
 }
 
 /* @brief Event callback of SystemCtrl Module
- *        status : Unitialized
+ *        status : SC_uninitialized
  *        event  : PowerOffResult
  *        reference sequence id list:
  *               xxxx
@@ -467,18 +467,18 @@ STM_Status SystemCtrl_ECB_Unitialized_PowerOff(SystemCtrlEvent const & _msg) {
  * @param _msg : SystemCtrlEvent
  * @return STM_Status
  */
-STM_Status SystemCtrl_ECB_Unitialized_PowerOffResult(SystemCtrlEvent const & _msg) {
+STM_Status SystemCtrl_ECB_SC_uninitialized_PowerOffResult(SystemCtrlEvent const & _msg) {
     assert(_msg.has_msg_power_off_result());
     PowerOffResult * p_msg_body = _msg.get_msg_power_off_result();
     assert(p_msg_body != nullptr);
 
-    //> implementation of Unitialized PowerOffResult
+    //> implementation of SC_uninitialized PowerOffResult
 
     return STM_STATS_OK;
 }
 
 /* @brief Event callback of SystemCtrl Module
- *        status : Unitialized
+ *        status : SC_uninitialized
  *        event  : TurnOffDisplayResult
  *        reference sequence id list:
  *               xxxx
@@ -487,18 +487,18 @@ STM_Status SystemCtrl_ECB_Unitialized_PowerOffResult(SystemCtrlEvent const & _ms
  * @param _msg : SystemCtrlEvent
  * @return STM_Status
  */
-STM_Status SystemCtrl_ECB_Unitialized_TurnOffDisplayResult(SystemCtrlEvent const & _msg) {
+STM_Status SystemCtrl_ECB_SC_uninitialized_TurnOffDisplayResult(SystemCtrlEvent const & _msg) {
     assert(_msg.has_msg_turn_off_display_result());
     TurnOffDisplayResult * p_msg_body = _msg.get_msg_turn_off_display_result();
     assert(p_msg_body != nullptr);
 
-    //> implementation of Unitialized TurnOffDisplayResult
+    //> implementation of SC_uninitialized TurnOffDisplayResult
 
     return STM_STATS_OK;
 }
 
 /* @brief Event callback of SystemCtrl Module
- *        status : Unitialized
+ *        status : SC_uninitialized
  *        event  : PowerOn
  *        reference sequence id list:
  *               xxxx
@@ -507,12 +507,12 @@ STM_Status SystemCtrl_ECB_Unitialized_TurnOffDisplayResult(SystemCtrlEvent const
  * @param _msg : SystemCtrlEvent
  * @return STM_Status
  */
-STM_Status SystemCtrl_ECB_Unitialized_PowerOn(SystemCtrlEvent const & _msg) {
+STM_Status SystemCtrl_ECB_SC_uninitialized_PowerOn(SystemCtrlEvent const & _msg) {
     assert(_msg.has_msg_power_on());
     PowerOn * p_msg_body = _msg.get_msg_power_on();
     assert(p_msg_body != nullptr);
 
-    //> implementation of Unitialized PowerOn
+    //> implementation of SC_uninitialized PowerOn
     //> SystemCtrl_api_Initilize()
     SystemCtrl_api_Initilize()
     //> ShareOBJ_API_ReadLastTemeprature()
@@ -526,7 +526,7 @@ STM_Status SystemCtrl_ECB_Unitialized_PowerOn(SystemCtrlEvent const & _msg) {
 }
 
 /* @brief Event callback of SystemCtrl Module
- *        status : Unitialized
+ *        status : SC_uninitialized
  *        event  : PowerOnResult
  *        reference sequence id list:
  *               xxxx
@@ -535,12 +535,12 @@ STM_Status SystemCtrl_ECB_Unitialized_PowerOn(SystemCtrlEvent const & _msg) {
  * @param _msg : SystemCtrlEvent
  * @return STM_Status
  */
-STM_Status SystemCtrl_ECB_Unitialized_PowerOnResult(SystemCtrlEvent const & _msg) {
+STM_Status SystemCtrl_ECB_SC_uninitialized_PowerOnResult(SystemCtrlEvent const & _msg) {
     assert(_msg.has_msg_power_on_result());
     PowerOnResult * p_msg_body = _msg.get_msg_power_on_result();
     assert(p_msg_body != nullptr);
 
-    //> implementation of Unitialized PowerOnResult
+    //> implementation of SC_uninitialized PowerOnResult
     //> Display_API_SendMessage_ShowTemperature(lv_last_temprature)
     Display_API_SendMessage_ShowTemperature(lv_last_temprature)
 

@@ -2,6 +2,7 @@ require 'set'
 require 'erb'
 require 'fileutils'
 require './lyw_rblib_extension'
+require './component_parser'
 
 puts "Start Parsing!"
 
@@ -173,6 +174,11 @@ component_array.each do |analyzer|
   module_stm = analyzer.state_machine
   module_stm.PostProcess
   erb_template_list = Dir["./InputForSTMSourceGen/StateChart.wsd.erb"]
+
+  com_parser = ComponentParser.new(".\\InputForSTMSourceGen\\ArchDesign\\com_Components.wsd")
+  com_parser.get_all_components_info
+  init_state = com_parser.get_init_state(module_stm.module_name)
+  puts "init_state : " + init_state
 
   module_dir = output_dir + "/" + module_stm.module_name.to_s
   FileUtils.mkdir(module_dir) unless File.exists?(module_dir)
