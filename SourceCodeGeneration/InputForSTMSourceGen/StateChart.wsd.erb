@@ -5,7 +5,7 @@ module_name = module_stm.module_name %>
 
 @startuml <%= module_name %>'s state chart
 
-[*] --> Unitialized
+[*] --> <%= init_state %>
 <% 
 module_stm.transitions.each do |tran| %>
 <%= tran.s_state %> --> <%= tran.e_state %> : <%= tran.event %><%

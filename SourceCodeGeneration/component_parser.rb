@@ -3,6 +3,7 @@ class ComponentAnalyzer
   attr_reader :statement_str
   attr_reader :component_name
   attr_reader :component_type
+  attr_reader :init_state
 
   COM_TYPE_STM     = 1
   COM_TYPE_SERVICE = 2
@@ -14,17 +15,20 @@ class ComponentAnalyzer
     @statement_str = statement_str
     @component_name = ""
     @component_type = ""
+    @init_state = ""
     get_component_info
   end
 
   private
   def get_component_info()
-    if @statement_str =~ /component\s+(\w*)\s*\/\'\s+(\w*)\s+\'/
+    # component RemoteCtrl    /' STM     RC_uninitialized '/ 
+    if @statement_str =~ /component\s+(\w*)\s*\/\'\s+(\w*)\s+(\w*)\s+\'/
       @component_name = $1
       #type_match = {STM : COM_TYPE_STM, SERVICE : COM_TYPE_SERVICE, LIB : COM_TYPE_LIB, OTHER : COM_TYPE_OTHER}
       @component_type = ComponentAnalyzer.const_get("COM_TYPE_" + $2)
+      @init_state = $3
     end
-  end    
+  end
 end
 
 class ComponentParser
@@ -38,13 +42,31 @@ class ComponentParser
         File.new(@component_file_name).readlines.map {|str| ComponentAnalyzer.new(str)}
       end
     @components = []
+    get_all_components_info
   end
 
+  def get_init_state(component_name)
+    target_compo = @components.find {|compo| compo.component_name == component_name }
+    return target_compo.init_state
+  end
+
+  def get_component_type(component_name)
+    target_compo = @components.find {|compo| compo.component_name == component_name }
+    return target_compo.component_type
+  end
+
+  def component_def_of?(component_name)
+    return true if @components.find {|compo| compo.component_name == component_name }
+    false
+  end
+  
+private
   def get_all_components_info()
     @components = @component_line_content.select do |statement|
       !statement.component_name.empty?
     end
   end
+
 end
 
 # begin 

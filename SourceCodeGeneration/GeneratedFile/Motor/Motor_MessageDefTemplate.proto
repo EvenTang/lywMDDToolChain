@@ -1,0 +1,30 @@
+
+
+
+message SetTemperature { 
+    optional !TYPE! new_temp = 1;
+} 
+message Test2 { 
+} 
+message Test3 { 
+} 
+message Test4 { 
+} 
+message PowerOff { 
+} 
+message PowerOn { 
+    optional !TYPE! last_temperature = 1;
+    optional !TYPE! last_mode = 2;
+} 
+
+message MotorMessagge {
+    required int32 message_id = 1;
+    oneof msg_body { 
+        SetTemperature msg_set_temperature = 1; 
+        Test2 msg_test2 = 2; 
+        Test3 msg_test3 = 3; 
+        Test4 msg_test4 = 4; 
+        PowerOff msg_power_off = 5; 
+        PowerOn msg_power_on = 6;  
+    }
+}

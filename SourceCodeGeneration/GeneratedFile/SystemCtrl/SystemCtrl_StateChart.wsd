@@ -2,17 +2,17 @@
 
 @startuml SystemCtrl's state chart
 
-[*] --> Unitialized
+[*] --> SC_uninitialized
 
 Idle --> Working : SetTemperature
 Working --> Working : SetTemperatureResult
 Working --> Idle : ShowTemperatureResult
 Idle --> Idle : PowerOff
 Idle --> Idle : PowerOffResult
-Idle --> Unitialized : TurnOffDisplayResult
-Unitialized --> Unitialized : PowerOn
-Unitialized --> Unitialized : PowerOnResult
-Unitialized --> Idle : ShowTemperatureResult
+Idle --> SC_uninitialized : TurnOffDisplayResult
+SC_uninitialized --> SC_uninitialized : PowerOn
+SC_uninitialized --> SC_uninitialized : PowerOnResult
+SC_uninitialized --> Idle : ShowTemperatureResult
 
 @enduml
 
