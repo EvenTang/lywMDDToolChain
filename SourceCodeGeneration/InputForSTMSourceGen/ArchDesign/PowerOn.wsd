@@ -6,7 +6,7 @@ hide footbox
 
 RemoteCtrl->>RFComm : Power on
 activate RFComm
-hnote over SystemCtrl: Unitialized
+hnote over SystemCtrl: SC_uninitialized
 RFComm->>SystemCtrl:PowerOn()
 deactivate RFComm
 activate SystemCtrl

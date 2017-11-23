@@ -1,0 +1,11 @@
+
+
+@startuml Motor's state chart
+
+[*] --> M_uninitialized
+
+
+@enduml
+
+
+       
