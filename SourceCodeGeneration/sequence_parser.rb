@@ -67,7 +67,7 @@ class SequenceParser
   def get_all_components()
     @components = Set.new
     @seq_file_content.each do |line|
-      if line =~ /(\w*)\s*(-->|->|->>|-->>)\s*(\w*)\s*:/
+      if line.statement_str =~ /(\w+)\s*(-->|->|->>|-->>)\s*(\w+)\s*:/
         @components.merge [$1, $3]
       end
     end

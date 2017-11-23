@@ -40,6 +40,8 @@ class ComponentParser
     @component_line_content = 
       if File.exist?(@component_file_name)
         File.new(@component_file_name).readlines.map {|str| ComponentAnalyzer.new(str)}
+      else
+        []
       end
     @components = []
     get_all_components_info
