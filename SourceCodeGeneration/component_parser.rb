@@ -46,14 +46,14 @@ class ComponentParser
   end
 
   def get_init_state(component_name)
-    components.each do |compo|
+    @components.each do |compo|
       return compo.init_state if compo.component_name == component_name
     end
     ""
   end
 
   def get_component_type(component_name)
-    components.each do |compo|
+    @components.each do |compo|
       return compo.component_type if compo.component_name == component_name
     end
     COM_TYPE_UNKNOWN

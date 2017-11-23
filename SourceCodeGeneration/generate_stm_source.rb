@@ -22,7 +22,7 @@ def enumrate_all_file_names_by(file_ext, dir = ".")
   end
 end
 
-def GenerateSTMSource(input_dir, output_dir, component_name)
+def generate_STM_source(input_dir, output_dir, component_name)
   component= SoftwareModel.new(component_name)
   input_dir.each do |cur_dir|
     puts "current dir : #{cur_dir}" 

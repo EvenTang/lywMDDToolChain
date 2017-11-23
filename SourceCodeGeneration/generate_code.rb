@@ -16,18 +16,18 @@ output_dir = ""
 component_array = []
 cur_content = INPUT_CONTENT
 
-def RunCodeGenerate(input_dir, output_dir, module_str)
+def run_code_generator(input_dir, output_dir, module_str)
   com_parser = ComponentParser.new(".\\InputForSTMSourceGen\\ArchDesign\\com_Components.wsd")
   if com_parser.component_def_of?(module_str)
     case com_parser.get_component_type(module_str)
     when ComponentAnalyzer::COM_TYPE_STM
       puts "=====current module is STM type====="
-      GenerateSTMSource(input_dir, output_dir, module_str)
+      generate_STM_source(input_dir, output_dir, module_str)
     when ComponentAnalyzer::COM_TYPE_SERVICE
       puts "=====current module is SERVICE type====="
-      GenerateServiceSource(input_dir, output_dir, module_str)
+      generate_Service_source(input_dir, output_dir, module_str)
     when ComponentAnalyzer::COM_TYPE_LIB
-      #GenerateLIBSource(input_dir, output_dir, module_str)
+      #generate_LIB_source(input_dir, output_dir, module_str)
     else
     end
   else
@@ -53,7 +53,7 @@ if ARGV.size > 0
       elsif cur_content == MODULE_CONTENT
         str_array = str.split(",")
         str_array.each do |module_str|
-            RunCodeGenerate(input_dir, output_dir, module_str)
+          run_code_generator(input_dir, output_dir, module_str)
         end
       else
       end
