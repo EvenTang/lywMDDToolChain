@@ -41,7 +41,7 @@ class CppOperation
                     ""
                   end
     ["//> #{target_module}_#{type_symbol}_#{message_name}(#{param_list})",
-     "#{target_module}_#{type_symbol}_#{message_name}(#{param_list})"]
+     "#{target_module}_#{type_symbol}_#{message_name}(#{param_list});"]
   end
 
   def inner_api_call?
