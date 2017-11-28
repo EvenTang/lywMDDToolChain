@@ -38,7 +38,7 @@ FP_<%= module_name %>_ECB const <%= module_name %>_state_ecb_map[][] = { <%
     states.each do |state| %>
 	{ <% 
         events.each do |event| %>
-		<%= module_name %>_<%= state %>_<%= event.name %>, <% 
+		<%= module_name %>_ECB_<%= state %>_<%= event.name %>, <% 
         end %>
 	}, <%
 end
