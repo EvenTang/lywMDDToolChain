@@ -27,5 +27,6 @@ Release plan for future ( I don't know when )
 - [ ] Create a exchange data file(may be xml) for ERBCodeGenerator/SequenceAnalyzer
 - [ ] Change all parsers to context-free grammars parser (Low priority) 
 - [ ] Create Python (or something else that is easy to be used as a simulation tool) simulation model
+- [ ] Analysis return value for inner API ( format: return=InnerAPI(key1=value1,key2=value2) )
 
 
