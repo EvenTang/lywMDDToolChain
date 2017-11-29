@@ -92,6 +92,8 @@ class SequenceParser
         logic_tree.add_operation action
       when ScriptStatement::TYPE_STRUCTURE_DEF
         logic_tree.update_structure action.contents[:key_word], action.contents[:condition]
+      when ScriptStatement::TYPE_STATE_DEF
+        logic_tree.add_state_tramsmit action
       end
     end
     logic_tree    

@@ -20,6 +20,7 @@ end %>
     EV_EVENT_MAX
 };
 
+UINT8 <%= module_name %>_State;
 <%
 states.each do |state| %>
 /* Event callback of <%= module_name %> Module,

@@ -83,6 +83,29 @@ def convert_condition_sentence_to_api(condition)
   end
 end
 
+class CppStateTransmit
+  attr_reader :statement
+
+  def initialize(statement)
+    @statement = statement
+  end
+
+  def generate_code()
+    module_name = @statement.contents[:component_name]
+    state = @statement.contents[:states]
+    if state.size == 1
+      ["//> #{module_name}_State = (UINT8)ST_#{state[0]}",
+       "#{module_name}_State = (UINT8)ST_#{state[0]};"]
+    end
+
+  end
+  
+  def all_internal_call_operations
+    nil
+  end
+
+end
+
 class CppAltStructure < MultiConditionOperations
   def generate_code
     count = 0
@@ -131,7 +154,7 @@ class CppLoopStructure < SingleConditionStruction
 
 end
 
-class BreakLoopStructure < SingleConditionStruction
+class CppBreakStructure < SingleConditionStruction
   def generate_code
     ["//> alt: #{convert_condition_sentence_to_api(@condition)}", 
      "if (#{convert_condition_sentence_to_api(@condition)}) {", 
@@ -148,7 +171,7 @@ class BreakLoopStructure < SingleConditionStruction
 
 end
 
-class OptLoopStructure < SingleConditionStruction
+class CppOptStructure < SingleConditionStruction
   def generate_code
     ["if (#{convert_condition_sentence_to_api(@condition)}) {", 
       super.flatten.add_indent!,

@@ -32,6 +32,10 @@ class LogicTree
     end
   end
 
+  def add_state_tramsmit(operation)
+    @current_strut.add_operation CppStateTransmit.new(operation)
+  end
+
   def generate_code
     code = @top_level_operations.generate_code
     code
