@@ -93,9 +93,10 @@ class CppStateTransmit
   def generate_code()
     module_name = @statement.contents[:component_name]
     state = @statement.contents[:states]
+    # It's invalid to transmit to multi states 
     if state.size == 1
-      ["//> #{module_name}_State = (UINT8)ST_#{state[0]}",
-       "#{module_name}_State = (UINT8)ST_#{state[0]};"]
+       ["//> #{module_name}_SetStatus(ST_#{state[0]})",
+       "#{module_name}_SetStatus(ST_#{state[0]});"]
     end
 
   end

@@ -17,6 +17,10 @@ enum Motor_Event {
     EV_EVENT_MAX
 };
 
+void Motor_SetStatus(Motor_State state);
+
+Motor_State Motor_GetStatus();
+
 
 
 // State-Event Callback Matrix

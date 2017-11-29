@@ -4,6 +4,8 @@ events = module_stm.events
 module_name = module_stm.module_name 
 %>#include "<%= module_name %>_STM.h"
 
+static <%= module_name %>_State;
+
 <%
 states.each do |state|
     events.each do |event| %>
@@ -32,3 +34,11 @@ STM_Status <%= module_name %>_ECB_<%= state %>_<%= event.name %>(<%= module_name
 <%  
     end
 end %>
+
+void <%= module_name %>_SetStatus(<%= module_name %>_State state){
+    <%= module_name %>_State = state;
+}
+
+<%= module_name %>_State <%= module_name %>_GetStatus(){
+    return <%= module_name %>_State;
+}

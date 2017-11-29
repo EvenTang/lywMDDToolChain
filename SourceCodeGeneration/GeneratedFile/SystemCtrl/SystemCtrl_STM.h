@@ -22,6 +22,10 @@ enum SystemCtrl_Event {
     EV_EVENT_MAX
 };
 
+void SystemCtrl_SetStatus(SystemCtrl_State state);
+
+SystemCtrl_State SystemCtrl_GetStatus();
+
 
 /* Event callback of SystemCtrl Module,
  * All state response for State :Idle 
@@ -64,34 +68,34 @@ STM_Status SystemCtrl_ECB_SC_uninitialized_PowerOnResult(SystemCtrlEvent const &
 typedef STM_Status (FP_SystemCtrl_ECB)(SystemCtrlEvent & _msg); 
 FP_SystemCtrl_ECB const SystemCtrl_state_ecb_map[][] = { 
 	{ 
-		SystemCtrl_Idle_SetTemperature, 
-		SystemCtrl_Idle_SetTemperatureResult, 
-		SystemCtrl_Idle_ShowTemperatureResult, 
-		SystemCtrl_Idle_PowerOff, 
-		SystemCtrl_Idle_PowerOffResult, 
-		SystemCtrl_Idle_TurnOffDisplayResult, 
-		SystemCtrl_Idle_PowerOn, 
-		SystemCtrl_Idle_PowerOnResult, 
+		SystemCtrl_ECB_Idle_SetTemperature, 
+		SystemCtrl_ECB_Idle_SetTemperatureResult, 
+		SystemCtrl_ECB_Idle_ShowTemperatureResult, 
+		SystemCtrl_ECB_Idle_PowerOff, 
+		SystemCtrl_ECB_Idle_PowerOffResult, 
+		SystemCtrl_ECB_Idle_TurnOffDisplayResult, 
+		SystemCtrl_ECB_Idle_PowerOn, 
+		SystemCtrl_ECB_Idle_PowerOnResult, 
 	}, 
 	{ 
-		SystemCtrl_Working_SetTemperature, 
-		SystemCtrl_Working_SetTemperatureResult, 
-		SystemCtrl_Working_ShowTemperatureResult, 
-		SystemCtrl_Working_PowerOff, 
-		SystemCtrl_Working_PowerOffResult, 
-		SystemCtrl_Working_TurnOffDisplayResult, 
-		SystemCtrl_Working_PowerOn, 
-		SystemCtrl_Working_PowerOnResult, 
+		SystemCtrl_ECB_Working_SetTemperature, 
+		SystemCtrl_ECB_Working_SetTemperatureResult, 
+		SystemCtrl_ECB_Working_ShowTemperatureResult, 
+		SystemCtrl_ECB_Working_PowerOff, 
+		SystemCtrl_ECB_Working_PowerOffResult, 
+		SystemCtrl_ECB_Working_TurnOffDisplayResult, 
+		SystemCtrl_ECB_Working_PowerOn, 
+		SystemCtrl_ECB_Working_PowerOnResult, 
 	}, 
 	{ 
-		SystemCtrl_SC_uninitialized_SetTemperature, 
-		SystemCtrl_SC_uninitialized_SetTemperatureResult, 
-		SystemCtrl_SC_uninitialized_ShowTemperatureResult, 
-		SystemCtrl_SC_uninitialized_PowerOff, 
-		SystemCtrl_SC_uninitialized_PowerOffResult, 
-		SystemCtrl_SC_uninitialized_TurnOffDisplayResult, 
-		SystemCtrl_SC_uninitialized_PowerOn, 
-		SystemCtrl_SC_uninitialized_PowerOnResult, 
+		SystemCtrl_ECB_SC_uninitialized_SetTemperature, 
+		SystemCtrl_ECB_SC_uninitialized_SetTemperatureResult, 
+		SystemCtrl_ECB_SC_uninitialized_ShowTemperatureResult, 
+		SystemCtrl_ECB_SC_uninitialized_PowerOff, 
+		SystemCtrl_ECB_SC_uninitialized_PowerOffResult, 
+		SystemCtrl_ECB_SC_uninitialized_TurnOffDisplayResult, 
+		SystemCtrl_ECB_SC_uninitialized_PowerOn, 
+		SystemCtrl_ECB_SC_uninitialized_PowerOnResult, 
 	}, 
 }; 
 
