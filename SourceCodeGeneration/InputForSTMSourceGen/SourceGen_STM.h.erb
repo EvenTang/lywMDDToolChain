@@ -13,8 +13,9 @@ end %>
 };
 
 // Event definition
-enum <%= module_name %>_Event { <%  
-events.each do |event| %>
+enum <%= module_name %>_Event { <% 
+temp_events = events.to_a.sort {|a,b| a.name <=> b.name}
+temp_events.each do |event| %>
     EV_<%= event.name %>,<% 
 end %>
     EV_EVENT_MAX
