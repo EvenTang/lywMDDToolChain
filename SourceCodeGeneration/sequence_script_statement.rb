@@ -59,7 +59,7 @@ class ScriptStatement
       #puts "!!!!!!matched"
       @type = TYPE_STATE_DEF
       @contents[:component_name] = $1.strip
-      @contents[:states] = $2.strip.split(/\| */)
+      @contents[:states] = $2.strip.split(/\|/).collect {|state| state.strip.upcase }
       #puts @type
       #puts @contents[:component_name]
       #puts @contents[:states]
