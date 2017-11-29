@@ -11,14 +11,14 @@ enum SystemCtrl_State {
 
 // Event definition
 enum SystemCtrl_Event { 
+    EV_PowerOff,
+    EV_PowerOffResult,
+    EV_PowerOn,
+    EV_PowerOnResult,
     EV_SetTemperature,
     EV_SetTemperatureResult,
     EV_ShowTemperatureResult,
-    EV_PowerOff,
-    EV_PowerOffResult,
     EV_TurnOffDisplayResult,
-    EV_PowerOn,
-    EV_PowerOnResult,
     EV_EVENT_MAX
 };
 

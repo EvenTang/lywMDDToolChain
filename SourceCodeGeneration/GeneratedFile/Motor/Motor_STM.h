@@ -8,12 +8,12 @@ enum Motor_State {
 
 // Event definition
 enum Motor_Event { 
+    EV_PowerOff,
+    EV_PowerOn,
     EV_SetTemperature,
     EV_Test2,
     EV_Test3,
     EV_Test4,
-    EV_PowerOff,
-    EV_PowerOn,
     EV_EVENT_MAX
 };
 
