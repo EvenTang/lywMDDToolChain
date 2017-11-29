@@ -33,12 +33,14 @@ def generate_STM_source(input_dir, output_dir, component_name)
   end  
 
   component.generate_stm_frame
+  component.update_class_diagram_by_seq
   component.update_ecb_logic_tree_from_sequence
   component.update_all_stm_apis
 
   #=begin
   module_stm = component.state_machine
   stm_apis   = component.stm_apis
+  class_diag = component.class_diagram
   
   erb_template_list = Dir["./InputForSTMSourceGen/*.erb"]
 

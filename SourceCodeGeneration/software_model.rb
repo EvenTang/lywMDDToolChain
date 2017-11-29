@@ -1,5 +1,6 @@
 require 'set'
 require '.\sequence_parser'
+require '.\class_diagram_parser'
 require '.\stm_model'
 
 
@@ -21,6 +22,7 @@ class SoftwareModel
 
   attr_accessor :module_name, :state_machine
   attr_accessor :sequence_parsers
+  attr_reader   :class_diagram
   attr_reader   :stm_apis
   
   def initialize(module_name)
@@ -28,6 +30,7 @@ class SoftwareModel
     @module_name = module_name
     @sequence_parsers = []
     @stm_apis = STMInnerAPI.new
+    @class_diagram = ModuleClass.new(module_name)
   end
 
   def add_sequence_paser(seq_paser)
@@ -62,6 +65,16 @@ class SoftwareModel
       ops << ecb.logic_tree&.all_internal_call_operations
     end
     @stm_apis.add_api_operations apis.flatten.compact
+  end
+
+  def update_class_diagram_by_seq
+    @sequence_parsers.each do |seq_parser|
+      seq_parser.focus_on_component @module_name
+      seq_parser.get_all_events.each do |event_statement|
+        @class_diagram.generate_send_msg_method_from_seq(event_statement)
+      end
+    end
+    @class_diagram.clean_up
   end
 
 end

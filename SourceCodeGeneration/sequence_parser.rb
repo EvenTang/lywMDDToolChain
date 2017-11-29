@@ -33,13 +33,12 @@ class SequenceParser
   end
 
   def get_all_events
-    events = Set.new
+    events = [] # Set.new
     if @focused_component != ""
-      all_send_message_defs = @seq_file_content.each do |statement|
-        if statement.type == ScriptStatement::TYPE_SEND_MESSAGE && @focused_component == statement.contents[:destination_component_name]
-          events << statement.contents[:message]
-        end
+      defs_send_message = @seq_file_content.select do |statement|
+        (statement.type == ScriptStatement::TYPE_SEND_MESSAGE) && (@focused_component == statement.contents[:destination_component_name])
       end
+      events = defs_send_message.map { |statement| statement.contents[:message]}
     end
     events
   end
