@@ -168,9 +168,8 @@ class CppBreakStructure < SingleConditionStruction
 
   def all_internal_call_operations
     inner_apis = super
-    # FIXME: use class diagram instead
-    # temp_statement = ScriptStatement.new("SystemCtrl->SystemCtrl:"+convert_condition_sentence_to_api(@condition))
-    # inner_apis << CppOperation.new(temp_statement)
+    temp_statement = ScriptStatement.new("SystemCtrl->SystemCtrl:"+convert_condition_sentence_to_api(@condition))
+    inner_apis << CppOperation.new(temp_statement)
   end
 
 end
@@ -184,9 +183,8 @@ class CppOptStructure < SingleConditionStruction
 
   def all_internal_call_operations
     inner_apis = super
-    # FIXME: use class diagram instead
-    # temp_statement = ScriptStatement.new("SystemCtrl->SystemCtrl:"+convert_condition_sentence_to_api(@condition))
-    # inner_apis << CppOperation.new(temp_statement)
+    temp_statement = ScriptStatement.new("SystemCtrl->SystemCtrl:"+convert_condition_sentence_to_api(@condition))
+    inner_apis << CppOperation.new(temp_statement)
   end
   
 end
