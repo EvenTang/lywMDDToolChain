@@ -71,6 +71,9 @@ class MultiConditionOperations < StructBase
   
 end
 
+class AtlStructure < MultiConditionOperations
+end
+
 class LoopStructure < SingleConditionStruction
 end
 
