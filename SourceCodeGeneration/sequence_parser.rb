@@ -87,7 +87,7 @@ class SequenceParser
     logic_tree = LogicTree.new
     behavior.each do |action|
       case action.type
-      when ScriptStatement::TYPE_CALL_API, ScriptStatement::TYPE_SEND_MESSAGE
+      when ScriptStatement::TYPE_INTERNAL_CALL_API, ScriptStatement::TYPE_EXTERNAL_CALL_API, ScriptStatement::TYPE_SEND_MESSAGE
         logic_tree.add_operation action
       when ScriptStatement::TYPE_STRUCTURE_DEF
         logic_tree.update_structure action.contents[:key_word], action.contents[:condition]
@@ -103,7 +103,7 @@ class SequenceParser
       case st.type
       when ScriptStatement::TYPE_STATE_DEF, ScriptStatement::TYPE_STRUCTURE_DEF 
         true
-      when ScriptStatement::TYPE_SEND_MESSAGE, ScriptStatement::TYPE_CALL_API 
+      when ScriptStatement::TYPE_SEND_MESSAGE, ScriptStatement::TYPE_EXTERNAL_CALL_API,  ScriptStatement::TYPE_INTERNAL_CALL_API
         st.contents[:source_component_name] == component
       else 
         false

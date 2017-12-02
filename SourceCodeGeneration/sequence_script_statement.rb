@@ -5,11 +5,12 @@ class ScriptStatement
   attr_reader :contents      # hash table that store elements of the script statement
 
   TYPE_SEND_MESSAGE     = 1
-  TYPE_CALL_API         = 2
-  TYPE_STRUCTURE_DEF    = 3
-  TYPE_STATE_DEF        = 4
-  TYPE_ACTIVATE_DEF   = 5
-  TYPE_DEACTIVATE_DEF = 6
+  TYPE_INTERNAL_CALL_API  = 2
+  TYPE_EXTERNAL_CALL_API  = 3
+  TYPE_STRUCTURE_DEF    = 4
+  TYPE_STATE_DEF        = 5
+  TYPE_ACTIVATE_DEF   = 6
+  TYPE_DEACTIVATE_DEF = 7
   TYPE_UNKNOW_TYPE      = 90
 
   def initialize(statement_str)
@@ -40,9 +41,31 @@ class ScriptStatement
     end
   end
 
-  def definition_of_call_api?()
-    if @statement_str =~ /(\w+)\s*(->|-->)\s*(\w+)\s*:(.*)/
-      @type = TYPE_CALL_API
+  def definition_of_internal_call_api?()
+    #SystemCtrl->SystemCtrl : SetTemperature() or
+    #SystemCtrl->SystemCtrl : rslt = SetTemperature()
+    if @statement_str =~ /(\w+)\s*->\s*(\w+)\s*:\s*(\w+)\s*=\s*(.*)/ && $1.strip == $2.strip
+      @type = TYPE_INTERNAL_CALL_API
+      @contents[:return_value] = $3.strip
+      @contents[:source_component_name] = $1.strip
+      @contents[:destination_component_name] = $1.strip
+      @contents[:message] = $4.strip
+      true
+    elsif @statement_str =~ /(\w+)\s*->\s*(\w+)\s*:(.*)/ && $1.strip == $2.strip
+      @type = TYPE_INTERNAL_CALL_API
+      @contents[:return_value] = ""
+      @contents[:source_component_name] = $1.strip
+      @contents[:destination_component_name] = $1.strip
+      @contents[:message] = $3.strip
+      true
+      false
+    end
+  end   
+
+  def definition_of_external_call_api?()
+    #SystemCtrl->ShareOBJ : SetTemperature()
+    if @statement_str =~ /(\w+)\s*(->|-->)\s*(\w+)\s*:(.*)/ && $1.strip != $3.strip
+      @type = TYPE_EXTERNAL_CALL_API
       @contents[:source_component_name] = $1.strip
       @contents[:line_type] = $2.strip
       @contents[:destination_component_name] = $3.strip
@@ -59,7 +82,7 @@ class ScriptStatement
       #puts "!!!!!!matched"
       @type = TYPE_STATE_DEF
       @contents[:component_name] = $1.strip
-      @contents[:states] = $2.strip.split(/\| */)
+      @contents[:states] = $2.strip.split(/\|/).collect {|state| state.strip.upcase }
       #puts @type
       #puts @contents[:component_name]
       #puts @contents[:states]

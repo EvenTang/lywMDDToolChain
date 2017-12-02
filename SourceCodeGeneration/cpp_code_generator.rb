@@ -33,8 +33,10 @@ class CppOperation
     message_name = event.name
     param_list = event.params.values.join(", ")
     type_symbol = case @statement.type
-                  when ScriptStatement::TYPE_CALL_API
-                    inner_api_call? ? "api" : "API"
+                  when ScriptStatement::TYPE_INTERNAL_CALL_API
+                    "api"
+                  when ScriptStatement::TYPE_EXTERNAL_CALL_API
+                    "API"
                   when ScriptStatement::TYPE_SEND_MESSAGE
                     "API_SendMessage"
                   else
@@ -45,8 +47,8 @@ class CppOperation
   end
 
   def inner_api_call?
-    if @statement.type == ScriptStatement::TYPE_CALL_API
-      @statement.contents[:source_component_name] == @statement.contents[:destination_component_name]
+    if @statement.type == ScriptStatement::TYPE_INTERNAL_CALL_API
+      true
     else
       false
     end
