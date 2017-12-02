@@ -135,7 +135,6 @@ class ECBDetecting
 
   def initialize(*param)
     @component, @state, @event = *param
-    @yes_i_found = false
     @status = LOCATING_STATE
     @activate_count = 0
   end
@@ -168,10 +167,8 @@ class ECBDetecting
           @status = LOCATING_END
         end
       end
-    else
-      @yes_i_found = false      
     end
-    @activate_count == 1
+    @activate_count == 1 && (!script_statement.deactivate_def_of?(@component))
   end
 
 end
