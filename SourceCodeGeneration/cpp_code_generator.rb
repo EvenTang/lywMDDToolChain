@@ -1,18 +1,9 @@
 require './statement_ast'
 require './sequence_script_statement'
 require './stm_model'
+require './lyw_rblib_extension.rb'
 
-class Array
 
-  def add_indent(indent = " " * 4)
-    self.map {|item| indent + item }
-  end
-
-  def add_indent!(indent = " " * 4)
-    self.map! {|item| indent + item }
-  end
-
-end
 
 
 # TODO: collect all internal apis to generate "stm_internal_calls.h/stm_internal_calls.cpp"
@@ -25,6 +16,7 @@ class CppOperation
 
   def initialize(statement)
     @statement = statement
+
   end
 
   def generate_code()

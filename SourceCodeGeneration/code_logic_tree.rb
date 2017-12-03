@@ -84,6 +84,8 @@ class LogicTreeGenerator
     logic_tree    
   end
 
+  # TODO: these get_XXX look alike but may have different behviors in future.
+  #     So, currently don't touch them.
   def get_send_message_op(send_msg_stat)
     parser = SendMessageStatParser.new(action.contents[:message])
     new_operation = GeneralOperation.new
