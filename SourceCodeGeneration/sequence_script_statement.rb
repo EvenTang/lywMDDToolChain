@@ -171,3 +171,86 @@ class ScriptStatement
 
 end
 
+
+#=============================================================================================
+# PlantUML has its syntax for sequence like
+#      A-->B:do something
+# ScriptStatment knows PlantUML syntax tokens like "A", "-->", "B", "do something" only
+# In mdd, we defined "do something" in a more specific format, like:
+#              MessageName "(" ParamName "=" ParamValue [","  ParamName "=" ParamValue ]* ")"
+#    This is another level syntax that can be improved/change in different senario
+#  The following is classes to parse this "specific level syntax tokens"
+#=============================================================================================
+
+# @brief Send messaage statement parser
+class SendMessageStatParser
+
+  attr_reader :message_name
+  attr_reader :params        # Hash { ParamName : ParamValue }
+
+  def initialize(send_msg_stat)
+    @params = Hash.new
+    analyze(send_msg_stat)
+  end
+
+  def analyze(send_msg_stat)
+    if statement =~ /(\w+)(\(.*\))?/ then
+      @message_name = $1
+      left_str = $2
+      while left_str =~ /((\w+)=([\w"]+)),?(.*)/
+        @params[$2] = $3
+        left_str = $4
+      end
+    end
+  end
+
+end
+
+class InternalCallStatParser
+
+  attr_reader :message_name
+  attr_reader :params        # Hash { ParamName : ParamValue }
+
+  def initialize(send_msg_stat)
+    @params = Hash.new
+    analyze(send_msg_stat)
+  end
+
+  def analyze(send_msg_stat)
+    if statement =~ /(\w+)(\(.*\))?/ then
+      @message_name = $1
+      left_str = $2
+      while left_str =~ /((\w+)=([\w"]+)),?(.*)/
+        @params[$2] = $3
+        left_str = $4
+      end
+    end
+  end
+
+end
+
+class ExternalCallStatParser
+  
+    attr_reader :message_name
+    attr_reader :params        # Hash { ParamName : ParamValue }
+  
+    def initialize(send_msg_stat)
+      @params = Hash.new
+      analyze(send_msg_stat)
+    end
+  
+    def analyze(send_msg_stat)
+      if statement =~ /(\w+)(\(.*\))?/ then
+        @message_name = $1
+        left_str = $2
+        while left_str =~ /((\w+)=([\w"]+)),?(.*)/
+          @params[$2] = $3
+          left_str = $4
+        end
+      end
+    end
+  
+  end
+  
+
+

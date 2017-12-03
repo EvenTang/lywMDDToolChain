@@ -85,3 +85,14 @@ end
 
 class AltStructure < MultiConditionOperations
 end
+
+class GeneralOperation
+  attr_accessor :descirption     # Something like comments in programmer
+  attr_accessor :return_value
+  attr_accessor :operation_name  # TODO: should it be a string? or a ref to the memebers in class diagrams?
+  attr_accessor :params          # Hash {ParamName :ParamValue}
+
+  def initialize
+  end
+
+end

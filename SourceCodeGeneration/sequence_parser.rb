@@ -1,6 +1,5 @@
 require 'set'
 require '.\sequence_script_statement'
-require '.\code_logic_tree'
 
 class SequenceParser
 
@@ -51,10 +50,22 @@ class SequenceParser
     @seq_file_name
   end
 
+=begin
   def get_logic_tree_of(component, state, event)
     all_behavior_of(component, state, event) do |behavior|
       logic_tree = generate_logic_tree_from behavior
       yield logic_tree
+    end
+  end
+=end
+
+  def all_behavior_of(component, state, event)
+    # FIXME: remove comments in script
+    idx = 0
+    loop do
+      behavior, idx = selcect_behavior_of(component, state, event, idx)
+      break if behavior.empty?
+      yield select_relative_script(behavior, component)
     end
   end
 
@@ -72,17 +83,7 @@ class SequenceParser
     end
     @components
   end
-
-  def all_behavior_of(component, state, event)
-    # FIXME: remove comments in script
-    idx = 0
-    loop do
-      behavior, idx = selcect_behavior_of(component, state, event, idx)
-      break if behavior.empty?
-      yield select_relative_script(behavior, component)
-    end
-  end
-
+=begin
   def generate_logic_tree_from(behavior)
     logic_tree = LogicTree.new
     behavior.each do |action|
@@ -97,7 +98,7 @@ class SequenceParser
     end
     logic_tree    
   end
-  
+=end
   def select_relative_script(behavior, component)
     behavior.select do |st| 
       case st.type
