@@ -58,6 +58,7 @@ class ScriptStatement
       @contents[:destination_component_name] = $1.strip
       @contents[:message] = $3.strip
       true
+	else
       false
     end
   end   
