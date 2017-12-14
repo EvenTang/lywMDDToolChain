@@ -1,0 +1,35 @@
+@startuml Lock mainstand by BT
+
+title Lock mainstand by BT
+
+participant VehicleAgent
+participant PhoneAgent
+participant BTCtrl
+
+hnote over PhoneAgent : Connected
+BTCtrl->>PhoneAgent : RcvSppDataNtf(data_len=123, payload=data_buf)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : Dispatch_ProcessReceiveCmd(frame=data_buf, size=123)
+activate PhoneAgent
+PhoneAgent->>VehicleAgent : LockMainstandReq()
+deactivate PhoneAgent
+deactivate PhoneAgent
+VehicleAgent->>PhoneAgent : VehicleLockCtrlRsp(rslt=PHONE_RESULT_OK)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : TX_NtfMainstandLockRslt(rslt=rslt)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : SaveDataToGlobalVar(VAR_001) : data_buf
+PhoneAgent->>BTCtrl : TxCmmDataReq(data_len=123, payload=data_buf)
+deactivate PhoneAgent
+deactivate PhoneAgent
+
+VehicleAgent->>PhoneAgent : MainStandCtrlRsp(rslt=PHONE_RESULT_OK)
+activate PhoneAgent
+PhoneAgent->PhoneAgent:TX_NtfMainstandLockRslt(rslt)
+activate PhoneAgent
+deactivate PhoneAgent
+deactivate PhoneAgent
+
+
+
+@enduml

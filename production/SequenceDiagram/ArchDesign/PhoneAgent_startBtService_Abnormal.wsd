@@ -1,0 +1,25 @@
+@startuml
+title This is a abnormal sequence diagram of start BT service.
+hide footbox
+
+participant SysCtrl
+participant PhoneAgent
+participant BTCtrl
+
+hnote over PhoneAgent:Init
+
+SysCtrl->>PhoneAgent:StartSrvReq()
+activate PhoneAgent
+PhoneAgent->PhoneAgent:GetBTPowerSts(sts=&BT_power)
+activate PhoneAgent
+deactivate PhoneAgent
+alt TRUE!=BT_power
+PhoneAgent->PhoneAgent:TxStartSrvRsltToSysCtrl(rslt=PHONE_RESULT_FAILED)
+activate PhoneAgent
+deactivate PhoneAgent
+end
+deactivate PhoneAgent
+
+
+
+@enduml

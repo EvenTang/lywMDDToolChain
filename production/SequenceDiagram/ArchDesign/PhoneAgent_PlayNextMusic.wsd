@@ -1,0 +1,20 @@
+@startuml
+
+title Play next Music\nBD-SD-01-11-04-N&E
+hide footbox
+
+participant VehicleAgent
+participant PhoneAgent
+participant BTCtrl
+
+hnote over PhoneAgent:Connected
+
+VehicleAgent->>PhoneAgent:MusicCtrlCmdReq(music_status=BCMCTRL_MUSIC_BUTTON_NEXT)
+activate PhoneAgent
+
+PhoneAgent->PhoneAgent:SendBTMusicCtrlCmd(cmd=BCMCTRL_MUSIC_BUTTON_NEXT)
+activate PhoneAgent
+PhoneAgent->>BTCtrl:MusicCtrl(cmd=BCMCTRL_MUSIC_BUTTON_NEXT)
+deactivate PhoneAgent
+deactivate PhoneAgent
+@enduml 

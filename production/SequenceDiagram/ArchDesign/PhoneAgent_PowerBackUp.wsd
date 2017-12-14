@@ -1,0 +1,46 @@
+@startuml
+
+title 备份电池\nUC-02-09-02
+hide footbox
+
+participant SysCtrl
+participant PhoneAgent
+
+hnote over PhoneAgent:Init|Stopping
+
+SysCtrl->>PhoneAgent:EnableBtReq()
+activate PhoneAgent
+PhoneAgent->PhoneAgent:CancelBTCtrlTimer()
+PhoneAgent->PhoneAgent:OSM_TaskDelay(time=3000)
+PhoneAgent->PhoneAgent:StartBTModule()
+activate PhoneAgent
+PhoneAgent->>BTCtrl:StartBT()
+deactivate PhoneAgent
+PhoneAgent->PhoneAgent:SetBTCtrlTimer(evt=PHONE_AGENT_EVT_ENABLE_BT_REQ)
+activate PhoneAgent
+deactivate PhoneAgent
+deactivate PhoneAgent
+hnote over PhoneAgent:Starting
+
+BTCtrl->>PhoneAgent:StartBTRsltNtf(rslt=BTCTRL_RESULT_OK)
+activate PhoneAgent
+PhoneAgent->PhoneAgent:CancelBTCtrlTimer()
+alt BTCTRL_RESULT_OK==rslt
+PhoneAgent->PhoneAgent:TxEnableBTRsltToSysCtrl(rslt=PHONE_RESULT_OK)
+activate PhoneAgent
+PhoneAgent->>SysCtrl:EnableBTRsp(sysctrl_rslt=SYS_CTRL_RESULT_OK)
+deactivate PhoneAgent
+hnote over PhoneAgent:Disconnected
+else
+PhoneAgent->PhoneAgent:OSM_TaskDelay(time=3000)
+PhoneAgent->PhoneAgent:StartBTModule()
+activate PhoneAgent
+PhoneAgent->>BTCtrl:StartBT()
+deactivate PhoneAgent
+PhoneAgent->PhoneAgent:SetBTCtrlTimer(evt=PHONE_AGENT_EVT_ENABLE_BT_REQ)
+activate PhoneAgent
+deactivate PhoneAgent
+end
+deactivate PhoneAgent
+
+@enduml

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Conten-Type" content="text/html;charset=UTF-8">
+<style>
+
+table {
+    font-family: Courier New, Verdana, "Microsoft YaHei", Arial;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    vertical-align:text-top;
+    padding: 8px;
+    white-space: nowrap
+}
+
+</style>
+</head>
+<body>
+	<script src="jquery-3.2.1.js"></script>
+	<script>
+		function AddState()
+		{
+			var rowNumber = prompt("Please input the line number of the new state", 1);
+			var rowName = prompt("Please input the new state name", "Idle");
+			var columnSize = 0;
+			$("#table1 tr:gt(0):eq(0) td").each(function () {columnSize++;});
+			
+			var newRow = "<tr><td>" + rowName + "</td>";
+			for(var i = 0; i < columnSize-1; i++)
+			{
+				newRow = newRow + "<td>DoNoting</td>";
+			}
+			newRow = newRow + "</tr>";
+			
+			var nRowNumber = parseInt(rowNumber, 10);
+			if(nRowNumber < 0)
+			{
+				$("#table1 tr:gt(0):eq(-1)").after(newRow);
+			}
+			else if(0 == nRowNumber)
+			{
+				$("#table1 tr:gt(0):eq(0)").before(newRow);
+			}
+			else
+			{
+				nRowNumber = nRowNumber - 1;
+				var myString = "#table1 tr:gt(0):eq(" + nRowNumber + ")";
+				$(myString).after(newRow);
+			}
+			
+			$("#table1 td").bind("dblclick",function()
+			{
+				var oldVal = $(this).text();
+				
+                var input = "<textarea rows='4' cols='50'>" +oldVal+ "</textarea>";
+                $(this).text('');
+                $(this).append(input);
+                $('#tmpId').focus();
+                $('#tmpId').blur(function()
+				{
+                    if($(this).val() != '')
+					{
+                       oldVal = $(this).val();
+                    }
+                   $(this).closest('td').text(oldVal);
+                });
+			});
+		}
+		
+		function DeleteState()
+		{
+			var rowNumber = prompt("Please input the line number of the state to be deleted", 1);
+			var nRowNumber = parseInt(rowNumber, 10);
+			if(nRowNumber < 0)
+			{
+				$("#table1 tr:gt(0):eq(-1)").remove();
+			}
+			else if(0 == nRowNumber)
+			{
+			}
+			else
+			{
+				nRowNumber = nRowNumber - 1;
+				var myString = "#table1 tr:gt(0):eq(" + nRowNumber + ")";
+				$(myString).remove();
+			}
+		}
+		
+		function AddEvent()
+		{
+			var columnNumber = prompt("Please input the column number of the new event", 1);
+			var nColumnNumber = parseInt(columnNumber, 10) + 1;
+			if(nColumnNumber < 1)
+			{
+				return;
+			}
+			
+			var columnName = prompt("Please input the new event name", "Timeout");
+			
+			var newColumn = "<th>" + columnName + "</th>";
+			var myString = "#table1 tr th:eq(" + columnNumber + ")";
+			$(myString).after(newColumn);
+			
+			myString = "#table1 tr td:nth-child(" + nColumnNumber + ")";
+			$(myString).after("<td>DoNothing</td>");
+			
+			$("#table1 td").bind("dblclick",function()
+			{
+				var oldVal = $(this).text();
+                var input = "<input type='text' id='tmpId' value='" + oldVal + "' >";
+                $(this).text('');
+                $(this).append(input);
+                $('#tmpId').focus();
+                $('#tmpId').blur(function()
+				{
+                    if($(this).val() != '')
+					{
+                       oldVal = $(this).val();
+                    }
+                   $(this).closest('td').text(oldVal);
+                });
+			});
+		}
+		
+		function DeteteEvent()
+		{
+			var columnNumber = prompt("Please input the column number of the event to be deleted", 1);
+			var nColumnNumber = parseInt(columnNumber, 10) + 1;
+			if(nColumnNumber < 2)
+			{
+				return;
+			}
+
+			var myString = "#table1 tr th:eq(" + columnNumber + ")";
+			$(myString).remove();
+			myString = "#table1 tr td:nth-child(" + nColumnNumber + ")";
+			$(myString).remove();
+		}
+		
+		$(document).ready(function () 
+		{
+			$("#table1 td").dblclick(function () 
+			{
+				var tdSeq = $(this).parent().find("td").index($(this));
+				if(tdSeq < 1)
+				{
+					return;
+				}
+				
+				var oldVal = $(this).text();
+                var input = "<textarea id='tmpId' rows='4' cols='50'>" +oldVal+ "</textarea>";
+                // $(this).text('');
+                $(this).append(input);
+                $('#tmpId').focus();
+                $('#tmpId').on('blur', function(e)
+				{
+				    //alert( "Handler for .blur() called." );
+                    if($(this).val() != '')
+					{
+                       oldVal = $(this).val();
+                    }
+                   $(this).closest('td').text(oldVal);
+                });
+			})
+		});
+	</script>
+	
+	<input type="button" value="insert state" onclick="AddState()" id="btn_add_state">
+	<input type="button" value="delete state" onclick="DeleteState()" id="btn_add_event">
+	<input type="button" value="insert event" onclick="AddEvent()" id="btn_delete_state">
+	<input type="button" value="delete event" onclick="DeteteEvent()" id="btn_delete_event">
+	
+	<br>
+	
+    <table id="table1">
+             
+      <tr>
+        <th>S\E</th>
+        
+          <th>SetTemperature</th>
+        
+          <th>SetTemperatureResult</th>
+        
+          <th>ShowTemperatureResult</th>
+        
+          <th>PowerOffResult</th>
+        
+          <th>TurnOffDisplayResult</th>
+        
+          <th>PowerOnResult</th>
+        
+      </tr>
+      
+      <tr>
+        <td>Idle</td>
+        
+          <th>┌─<br>│  implementation of Idle SetTemperature<br>└─<br></th>
+        
+          <th>┌─<br>│  implementation of Idle SetTemperatureResult<br>└─<br></th>
+        
+          <th>┌─<br>│  implementation of Idle ShowTemperatureResult<br>└─<br></th>
+        
+          <th>┌─<br>│  implementation of Idle PowerOffResult<br>│ ┌◆ if the power is off<br>│ ├◇ power is off<br>│ │  haha<br>│ │ ┌◎ retry for 3 times<br>│ │ ├─ <br>│ │ │  do something<br>│ │ │ ┌◆ need to retry?<br>│ │ │ ├◇ yes<br>│ │ │ │  OK, let's retry<br>│ │ │ └─<br>│ │ └─ <br>│ ├◇ power is on<br>│ │  hoho<br>│ └─<br>│  continue to do something<br>│ ┌◆ if the power is off<br>│ ├◇ power is off<br>│ │  haha<br>│ │ ┌◎ retry for 3 times<br>│ │ ├─ <br>│ │ │  do something<br>│ │ │ ┌◆ need to retry?<br>│ │ │ ├◇ yes<br>│ │ │ │  OK, let's retry<br>│ │ │ └─<br>│ │ └─ <br>│ ├◇ power is on<br>│ │  hoho<br>│ └─<br>│  everything is end<br>└─<br></th>
+        
+          <th>┌─<br>│  implementation of Idle TurnOffDisplayResult<br>└─<br></th>
+        
+          <th>┌─<br>│  implementation of Idle PowerOnResult<br>└─<br></th>
+        
+      </tr>
+      
+      <tr>
+        <td>Working</td>
+        
+          <th>┌─<br>│  implementation of Working SetTemperature<br>└─<br></th>
+        
+          <th>┌─<br>│  implementation of Working SetTemperatureResult<br>└─<br></th>
+        
+          <th>┌─<br>│  implementation of Working ShowTemperatureResult<br>└─<br></th>
+        
+          <th>┌─<br>│  implementation of Working PowerOffResult<br>└─<br></th>
+        
+          <th>┌─<br>│  implementation of Working TurnOffDisplayResult<br>└─<br></th>
+        
+          <th>┌─<br>│  implementation of Working PowerOnResult<br>└─<br></th>
+        
+      </tr>
+      
+      <tr>
+        <td>Unitialized</td>
+        
+          <th>┌─<br>│  implementation of Unitialized SetTemperature<br>└─<br></th>
+        
+          <th>┌─<br>│  implementation of Unitialized SetTemperatureResult<br>└─<br></th>
+        
+          <th>┌─<br>│  implementation of Unitialized ShowTemperatureResult<br>└─<br></th>
+        
+          <th>┌─<br>│  implementation of Unitialized PowerOffResult<br>└─<br></th>
+        
+          <th>┌─<br>│  implementation of Unitialized TurnOffDisplayResult<br>└─<br></th>
+        
+          <th>┌─<br>│  implementation of Unitialized PowerOnResult<br>└─<br></th>
+        
+      </tr>
+      
+    </table>
+
+</body>
+</html>

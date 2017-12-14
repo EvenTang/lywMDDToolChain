@@ -1,0 +1,10 @@
+@startuml
+
+
+
+class ShareOBJ {
+    - uint32 state
+}
+
+
+@enduml

@@ -1,0 +1,46 @@
+@startuml
+
+
+
+class PhoneAgent {
+    + SystemCtrlOpResult CancelChargePlanRsp(UnknowType rslt)
+    + SystemCtrlOpResult ConfigDriveModeRsp(UnknowType result)
+    + SystemCtrlOpResult BTConnectedNtf()
+    + SystemCtrlOpResult BTDisconnectedNtf()
+    + SystemCtrlOpResult EngineStsNtf(UnknowType sts)
+    + SystemCtrlOpResult RcvSppDataNtf(UnknowType data_len, UnknowType payload)
+    + SystemCtrlOpResult VehicleLockCtrlRsp(UnknowType rslt)
+    + SystemCtrlOpResult MainStandCtrlRsp(UnknowType rslt)
+    + SystemCtrlOpResult LockStsChgNtf(UnknowType sts_new)
+    + SystemCtrlOpResult RcvSppDataNtf(UnknowType data_len, UnknowType payload)
+    + SystemCtrlOpResult VehicleLockCtrlRsp(UnknowType rslt)
+    + SystemCtrlOpResult VehicleLockCtrlRsp(UnknowType rslt)
+    + SystemCtrlOpResult OperationA2dpRst(UnknowType rslt)
+    + SystemCtrlOpResult MusicCtrlCmdReq(UnknowType music_status)
+    + SystemCtrlOpResult VehicleLockCtrlRsp(UnknowType rslt)
+    + SystemCtrlOpResult SendDataRsltNtf(UnknowType rslt)
+    + SystemCtrlOpResult MusicCtrlCmdReq(UnknowType music_status)
+    + SystemCtrlOpResult MusicCtrlCmdReq(UnknowType music_status)
+    + SystemCtrlOpResult MusicCtrlCmdReq(UnknowType music_status)
+    + SystemCtrlOpResult EnableBtReq()
+    + SystemCtrlOpResult StartBTRsltNtf(UnknowType rslt)
+    + SystemCtrlOpResult DisableBtReq()
+    + SystemCtrlOpResult StopBTRsltNtf(UnknowType rslt)
+    + SystemCtrlOpResult RKLearingRsp()
+    + SystemCtrlOpResult SetChargePlanRsp(UnknowType rslt)
+    + SystemCtrlOpResult SetPreferenceRsp(UnknowType rslt)
+    + SystemCtrlOpResult StartSrvReq()
+    + SystemCtrlOpResult StartSrvReq()
+    + SystemCtrlOpResult StartBTRsltNtf(UnknowType rslt)
+    + SystemCtrlOpResult StopSrvReq()
+    + SystemCtrlOpResult StopBTRsltNtf(UnknowType rslt)
+    + SystemCtrlOpResult RcvSppDataNtf(UnknowType data_len, UnknowType payload)
+    + SystemCtrlOpResult SeatCtrlRsp(UnknowType rslt)
+    + SystemCtrlOpResult SeatCtrlRsp(UnknowType rslt)
+    + SystemCtrlOpResult UpdateRsltNtf()
+    + SystemCtrlOpResult RcvSppDataNtf(UnknowType data_len, UnknowType payload)
+    - uint32 state
+}
+
+
+@enduml

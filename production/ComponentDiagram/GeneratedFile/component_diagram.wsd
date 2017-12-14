@@ -1,0 +1,13 @@
+@startuml component
+
+
+component  EVSrv               /' UNKNOWN    uninitialized '/
+component  PhoneAgent          /' UNKNOWN    uninitialized '/
+component  BTCtrl              /' UNKNOWN    uninitialized '/
+component  VehicleAgent        /' UNKNOWN    uninitialized '/
+component  ShareOBJ            /' UNKNOWN    uninitialized '/
+component  BCMCtrl             /' UNKNOWN    uninitialized '/
+component  SysCtrl             /' UNKNOWN    uninitialized '/
+component  ReproSrv            /' UNKNOWN    uninitialized '/
+
+@enduml

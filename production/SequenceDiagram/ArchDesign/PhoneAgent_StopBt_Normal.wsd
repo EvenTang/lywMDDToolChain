@@ -1,0 +1,47 @@
+@startuml
+
+title This is a normal sequence diagram of stop BT. Waiting connect state.\nBD-SD-REQ-01-02-01-N6
+hide footbox
+
+participant SysCtrl
+participant PhoneAgent
+participant BTCtrl
+
+hnote over PhoneAgent:Disconnected|Starting|Connected
+
+SysCtrl->>PhoneAgent:StopSrvReq()
+activate PhoneAgent
+PhoneAgent->PhoneAgent:CancelBTCtrlTimer()
+activate PhoneAgent
+deactivate PhoneAgent
+PhoneAgent->PhoneAgent:StopBTModule()
+activate PhoneAgent
+
+PhoneAgent->>BTCtrl:StopBtReq()
+deactivate PhoneAgent
+
+PhoneAgent->PhoneAgent:SetBTCtrlTimer(evt=PHONE_AGENT_EVT_STOP_SRV_REQ)
+activate PhoneAgent
+deactivate PhoneAgent
+deactivate PhoneAgent
+
+hnote over PhoneAgent:Stopping
+
+deactivate PhoneAgent
+
+BTCtrl->>PhoneAgent:StopBTRsltNtf(rslt=BTCTRL_RESULT_OK)
+activate PhoneAgent
+PhoneAgent->PhoneAgent:CancelBTCtrlTimer()
+activate PhoneAgent
+deactivate PhoneAgent
+PhoneAgent->PhoneAgent:Reset()
+activate PhoneAgent
+deactivate PhoneAgent
+PhoneAgent->PhoneAgent:TxDisableBTRsltToSysCtrl(rslt=PHONE_RESULT_OK)
+activate PhoneAgent
+PhoneAgent->>SysCtrl:DisableBTRsp(sysctrl_rslt=SYS_CTRL_RESULT_OK)
+deactivate PhoneAgent
+hnote over PhoneAgent:Init
+
+
+@enduml

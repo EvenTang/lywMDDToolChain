@@ -1,0 +1,23 @@
+
+
+
+message AuthcompleteNtf { 
+} 
+message LockMainstandReq { 
+} 
+message LockVehilceReq { 
+    optional !TYPE! source = 1;
+} 
+message UnlockSeatReq { 
+    optional !TYPE! source = 1;
+} 
+
+message VehicleAgentMessagge {
+    required int32 message_id = 1;
+    oneof msg_body { 
+        AuthcompleteNtf msg_authcomplete_ntf = 1; 
+        LockMainstandReq msg_lock_mainstand_req = 2; 
+        LockVehilceReq msg_lock_vehilce_req = 3; 
+        UnlockSeatReq msg_unlock_seat_req = 4;  
+    }
+}

@@ -1,0 +1,18 @@
+@startuml
+
+<%
+def generate_send_message_method(send_msg_method, module_name)
+  params = send_msg_method.params.map {|param| "%s %s" % param}.join(", ")
+  "%sOpResult %s(%s)" % [module_name, send_msg_method.method_name, params]
+end
+%>
+
+class <%= class_diag.module_name %> {<%
+class_diag.send_message_methods.each do |method| %>
+    + <%= generate_send_message_method(method, class_diag.module_name) %><%
+end%>
+    - uint32 state
+}
+
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml Engine key status notify
+
+title Engine key status notify
+
+participant VehicleAgent
+participant PhoneAgent
+participant BTCtrl
+
+hnote over PhoneAgent : Connected
+VehicleAgent->>PhoneAgent : EngineStsNtf(sts=TRUE)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : TX_NtfEngineSts(sts=sts)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : SaveDataToGlobalVar(VAR_001) : data_buf
+PhoneAgent->>BTCtrl : TxCmmDataReq(data_len=123, payload=data_buf)
+deactivate PhoneAgent
+deactivate PhoneAgent
+
+@enduml

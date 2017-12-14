@@ -1,0 +1,11 @@
+
+
+@startuml VehicleAgent's state chart
+
+[*] --> uninitialized
+
+
+@enduml
+
+
+       

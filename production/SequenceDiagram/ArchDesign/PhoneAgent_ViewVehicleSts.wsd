@@ -1,0 +1,23 @@
+@startuml View Vehicle Status
+
+title View Vehicle Status
+
+participant PhoneAgent
+participant BTCtrl
+participant ShareOBJ
+
+hnote over PhoneAgent : Connected
+BTCtrl->>PhoneAgent : RcvSppDataNtf(data_len=123, payload=data_buf)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : Dispatch_ProcessReceiveCmd(frame=data_buf, size=123)
+activate PhoneAgent
+PhoneAgent->ShareOBJ : GetBatteryInfo()
+activate ShareOBJ
+ShareOBJ-->PhoneAgent : OBJ_ID001()
+deactivate ShareOBJ
+PhoneAgent->PhoneAgent : SaveDataToGlobalVar(VAR_001) : data_buf
+PhoneAgent->>BTCtrl : TxCmmDataReq(data_len=123, payload=data_buf)
+deactivate PhoneAgent
+deactivate PhoneAgent
+
+@enduml

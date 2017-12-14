@@ -1,0 +1,46 @@
+@startuml
+
+
+
+class PhoneAgent {
+    + PhoneAgentOpResult CancelChargePlanRsp(UnknowType rslt)
+    + PhoneAgentOpResult ConfigDriveModeRsp(UnknowType result)
+    + PhoneAgentOpResult BTConnectedNtf()
+    + PhoneAgentOpResult BTDisconnectedNtf()
+    + PhoneAgentOpResult EngineStsNtf(UnknowType sts)
+    + PhoneAgentOpResult RcvSppDataNtf(UnknowType data_len, UnknowType payload)
+    + PhoneAgentOpResult VehicleLockCtrlRsp(UnknowType rslt)
+    + PhoneAgentOpResult MainStandCtrlRsp(UnknowType rslt)
+    + PhoneAgentOpResult LockStsChgNtf(UnknowType sts_new)
+    + PhoneAgentOpResult RcvSppDataNtf(UnknowType data_len, UnknowType payload)
+    + PhoneAgentOpResult VehicleLockCtrlRsp(UnknowType rslt)
+    + PhoneAgentOpResult VehicleLockCtrlRsp(UnknowType rslt)
+    + PhoneAgentOpResult OperationA2dpRst(UnknowType rslt)
+    + PhoneAgentOpResult MusicCtrlCmdReq(UnknowType music_status)
+    + PhoneAgentOpResult VehicleLockCtrlRsp(UnknowType rslt)
+    + PhoneAgentOpResult SendDataRsltNtf(UnknowType rslt)
+    + PhoneAgentOpResult MusicCtrlCmdReq(UnknowType music_status)
+    + PhoneAgentOpResult MusicCtrlCmdReq(UnknowType music_status)
+    + PhoneAgentOpResult MusicCtrlCmdReq(UnknowType music_status)
+    + PhoneAgentOpResult EnableBtReq()
+    + PhoneAgentOpResult StartBTRsltNtf(UnknowType rslt)
+    + PhoneAgentOpResult DisableBtReq()
+    + PhoneAgentOpResult StopBTRsltNtf(UnknowType rslt)
+    + PhoneAgentOpResult RKLearingRsp()
+    + PhoneAgentOpResult SetChargePlanRsp(UnknowType rslt)
+    + PhoneAgentOpResult SetPreferenceRsp(UnknowType rslt)
+    + PhoneAgentOpResult StartSrvReq()
+    + PhoneAgentOpResult StartSrvReq()
+    + PhoneAgentOpResult StartBTRsltNtf(UnknowType rslt)
+    + PhoneAgentOpResult StopSrvReq()
+    + PhoneAgentOpResult StopBTRsltNtf(UnknowType rslt)
+    + PhoneAgentOpResult RcvSppDataNtf(UnknowType data_len, UnknowType payload)
+    + PhoneAgentOpResult SeatCtrlRsp(UnknowType rslt)
+    + PhoneAgentOpResult SeatCtrlRsp(UnknowType rslt)
+    + PhoneAgentOpResult UpdateRsltNtf()
+    + PhoneAgentOpResult RcvSppDataNtf(UnknowType data_len, UnknowType payload)
+    - uint32 state
+}
+
+
+@enduml

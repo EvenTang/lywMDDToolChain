@@ -1,0 +1,20 @@
+@startuml
+
+title KEY LEARNING
+hide footbox
+
+participant VehicleAgent
+participant PhoneAgent
+participant BTCtrl
+
+hnote over PhoneAgent : Connected
+VehicleAgent->>PhoneAgent : RKLearingRsp(key_count=?)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : TX_NtfRKLearningRslt(type=type,rslt=rslt)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : SaveDataToGlobalVar(VAR_001) : data_buf
+PhoneAgent->>BTCtrl : TxCmmDataReq(data_len=4, payload=data_buf)
+deactivate PhoneAgent
+deactivate PhoneAgent
+
+@enduml

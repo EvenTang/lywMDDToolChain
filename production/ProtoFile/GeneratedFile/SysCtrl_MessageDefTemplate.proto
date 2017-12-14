@@ -1,0 +1,17 @@
+
+
+
+message EnableBTRsp { 
+    optional !TYPE! sysctrl_rslt = 1;
+} 
+message DisableBTRsp { 
+    optional !TYPE! sysctrl_rslt = 1;
+} 
+
+message SysCtrlMessagge {
+    required int32 message_id = 1;
+    oneof msg_body { 
+        EnableBTRsp msg_enable_bt_rsp = 1; 
+        DisableBTRsp msg_disable_bt_rsp = 2;  
+    }
+}

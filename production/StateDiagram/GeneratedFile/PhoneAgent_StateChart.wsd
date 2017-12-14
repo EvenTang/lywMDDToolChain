@@ -1,0 +1,28 @@
+
+
+@startuml PhoneAgent's state chart
+
+[*] --> uninitialized
+
+Disconnected --> Connected : BTConnectedNtf
+Connected --> Disconnected : BTDisconnectedNtf
+Connected --> Connected : MusicCtrlCmdReq
+Connected --> Connected : SendDataRsltNtf
+Connected --> Connected : MusicCtrlCmdReq
+Connected --> Connected : MusicCtrlCmdReq
+Connected --> Init : MusicCtrlCmdReq
+Init --> Starting : EnableBtReq
+Starting --> Disconnected : StartBTRsltNtf
+Starting --> Stopping : DisableBtReq
+Stopping --> Init : StopBTRsltNtf
+Init --> Init : StartSrvReq
+Init --> Starting : StartSrvReq
+Starting --> Disconnected : StartBTRsltNtf
+Disconnected --> Stopping : StopSrvReq
+Stopping --> Init : StopBTRsltNtf
+Connected --> Connected : UpdateRsltNtf
+
+@enduml
+
+
+       

@@ -1,0 +1,32 @@
+@startuml Unlock seat by BT
+
+title Unlock seat by BT
+
+participant VehicleAgent
+participant PhoneAgent
+participant BTCtrl
+
+hnote over PhoneAgent : Connected
+BTCtrl->>PhoneAgent : RcvSppDataNtf(data_len=123, payload=data_buf)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : Dispatch_ProcessReceiveCmd(frame=data_buf, size=123)
+activate PhoneAgent
+PhoneAgent->>VehicleAgent : UnlockSeatReq(source=OPERATE_ORIGIN_PHONE)
+deactivate PhoneAgent
+deactivate PhoneAgent
+VehicleAgent->>PhoneAgent : SeatCtrlRsp(rslt=PHONE_RESULT_OK)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : TX_NtfSaddleLockRslt(rslt=rslt)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : SaveDataToGlobalVar(VAR_001) : data_buf
+PhoneAgent->>BTCtrl : TxCmmDataReq(data_len=123, payload=data_buf)
+deactivate PhoneAgent
+deactivate PhoneAgent
+
+VehicleAgent->>PhoneAgent : SeatCtrlRsp(rslt=PHONE_RESULT_OK)
+activate PhoneAgent
+PhoneAgent->PhoneAgent:TX_NtfSaddleLockRslt(rslt)
+activate PhoneAgent
+deactivate PhoneAgent
+deactivate PhoneAgent
+@enduml

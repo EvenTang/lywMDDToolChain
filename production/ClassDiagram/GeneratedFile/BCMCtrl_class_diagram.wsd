@@ -1,0 +1,10 @@
+@startuml
+
+
+
+class BCMCtrl {
+    - uint32 state
+}
+
+
+@enduml

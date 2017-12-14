@@ -1,0 +1,15 @@
+@startuml
+
+title SET PREFERENCE
+hide footbox
+
+participant VehicleAgent
+participant PhoneAgent
+participant BTCtrl
+
+hnote over PhoneAgent : Connected
+VehicleAgent->>PhoneAgent : SetPreferenceRsp(rslt=PHONE_RESULT_OK)
+activate PhoneAgent
+deactivate PhoneAgent
+
+@enduml

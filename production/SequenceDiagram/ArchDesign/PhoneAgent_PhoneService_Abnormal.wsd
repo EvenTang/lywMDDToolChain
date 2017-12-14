@@ -1,0 +1,33 @@
+@startuml
+
+title This is an abnormal sequence diagram of phone service. Send data failure process.\nBD-SD-REQ-01-02-01-E5
+hide footbox
+
+participant VehicleAgent
+participant PhoneAgent
+participant BTCtrl
+
+hnote over PhoneAgent:Connected
+
+VehicleAgent->>PhoneAgent : VehicleLockCtrlRsp(rslt=PHONE_RESULT_OK)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : TX_NtfVehicleLockRslt(rslt=rslt)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : SaveDataToGlobalVar(VAR_001) : data_buf
+PhoneAgent->>BTCtrl : TxCmmDataReq(data_len=123, payload=data_buf)
+deactivate PhoneAgent
+deactivate PhoneAgent
+
+BTCtrl->>PhoneAgent:SendDataRsltNtf(rslt=BTCTRL_RESULT_FAILED)
+activate PhoneAgent
+PhoneAgent->PhoneAgent:GetCurrentEvt : current_evt
+PhoneAgent->PhoneAgent:CancelTxDataTimer()
+PhoneAgent->PhoneAgent:SetDataSendFlag(flat=FALSE)
+PhoneAgent->PhoneAgent:NotifySendRsltToOtherModule(evt=current_evt, rslt=rslt)
+PhoneAgent->PhoneAgent:IsDataQueueEmpty : is_empty
+alt FALSE==is_empty
+PhoneAgent->PhoneAgent:SendQueueData()
+end
+deactivate PhoneAgent
+
+@enduml

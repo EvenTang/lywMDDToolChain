@@ -1,0 +1,10 @@
+@startuml
+
+
+
+class EVSrv {
+    - uint32 state
+}
+
+
+@enduml

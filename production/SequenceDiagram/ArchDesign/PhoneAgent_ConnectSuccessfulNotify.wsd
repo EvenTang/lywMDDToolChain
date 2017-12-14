@@ -1,0 +1,43 @@
+@startuml
+
+title Connect successful notify\nBD-SD-02-02-01-N&E
+hide footbox
+
+participant VehicleAgent
+participant PhoneAgent
+participant BTCtrl
+
+hnote over PhoneAgent:Disconnected
+
+BTCtrl->>PhoneAgent:BTConnectedNtf()
+activate PhoneAgent
+PhoneAgent->PhoneAgent:NotifyAuthRsltToVehicle()
+activate PhoneAgent
+PhoneAgent->>VehicleAgent:AuthcompleteNtf()
+deactivate PhoneAgent
+PhoneAgent->ShareOBJ:SetBTIcon(is_active=TRUE)
+PhoneAgent->BCMCtrl:GetBTPlaySwitchStatus()
+activate BCMCtrl
+BCMCtrl-->PhoneAgent:switch_status
+deactivate BCMCtrl
+alt BCM_INPUT_STATUS_SW_ON==switch_status
+PhoneAgent->PhoneAgent:NtfBTMusicSource(isBTMusicSource=TRUE)
+activate PhoneAgent
+deactivate PhoneAgent
+else
+PhoneAgent->PhoneAgent:NtfBTMusicSource(isBTMusicSource=FALSE)
+activate PhoneAgent
+deactivate PhoneAgent
+end
+PhoneAgent->BTCtrl:CheckConnectA2DOCondition()
+activate BTCtrl
+BTCtrl-->PhoneAgent:is_a2dp
+deactivate BTCtrl
+alt TRUE==is_a2dp
+PhoneAgent->PhoneAgent:Dispatch_SendPackToQueue(data=???,size=4,evt=PHONE_AGENT_EVT_CONNECT_A2DP_REQ)
+end
+deactivate PhoneAgent
+
+hnote over PhoneAgent:Connected
+
+@enduml 

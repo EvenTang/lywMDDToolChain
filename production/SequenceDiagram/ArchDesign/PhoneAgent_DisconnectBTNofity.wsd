@@ -1,0 +1,19 @@
+@startuml 
+title Disconnect BT notify
+hide footbox
+
+participant VehicleAgent
+participant PhoneAgent
+participant BTCtrl
+
+hnote over PhoneAgent:Connected
+
+BTCtrl->>PhoneAgent:BTDisconnectedNtf()
+activate PhoneAgent
+PhoneAgent->PhoneAgent:Reset()
+activate PhoneAgent
+deactivate PhoneAgent
+deactivate PhoneAgent
+
+hnote over PhoneAgent:Disconnected
+@enduml 

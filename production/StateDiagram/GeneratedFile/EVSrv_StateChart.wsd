@@ -1,0 +1,11 @@
+
+
+@startuml EVSrv's state chart
+
+[*] --> uninitialized
+
+
+@enduml
+
+
+       
