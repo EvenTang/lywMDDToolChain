@@ -1,0 +1,14 @@
+@startuml
+
+
+
+class SysCtrl {
+    + SysCtrlOpResult EnableBTRsp(UnknowType sysctrl_rslt)
+    + SysCtrlOpResult DisableBTRsp(UnknowType sysctrl_rslt)
+    + SysCtrlOpResult EnableBTRsp(UnknowType sysctrl_rslt)
+    + SysCtrlOpResult DisableBTRsp(UnknowType sysctrl_rslt)
+    - uint32 state
+}
+
+
+@enduml

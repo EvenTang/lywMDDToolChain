@@ -1,0 +1,14 @@
+@startuml
+
+
+
+class VehicleAgent {
+    + VehicleAgentOpResult AuthcompleteNtf()
+    + VehicleAgentOpResult LockMainstandReq()
+    + VehicleAgentOpResult LockVehilceReq(UnknowType source)
+    + VehicleAgentOpResult UnlockSeatReq(UnknowType source)
+    - uint32 state
+}
+
+
+@enduml

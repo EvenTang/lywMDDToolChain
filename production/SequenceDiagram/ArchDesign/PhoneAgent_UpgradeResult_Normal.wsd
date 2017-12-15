@@ -1,0 +1,20 @@
+@startuml
+
+title This is a normal sequence  diagram of upgrade result notification.\nBD-SD-02-16-01-N
+hide footbox
+
+participant PhoneAgent 
+participant ReproSrv
+
+hnote over PhoneAgent:Connected
+
+ReproSrv->>PhoneAgent:UpdateRsltNtf()
+activate PhoneAgent
+PhoneAgent->PhoneAgent:NtfOTAUpdateRslt(rslt=PHONE_RESULT_OK)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : SaveDataToGlobalVar(VAR_001) : data_buf
+PhoneAgent->>BTCtrl : TxCmmDataReq(data_len=123, payload=data_buf)
+deactivate PhoneAgent
+deactivate PhoneAgent
+
+@enduml

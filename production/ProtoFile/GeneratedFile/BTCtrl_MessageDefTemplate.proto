@@ -1,0 +1,32 @@
+
+
+
+message TxCmmDataReq { 
+    optional !TYPE! data_len = 1;
+    optional !TYPE! payload = 2;
+    optional !TYPE! data = 3;
+    optional !TYPE! size = 4;
+} 
+message MusicCtrl { 
+    optional !TYPE! cmd = 1;
+} 
+message StartBT { 
+} 
+message StopBT { 
+} 
+message StartBtReq { 
+} 
+message StopBtReq { 
+} 
+
+message BTCtrlMessagge {
+    required int32 message_id = 1;
+    oneof msg_body { 
+        TxCmmDataReq msg_tx_cmm_data_req = 1; 
+        MusicCtrl msg_music_ctrl = 2; 
+        StartBT msg_start_bt = 3; 
+        StopBT msg_stop_bt = 4; 
+        StartBtReq msg_start_bt_req = 5; 
+        StopBtReq msg_stop_bt_req = 6;  
+    }
+}

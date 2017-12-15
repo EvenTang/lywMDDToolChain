@@ -1,0 +1,11 @@
+
+
+@startuml BCMCtrl's state chart
+
+[*] --> uninitialized
+
+
+@enduml
+
+
+       

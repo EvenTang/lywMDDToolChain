@@ -1,0 +1,36 @@
+@startuml
+
+
+
+class BTCtrl {
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data_len, UnknowType payload)
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data_len, UnknowType payload)
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data_len, UnknowType payload)
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data_len, UnknowType payload)
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data, UnknowType size)
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data, UnknowType size)
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data_len, UnknowType payload)
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data_len, UnknowType payload)
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data_len, UnknowType payload)
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data_len, UnknowType size)
+    + BTCtrlOpResult MusicCtrl(UnknowType cmd)
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data_len, UnknowType payload)
+    + BTCtrlOpResult MusicCtrl(UnknowType cmd)
+    + BTCtrlOpResult MusicCtrl(UnknowType cmd)
+    + BTCtrlOpResult MusicCtrl(UnknowType cmd)
+    + BTCtrlOpResult StartBT()
+    + BTCtrlOpResult StartBT()
+    + BTCtrlOpResult StopBT()
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data_len, UnknowType payload)
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data_len, UnknowType payload)
+    + BTCtrlOpResult StartBtReq()
+    + BTCtrlOpResult StartBT()
+    + BTCtrlOpResult StopBtReq()
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data_len, UnknowType payload)
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data_len, UnknowType payload)
+    + BTCtrlOpResult TxCmmDataReq(UnknowType data_len, UnknowType payload)
+    - uint32 state
+}
+
+
+@enduml

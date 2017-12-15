@@ -1,0 +1,53 @@
+@startuml
+title This is a normal sequence diagram of start BT service.\nBD-SD-REQ-01-02-01-N1
+hide footbox
+
+participant SysCtrl
+participant PhoneAgent
+participant BTCtrl
+
+hnote over PhoneAgent:Init
+
+SysCtrl->>PhoneAgent:StartSrvReq()
+activate PhoneAgent
+PhoneAgent->PhoneAgent:GetBTPowerSts(sts=&BT_power)
+activate PhoneAgent
+deactivate PhoneAgent
+alt TRUE==BT_power
+PhoneAgent->PhoneAgent:OSM_TaskDelay(time=3000)
+activate PhoneAgent
+deactivate PhoneAgent
+PhoneAgent->PhoneAgent:StartBTModule()
+activate PhoneAgent
+PhoneAgent->>BTCtrl:StartBtReq()
+deactivate PhoneAgent
+PhoneAgent->PhoneAgent:SetBTCtrlTimer(evt=PHONE_AGENT_EVT_START_SRV_REQ)
+activate PhoneAgent
+deactivate PhoneAgent
+hnote over PhoneAgent:Starting
+end
+deactivate PhoneAgent
+
+
+BTCtrl->>PhoneAgent:StartBTRsltNtf(rslt=BTCTRL_RESULT_OK)
+activate PhoneAgent
+PhoneAgent->PhoneAgent:CancelBTCtrlTimer()
+alt BTCTRL_RESULT_OK==rslt
+PhoneAgent->PhoneAgent:TxEnableBTRsltToSysCtrl(rslt=PHONE_RESULT_OK)
+activate PhoneAgent
+PhoneAgent->>SysCtrl:EnableBTRsp(sysctrl_rslt=SYS_CTRL_RESULT_OK)
+deactivate PhoneAgent
+hnote over PhoneAgent:Disconnected
+else
+PhoneAgent->PhoneAgent:OSM_TaskDelay(time=3000)
+PhoneAgent->PhoneAgent:StartBTModule()
+activate PhoneAgent
+PhoneAgent->>BTCtrl:StartBT()
+deactivate PhoneAgent
+PhoneAgent->PhoneAgent:SetBTCtrlTimer(evt=PHONE_AGENT_EVT_ENABLE_BT_RSLT)
+activate PhoneAgent
+deactivate PhoneAgent
+end
+deactivate PhoneAgent
+
+@enduml

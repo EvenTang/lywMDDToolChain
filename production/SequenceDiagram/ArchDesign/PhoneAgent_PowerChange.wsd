@@ -1,0 +1,36 @@
+@startuml
+
+title 动力电池切换到备份电池\nBD-SD-02-09-01-N
+hide footbox
+
+participant SysCtrl
+participant PhoneAgent
+
+hnote over PhoneAgent:Starting|Disconnected|Connected
+
+SysCtrl->>PhoneAgent:DisableBtReq()
+activate PhoneAgent
+PhoneAgent->PhoneAgent:CancelBTCtrlTimer()
+PhoneAgent->PhoneAgent:StopBTModule()
+activate PhoneAgent
+PhoneAgent->>BTCtrl:StopBT()
+deactivate PhoneAgent
+PhoneAgent->PhoneAgent:SetBTCtrlTimer(evt=PHONE_AGENT_EVT_DISABLE_BT_REQ)
+activate PhoneAgent
+deactivate PhoneAgent
+deactivate PhoneAgent
+hnote over PhoneAgent:Stopping
+
+BTCtrl->>PhoneAgent:StopBTRsltNtf(rslt=BTCTRL_RESULT_OK)
+activate PhoneAgent
+PhoneAgent->PhoneAgent:CancelBTCtrlTimer()
+PhoneAgent->PhoneAgent:Reset()
+PhoneAgent->PhoneAgent:TxDisableBTRsltToSysCtrl(rslt=PHONE_RESULT_OK)
+activate PhoneAgent
+PhoneAgent->>SysCtrl:DisableBTRsp(sysctrl_rslt=SYS_CTRL_RESULT_OK)
+deactivate PhoneAgent
+hnote over PhoneAgent:Init
+
+deactivate PhoneAgent
+
+@enduml

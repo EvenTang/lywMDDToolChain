@@ -1,0 +1,40 @@
+@startuml
+
+title LOCK STS CHG
+hide footbox
+
+participant ShareOBJ
+participant PhoneAgent
+participant BTCtrl
+participant BCMCtrl
+
+hnote over PhoneAgent : Connected
+ShareOBJ->>PhoneAgent : LockStsChgNtf(sts_new=SHARE_LOCK_STATUS_LOCKED)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : TX_NtfLockSts(sts=SHARE_LOCK_STATUS_LOCKED)
+activate PhoneAgent
+alt SHARE_LOCK_STATUS_UNLOCKED==sts
+PhoneAgent->BTCtrl:CheckConnectA2DOCondition()
+BTCtrl-->PhoneAgent:flg
+alt TRUE==flg
+PhoneAgent->PhoneAgent:Dispatch_SendPack(data=3,size=3,evt=PHONE_AGENT_EVT_DISCONNECT_A2DP_REQ)
+PhoneAgent->>BTCtrl:TxCmmDataReq(data=3,size=4)
+end alt
+else SHARE_LOCK_STATUS_LOCKED==msg->data0
+PhoneAgent->PhoneAgent:Dispatch_SendPack(data=3,size=3,evt=DisconnectA2drReq)
+PhoneAgent->>BTCtrl:TxCmmDataReq(data=3,size=4)
+end alt
+alt PHONE_TX_IDLE == g_phone_tx_sts
+PhoneAgent->BCMCtrl:GetBTPlaySwitchStatus()
+BCMCtrl-->PhoneAgent:status
+alt BCM_INPUT_STATUS_SW_ON==status
+PhoneAgent->PhoneAgent:TX_NtfBTMusicSource(flg=True)
+else
+PhoneAgent->PhoneAgent:TX_NtfBTMusicSource(flg=FALSE)
+end alt
+PhoneAgent->PhoneAgent : SaveDataToGlobalVar(VAR_001) : data_buf
+PhoneAgent->>BTCtrl : TxCmmDataReq(data_len=4, payload=data_buf)
+deactivate PhoneAgent
+deactivate PhoneAgent
+end alt
+@enduml

@@ -1,0 +1,20 @@
+@startuml
+
+title SET CHARGE PLAN
+hide footbox
+
+participant EVSrv
+participant PhoneAgent
+participant BTCtrl
+
+hnote over PhoneAgent : Connected
+EVSrv->>PhoneAgent : SetChargePlanRsp(rslt=PHONE_RESULT_OK)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : TX_NtfChargePlanSettingRslt(rslt=rslt)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : SaveDataToGlobalVar(VAR_001) : data_buf
+PhoneAgent->>BTCtrl : TxCmmDataReq(data_len=4, payload=data_buf)
+deactivate PhoneAgent
+deactivate PhoneAgent
+
+@enduml

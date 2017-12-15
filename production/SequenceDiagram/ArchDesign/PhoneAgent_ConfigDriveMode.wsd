@@ -1,0 +1,20 @@
+@startuml
+
+title CONFIG DRIVE MODE
+hide footbox
+
+participant VehicleAgent
+participant PhoneAgent
+participant BTCtrl
+
+hnote over PhoneAgent : Connected
+VehicleAgent->>PhoneAgent : ConfigDriveModeRsp(result=data0)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : TX_NtfDriveModeSetRslt(rslt=rslt)
+activate PhoneAgent
+PhoneAgent->PhoneAgent : SaveDataToGlobalVar(VAR_001) : data_buf
+PhoneAgent->>BTCtrl : TxCmmDataReq(data_len=4, payload=data_buf)
+deactivate PhoneAgent
+deactivate PhoneAgent
+
+@enduml

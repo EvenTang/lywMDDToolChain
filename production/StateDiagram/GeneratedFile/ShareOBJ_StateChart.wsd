@@ -1,0 +1,11 @@
+
+
+@startuml ShareOBJ's state chart
+
+[*] --> uninitialized
+
+
+@enduml
+
+
+       

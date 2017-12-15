@@ -1,0 +1,94 @@
+
+
+
+message CancelChargePlanRsp { 
+    optional !TYPE! rslt = 1;
+} 
+message ConfigDriveModeRsp { 
+    optional !TYPE! result = 1;
+} 
+message BTConnectedNtf { 
+} 
+message BTDisconnectedNtf { 
+} 
+message EngineStsNtf { 
+    optional !TYPE! sts = 1;
+} 
+message RcvSppDataNtf { 
+    optional !TYPE! data_len = 1;
+    optional !TYPE! payload = 2;
+} 
+message VehicleLockCtrlRsp { 
+    optional !TYPE! rslt = 1;
+} 
+message MainStandCtrlRsp { 
+    optional !TYPE! rslt = 1;
+} 
+message LockStsChgNtf { 
+    optional !TYPE! sts_new = 1;
+} 
+message OperationA2dpRst { 
+    optional !TYPE! rslt = 1;
+} 
+message MusicCtrlCmdReq { 
+    optional !TYPE! music_status = 1;
+} 
+message SendDataRsltNtf { 
+    optional !TYPE! rslt = 1;
+} 
+message EnableBtReq { 
+} 
+message StartBTRsltNtf { 
+    optional !TYPE! rslt = 1;
+} 
+message DisableBtReq { 
+} 
+message StopBTRsltNtf { 
+    optional !TYPE! rslt = 1;
+} 
+message RKLearingRsp { 
+} 
+message SetChargePlanRsp { 
+    optional !TYPE! rslt = 1;
+} 
+message SetPreferenceRsp { 
+    optional !TYPE! rslt = 1;
+} 
+message StartSrvReq { 
+} 
+message StopSrvReq { 
+} 
+message SeatCtrlRsp { 
+    optional !TYPE! rslt = 1;
+} 
+message UpdateRsltNtf { 
+} 
+
+message PhoneAgentMessagge {
+    required int32 message_id = 1;
+    oneof msg_body { 
+        CancelChargePlanRsp msg_cancel_charge_plan_rsp = 1; 
+        ConfigDriveModeRsp msg_config_drive_mode_rsp = 2; 
+        BTConnectedNtf msg_bt_connected_ntf = 3; 
+        BTDisconnectedNtf msg_bt_disconnected_ntf = 4; 
+        EngineStsNtf msg_engine_sts_ntf = 5; 
+        RcvSppDataNtf msg_rcv_spp_data_ntf = 6; 
+        VehicleLockCtrlRsp msg_vehicle_lock_ctrl_rsp = 7; 
+        MainStandCtrlRsp msg_main_stand_ctrl_rsp = 8; 
+        LockStsChgNtf msg_lock_sts_chg_ntf = 9; 
+        OperationA2dpRst msg_operation_a2dp_rst = 10; 
+        MusicCtrlCmdReq msg_music_ctrl_cmd_req = 11; 
+        SendDataRsltNtf msg_send_data_rslt_ntf = 12; 
+        EnableBtReq msg_enable_bt_req = 13; 
+        StartBTRsltNtf msg_start_bt_rslt_ntf = 14; 
+        DisableBtReq msg_disable_bt_req = 15; 
+        StopBTRsltNtf msg_stop_bt_rslt_ntf = 16; 
+        RKLearingRsp msg_rk_learing_rsp = 17; 
+        SetChargePlanRsp msg_set_charge_plan_rsp = 18; 
+        SetPreferenceRsp msg_set_preference_rsp = 19; 
+        StartSrvReq msg_start_srv_req = 20; 
+        StopSrvReq msg_stop_srv_req = 21; 
+        SeatCtrlRsp msg_seat_ctrl_rsp = 22; 
+        UpdateRsltNtf msg_update_rslt_ntf = 23;  
+    }
+}

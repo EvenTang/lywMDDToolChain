@@ -1,0 +1,38 @@
+@startuml
+
+title OPERATION A2DP
+hide footbox
+
+participant PhoneAgent
+participant BTCtrl
+
+hnote over PhoneAgent : Connected
+BTCtrl->>PhoneAgent : OperationA2dpRst(rslt=rslt)
+activate PhoneAgent
+alt BTCTRL_RESULT_A2DP_CONNECT_OK==rslt
+PhoneAgent->BTCtrl:GetCurrentBTProtocol()
+activate BTCtrl
+BTCtrl-->PhoneAgent:DataProttype
+deactivate BTCtrl
+alt BT_DATA_PROT_BLE==DataProttype
+PhoneAgent->PhoneAgent:TX_NtfPhoneMacAddress()
+activate PhoneAgent
+PhoneAgent->PhoneAgent : SaveDataToGlobalVar(VAR_001) : data_buf
+PhoneAgent->>BTCtrl : TxCmmDataReq(data_len=4, payload=data_buf)
+deactivate PhoneAgent
+end alt
+else
+PhoneAgent->PhoneAgent:SetDataSendFlag(flag=FALSE)
+PhoneAgent->PhoneAgent:CancelTxDataTimer()
+end alt
+
+PhoneAgent->PhoneAgent:rslt = IsDataQueueEmpty()
+alt FALSE==rslt
+PhoneAgent->PhoneAgent:SendQueueData()
+activate PhoneAgent
+PhoneAgent->>BTCtrl : TxCmmDataReq(data_len=4, size=4)
+deactivate PhoneAgent
+end alt
+deactivate PhoneAgent
+deactivate PhoneAgent
+@enduml
