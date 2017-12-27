@@ -7,7 +7,7 @@ require File.expand_path('../code_generator_proxy', __FILE__)
 # TODO: generate code that considering the vairable used in call chains.
 # TODO: generate comments
 
-class CppCodeGenerator < CodeGeneratorProxy
+class PythonCodeGenerator < CodeGeneratorProxy
 
   def generate_function_call(name, param_list)
     args = param_list.values.join(", ")
@@ -16,7 +16,7 @@ class CppCodeGenerator < CodeGeneratorProxy
 
   def generate_function_prototype(name, param_list)
     args = param_list.keys.join(", ")
-    "BOOL #{name}(#{args})"
+    "def #{name}(#{args}):"
   end
 
   def generate_transmit_code(name, state)
@@ -26,43 +26,39 @@ class CppCodeGenerator < CodeGeneratorProxy
   
   def generate_alt_code(branches)
     count = 0
-    code = ["//> alt: ?????"]
+    code = ["#> alt: ?????"]
     code = branches.inject code do |code, branch|
       count += 1
-      code  << ["//> opt: #{convert_condition_sentence_to_api(branch.condition)}",
-                "#{generate_judgement(branch.condition, count)} {", 
-                branch.sequence.generate_code(self).flatten.add_indent!,
-                "}"]
+      code  << ["#> opt: #{convert_condition_sentence_to_api(branch.condition)}",
+                "#{generate_judgement(branch.condition, count)} :", 
+                branch.sequence.generate_code(self).flatten.add_indent!]
     end
-    code << "//> :end"    
+    code << "#> :end" 
   end
   
   def generate_loop_code(branch)
-    ["//> loop: #{convert_condition_sentence_to_api(branch.condition)}", 
-     "while (#{convert_condition_sentence_to_api(branch.condition)}) {", 
+    ["#> loop: #{convert_condition_sentence_to_api(branch.condition)}", 
+     "while (#{convert_condition_sentence_to_api(branch.condition)}) :", 
       branch.sequence.generate_code(self).flatten.add_indent!,
-     "}",
-     "//> :end"]
+     "#> :end"]
   end
   
   def generate_break_code(branch)
-    ["//> alt: #{convert_condition_sentence_to_api(branch.condition)}", 
-     "if (#{convert_condition_sentence_to_api(condition)}) {", 
+    ["#> alt: #{convert_condition_sentence_to_api(branch.condition)}", 
+     "if (#{convert_condition_sentence_to_api(condition)}) :", 
       branch.sequence.generate_code(self).push("break;").flatten.add_indent!,
-     "}",
-     "//> :end"]
+     "#> :end"]
   end
   
   def generate_opt_code(branch)
-    ["if (#{convert_condition_sentence_to_api(branch.condition)}) {", 
-      branch.sequence.generate_code(self).flatten.add_indent!,
-     "}"]
+    ["if (#{convert_condition_sentence_to_api(branch.scondition)}) :", 
+      branch.sequence.generate_code(self).flatten.add_indent!]
   end
   
   private
   def generate_judgement(condition, branch_cout)
     if condition != ""
-      "%s (%s)" % [(branch_cout > 1 ? "else if" : "if"), convert_condition_sentence_to_api(condition)]
+      "%s (%s)" % [(branch_cout > 1 ? "elif" : "if"), convert_condition_sentence_to_api(condition)]
     else
       "else"
     end

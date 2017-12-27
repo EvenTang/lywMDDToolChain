@@ -33,6 +33,11 @@ BOOL PhoneAgent_api_TX_NtfMainstandLockRslt(rslt);
 /* @brief internal_apis
  *
  */
+BOOL PhoneAgent_api_TX_NtfVehicleLockRslt(rslt);
+
+/* @brief internal_apis
+ *
+ */
 BOOL PhoneAgent_api_TX_NtfMainstandLockRslt();
 
 /* @brief internal_apis
@@ -64,6 +69,21 @@ BOOL PhoneAgent_api_IsDataQueueEmpty();
  *
  */
 BOOL PhoneAgent_api_SendQueueData();
+
+/* @brief internal_apis
+ *
+ */
+BOOL PhoneAgent_api_SendBTMusicCtrlCmd(cmd);
+
+/* @brief internal_apis
+ *
+ */
+BOOL PhoneAgent_api_SendBTMusicCtrlCmd(cmd);
+
+/* @brief internal_apis
+ *
+ */
+BOOL PhoneAgent_api_SendBTMusicCtrlCmd(cmd);
 
 /* @brief internal_apis
  *
@@ -233,6 +253,21 @@ BOOL PhoneAgent_api_TxStartSrvRsltToSysCtrl(rslt);
 /* @brief internal_apis
  *
  */
+BOOL PhoneAgent_api_OSM_TaskDelay(time);
+
+/* @brief internal_apis
+ *
+ */
+BOOL PhoneAgent_api_StartBTModule();
+
+/* @brief internal_apis
+ *
+ */
+BOOL PhoneAgent_api_SetBTCtrlTimer(evt);
+
+/* @brief internal_apis
+ *
+ */
 BOOL PhoneAgent_api_CancelBTCtrlTimer();
 
 /* @brief internal_apis
@@ -284,6 +319,11 @@ BOOL PhoneAgent_api_OSM_TaskDelay(time);
  *
  */
 BOOL PhoneAgent_api_StartBTModule();
+
+/* @brief internal_apis
+ *
+ */
+BOOL PhoneAgent_api_SetBTCtrlTimer(evt);
 
 /* @brief internal_apis
  *

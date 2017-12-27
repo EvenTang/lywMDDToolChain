@@ -37,7 +37,11 @@ class STM_ECB
   end
 
   def update_logic_tree(logic_tree)
-    @logic_tree ||= logic_tree
+    if (@logic_tree == nil)
+      @logic_tree = logic_tree
+    else
+      @logic_tree.merge(logic_tree)
+    end    
   end
 
   def generate_code

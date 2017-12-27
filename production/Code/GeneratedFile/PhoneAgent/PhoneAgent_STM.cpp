@@ -151,6 +151,8 @@ STM_Status PhoneAgent_ECB_CONNECTED_VehicleLockCtrlRsp(PhoneAgentEvent const & _
     //> implementation of CONNECTED VehicleLockCtrlRsp
     //> PhoneAgent_api_TX_NtfMainstandLockRslt(rslt)
     PhoneAgent_api_TX_NtfMainstandLockRslt(rslt);
+    //> PhoneAgent_api_TX_NtfVehicleLockRslt(rslt)
+    PhoneAgent_api_TX_NtfVehicleLockRslt(rslt);
 
     return STM_STATS_OK;
 }
@@ -267,6 +269,12 @@ STM_Status PhoneAgent_ECB_CONNECTED_MusicCtrlCmdReq(PhoneAgentEvent const & _msg
     //> implementation of CONNECTED MusicCtrlCmdReq
     //> PhoneAgent_api_SendBTMusicCtrlCmd(BCMCTRL_MUSIC_BUTTON_STOP)
     PhoneAgent_api_SendBTMusicCtrlCmd(BCMCTRL_MUSIC_BUTTON_STOP);
+    //> PhoneAgent_api_SendBTMusicCtrlCmd(BCMCTRL_MUSIC_BUTTON_PREVIOUS)
+    PhoneAgent_api_SendBTMusicCtrlCmd(BCMCTRL_MUSIC_BUTTON_PREVIOUS);
+    //> PhoneAgent_api_SendBTMusicCtrlCmd(BCMCTRL_MUSIC_BUTTON_NEXT)
+    PhoneAgent_api_SendBTMusicCtrlCmd(BCMCTRL_MUSIC_BUTTON_NEXT);
+    //> PhoneAgent_api_SendBTMusicCtrlCmd(BCMCTRL_MUSIC_BUTTON_PLAY)
+    PhoneAgent_api_SendBTMusicCtrlCmd(BCMCTRL_MUSIC_BUTTON_PLAY);
 
     return STM_STATS_OK;
 }
@@ -1460,6 +1468,19 @@ STM_Status PhoneAgent_ECB_INIT_StartSrvReq(PhoneAgentEvent const & _msg) {
         PhoneAgent_api_TxStartSrvRsltToSysCtrl(PHONE_RESULT_FAILED);
     }
     //> :end
+    //> alt: ?????
+    //> opt: TRUE==BT_power
+    if (TRUE==BT_power) {
+        //> PhoneAgent_api_OSM_TaskDelay(3000)
+        PhoneAgent_api_OSM_TaskDelay(3000);
+        //> PhoneAgent_api_StartBTModule()
+        PhoneAgent_api_StartBTModule();
+        //> PhoneAgent_api_SetBTCtrlTimer(PHONE_AGENT_EVT_START_SRV_REQ)
+        PhoneAgent_api_SetBTCtrlTimer(PHONE_AGENT_EVT_START_SRV_REQ);
+        //> PhoneAgent_SetStatus(ST_STARTING)
+        PhoneAgent_SetStatus(ST_STARTING);
+    }
+    //> :end
 
     return STM_STATS_OK;
 }
@@ -2294,6 +2315,8 @@ STM_Status PhoneAgent_ECB_STARTING_StartBTRsltNtf(PhoneAgentEvent const & _msg) 
         PhoneAgent_api_StartBTModule();
         //> PhoneAgent_api_SetBTCtrlTimer(PHONE_AGENT_EVT_ENABLE_BT_REQ)
         PhoneAgent_api_SetBTCtrlTimer(PHONE_AGENT_EVT_ENABLE_BT_REQ);
+        //> PhoneAgent_api_SetBTCtrlTimer(PHONE_AGENT_EVT_ENABLE_BT_RSLT)
+        PhoneAgent_api_SetBTCtrlTimer(PHONE_AGENT_EVT_ENABLE_BT_RSLT);
     }
     //> :end
 
